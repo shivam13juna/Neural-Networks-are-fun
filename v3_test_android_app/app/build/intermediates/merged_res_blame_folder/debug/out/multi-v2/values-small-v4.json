@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.actiontracker.app-mergeDebugResources-37:/values-small-v4/values-small-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/shivam13juna/.gradle/caches/8.13/transforms/34676bfb462c78beb52537c9725515a8/transformed/material-1.9.0/res/values-small-v4/values-small-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,128,198,270",
+                        "endColumns": "72,69,71,69",
+                        "endOffsets": "123,193,265,335"
+                    }
+                }
+            ]
+        }
+    ]
+}

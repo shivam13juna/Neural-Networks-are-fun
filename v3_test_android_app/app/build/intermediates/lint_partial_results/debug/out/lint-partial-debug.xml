@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.0.2" type="partial_results">
+    <map id="UnusedResources">
+        <location id="R.mipmap.ic_launcher"
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="264"/>
+        <location id="R.color.black"
+            file="${:app*debug*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="6"
+            column="12"
+            startOffset="198"
+            endLine="6"
+            endColumn="24"
+            endOffset="210"/>
+        <location id="R.color.white"
+            file="${:app*debug*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="7"
+            column="12"
+            startOffset="240"
+            endLine="7"
+            endColumn="24"
+            endOffset="252"/>
+        <location id="R.drawable.ic_launcher_foreground"
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/ic_launcher_foreground.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="10"
+            endColumn="10"
+            endOffset="336"/>
+        <entry
+            name="model"
+            string="attr[selectableItemBackground(R),selectableItemBackgroundBorderless(R)],color[light_gray(D),black(D),accent(U),white(D),primary_dark(U),primary(U)],drawable[ic_launcher_foreground(D),ic_launcher_background(D)],id[btn_decrement(U),actions_recycler_view(D),previous_day_button(D),fab_add_action(D),action_count(D),select_date_button(D),date_text_view(U),next_day_button(D),action_name(D),action_name_layout(D),action_name_edit_text(D),date_navigation(U),btn_increment(U)],layout[dialog_add_action(U),item_action(U),activity_main(U)],mipmap[ic_launcher_round(D),ic_launcher(D)],string[cancel(U),select_date(U),save(U),increment(U),add_action(U),app_name(U),decrement(U),action_name_required(U),previous_day(U),next_day(U),action_name_hint(U)],style[Theme_ActionTracker(U),Theme_MaterialComponents_DayNight_DarkActionBar(R)];9^7,17^26,18^1^22^16^a^1f,19^10^0^24^1d^25^15^18^20,27^28^7^6^4;;;"/>
+        <location id="R.drawable.ic_launcher_background"
+            file="${:app*debug*sourceProvider*0*resDir*0}/drawable/ic_launcher_background.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="10"
+            endColumn="10"
+            endOffset="336"/>
+        <location id="R.mipmap.ic_launcher_round"
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="264"/>
+        <location id="R.color.light_gray"
+            file="${:app*debug*sourceProvider*0*resDir*0}/values/colors.xml"
+            line="8"
+            column="12"
+            startOffset="282"
+            endLine="8"
+            endColumn="29"
+            endOffset="299"/>
+    </map>
+
+</incidents>

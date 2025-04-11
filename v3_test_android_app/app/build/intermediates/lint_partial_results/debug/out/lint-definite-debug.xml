@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.0.2" type="incidents">
+
+    <incident
+        id="ConstantLocale"
+        severity="warning"
+        message="Assigning `Locale.getDefault()` to a final static field is suspicious; this code will not work correctly if the user changes locale while the app is running">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/ActionTrackerViewModel.kt"
+            line="26"
+            column="71"
+            startOffset="912"
+            endLine="26"
+            endColumn="90"
+            endOffset="931"/>
+    </incident>
+
+    <incident
+        id="ConstantLocale"
+        severity="warning"
+        message="Assigning `Locale.getDefault()` to a final static field is suspicious; this code will not work correctly if the user changes locale while the app is running">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/ActionTrackerViewModel.kt"
+            line="27"
+            column="68"
+            startOffset="1000"
+            endLine="27"
+            endColumn="87"
+            endOffset="1019"/>
+    </incident>
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 35"
+            oldString="33"
+            replacement="35"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="15"
+            column="9"
+            startOffset="413"
+            endLine="15"
+            endColumn="23"
+            endOffset="427"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test:runner than 1.5.2 is available: 1.6.2">
+        <fix-replace
+            description="Change to 1.6.2"
+            family="Update versions"
+            oldString="1.5.2"
+            replacement="1.6.2"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="117"
+            column="32"
+            startOffset="3620"
+            endLine="117"
+            endColumn="58"
+            endOffset="3646"/>
+    </incident>
+
+</incidents>

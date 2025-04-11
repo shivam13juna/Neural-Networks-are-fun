@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Action Tracker</string>
+    <string name="add_action">Add Action</string>
+    <string name="action_name_hint">Enter action name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="previous_day">Previous Day</string>
+    <string name="next_day">Next Day</string>
+    <string name="select_date">Select Date</string>
+    <string name="increment">Increment</string>
+    <string name="decrement">Decrement</string>
+    <string name="action_name_required">Action name is required</string>
+</resources>
