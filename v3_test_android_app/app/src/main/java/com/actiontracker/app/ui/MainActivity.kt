@@ -13,6 +13,7 @@ import com.actiontracker.app.data.ActionRepository
 import com.actiontracker.app.data.DayRecordRepository
 import com.actiontracker.app.databinding.ActivityMainBinding
 import com.actiontracker.app.databinding.DialogAddActionBinding
+import com.actiontracker.app.models.ActionEntity
 import com.google.android.material.snackbar.Snackbar
 import java.util.Calendar
 
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerView()
         setupDateNavigation()
         setupAddActionButton()
+        setupDeleteButton()
         setupObservers()
     }
     
@@ -47,12 +49,48 @@ class MainActivity : AppCompatActivity() {
             },
             onDecrementClicked = { actionId ->
                 viewModel.decrementCount(actionId)
+            },
+            onLongClick = { action ->
+                showDeleteConfirmationDialog(action)
+            },
+            onSelectionChanged = { selectedCount ->
+                // Update the delete FAB visibility when selection changes
+                if (selectedCount > 0) {
+                    binding.fabAddAction.show()
+                } else {
+                    binding.fabAddAction.hide()
+                }
             }
         )
         
         binding.actionsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = this@MainActivity.adapter
+        }
+    }
+    
+    private fun setupDeleteButton() {
+        binding.fabDeleteActions.setOnClickListener {
+            if (adapter.isSelectionModeActive()) {
+                // Exit selection mode if already active
+                exitSelectionMode()
+            } else {
+                // Enter selection mode
+                adapter.setSelectionMode(true)
+                binding.fabAddAction.hide()
+                
+                // Show the deletion FAB in bottom right
+                binding.fabAddAction.setImageResource(android.R.drawable.ic_menu_delete)
+                binding.fabAddAction.show()
+                
+                showSelectionModeSnackbar()
+                
+                // Change the function of the + button to be delete selected
+                binding.fabAddAction.setOnClickListener {
+                    val selectedActions = adapter.getSelectedActions()
+                    confirmDeleteSelectedActions(selectedActions)
+                }
+            }
         }
     }
     
@@ -73,6 +111,71 @@ class MainActivity : AppCompatActivity() {
     private fun setupAddActionButton() {
         binding.fabAddAction.setOnClickListener {
             showAddActionDialog()
+        }
+    }
+    
+    private fun showDeleteConfirmationDialog(action: ActionEntity) {
+        AlertDialog.Builder(this)
+            .setTitle("Delete ${action.actionName}?")
+            .setMessage("This will permanently delete this action and all its records across all days. This action cannot be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                viewModel.deleteAction(action)
+                createPositionedSnackbar(
+                    "Action '${action.actionName}' deleted",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+    
+    private fun confirmDeleteSelectedActions(selectedActions: List<ActionEntity>) {
+        AlertDialog.Builder(this)
+            .setTitle("Delete ${selectedActions.size} Actions?")
+            .setMessage("This will permanently delete all selected actions and their records across all days. This action cannot be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                selectedActions.forEach { action ->
+                    viewModel.deleteAction(action)
+                }
+                exitSelectionMode()
+                createPositionedSnackbar(
+                    "${selectedActions.size} actions deleted",
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+    
+    private fun showSelectionModeSnackbar() {
+        val snackbar = createPositionedSnackbar(
+            "Select actions to delete",
+            Snackbar.LENGTH_LONG
+        ).setAction("Cancel") {
+            exitSelectionMode()
+        }
+        
+        snackbar.show()
+    }
+    
+    private fun exitSelectionMode() {
+        adapter.setSelectionMode(false)
+        
+        // Restore the add button to its original state
+        binding.fabAddAction.setImageResource(android.R.drawable.ic_input_add)
+        binding.fabAddAction.show()
+        
+        // Reset the add button's click listener
+        binding.fabAddAction.setOnClickListener {
+            showAddActionDialog()
+        }
+    }
+    
+    override fun onBackPressed() {
+        if (adapter.isSelectionModeActive()) {
+            exitSelectionMode()
+        } else {
+            super.onBackPressed()
         }
     }
     
@@ -130,9 +233,8 @@ class MainActivity : AppCompatActivity() {
                 if (actionName.isNotBlank()) {
                     viewModel.addAction(actionName)
                 } else {
-                    Snackbar.make(
-                        binding.root,
-                        R.string.action_name_required,
+                    createPositionedSnackbar(
+                        getString(R.string.action_name_required),
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
@@ -140,5 +242,25 @@ class MainActivity : AppCompatActivity() {
             .setNegativeButton(R.string.cancel, null)
             .create()
             .show()
+    }
+
+    /**
+     * Helper method to create and position a Snackbar above the bottom action buttons
+     */
+    private fun createPositionedSnackbar(message: String, duration: Int): Snackbar {
+        // Create the Snackbar with the provided message and duration
+        val snackbar = Snackbar.make(binding.root, message, duration)
+        
+        // Get the view of the Snackbar
+        val snackbarView = snackbar.view
+        
+        // Adjust the Snackbar's position through its margins
+        val params = snackbarView.layoutParams as android.view.ViewGroup.MarginLayoutParams
+        params.bottomMargin = 200 // Position it higher than the default
+        
+        // Create space between the bottom of the screen and the Snackbar
+        snackbar.setAnchorView(binding.fabAddAction)
+        
+        return snackbar
     }
 }

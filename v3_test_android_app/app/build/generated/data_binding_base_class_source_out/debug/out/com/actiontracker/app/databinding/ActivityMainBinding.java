@@ -37,6 +37,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FloatingActionButton fabAddAction;
 
   @NonNull
+  public final FloatingActionButton fabDeleteActions;
+
+  @NonNull
   public final ImageButton nextDayButton;
 
   @NonNull
@@ -48,13 +51,14 @@ public final class ActivityMainBinding implements ViewBinding {
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
       @NonNull RecyclerView actionsRecyclerView, @NonNull LinearLayout dateNavigation,
       @NonNull TextView dateTextView, @NonNull FloatingActionButton fabAddAction,
-      @NonNull ImageButton nextDayButton, @NonNull ImageButton previousDayButton,
-      @NonNull Button selectDateButton) {
+      @NonNull FloatingActionButton fabDeleteActions, @NonNull ImageButton nextDayButton,
+      @NonNull ImageButton previousDayButton, @NonNull Button selectDateButton) {
     this.rootView = rootView;
     this.actionsRecyclerView = actionsRecyclerView;
     this.dateNavigation = dateNavigation;
     this.dateTextView = dateTextView;
     this.fabAddAction = fabAddAction;
+    this.fabDeleteActions = fabDeleteActions;
     this.nextDayButton = nextDayButton;
     this.previousDayButton = previousDayButton;
     this.selectDateButton = selectDateButton;
@@ -111,6 +115,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.fab_delete_actions;
+      FloatingActionButton fabDeleteActions = ViewBindings.findChildViewById(rootView, id);
+      if (fabDeleteActions == null) {
+        break missingId;
+      }
+
       id = R.id.next_day_button;
       ImageButton nextDayButton = ViewBindings.findChildViewById(rootView, id);
       if (nextDayButton == null) {
@@ -130,8 +140,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, actionsRecyclerView,
-          dateNavigation, dateTextView, fabAddAction, nextDayButton, previousDayButton,
-          selectDateButton);
+          dateNavigation, dateTextView, fabAddAction, fabDeleteActions, nextDayButton,
+          previousDayButton, selectDateButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

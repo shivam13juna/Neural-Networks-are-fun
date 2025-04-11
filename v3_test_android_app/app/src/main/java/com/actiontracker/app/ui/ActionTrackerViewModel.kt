@@ -102,4 +102,14 @@ class ActionTrackerViewModel(
         val record = dayRecords.find { it.actionId == action.actionId }
         return Pair(action, record?.count ?: 0)
     }
+    
+    fun deleteAction(action: ActionEntity) {
+        viewModelScope.launch {
+            // First, delete all day records associated with this action
+            dayRecordRepository.deleteAllRecordsForAction(action.actionId)
+            
+            // Then delete the action itself
+            actionRepository.deleteAction(action)
+        }
+    }
 }

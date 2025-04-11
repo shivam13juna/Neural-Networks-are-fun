@@ -3072,6 +3072,7 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_checkbox
 id action_container
 id action_context_bar
 id action_count
@@ -3205,6 +3206,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fab_add_action
+id fab_delete_actions
 id fade
 id fill
 id fill_horizontal

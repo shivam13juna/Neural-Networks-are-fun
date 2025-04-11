@@ -8,6 +8,7 @@ color primary_dark
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id action_checkbox
 id action_count
 id action_name
 id action_name_edit_text
@@ -18,6 +19,7 @@ id btn_increment
 id date_navigation
 id date_text_view
 id fab_add_action
+id fab_delete_actions
 id next_day_button
 id previous_day_button
 id select_date_button
