@@ -1,19 +1,15 @@
 [
     {
+        "merged": "com.actiontracker.app-merged_res-39:/menu_main_menu.xml.flat",
+        "source": "com.actiontracker.app-main-41:/menu/main_menu.xml"
+    },
+    {
         "merged": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-merged_res-39:/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-main-41:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
         "merged": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-merged_res-39:/drawable_ic_trash_red_bg.xml.flat",
         "source": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-main-41:/drawable/ic_trash_red_bg.xml"
-    },
-    {
-        "merged": "com.actiontracker.app-merged_res-39:/layout_activity_main.xml.flat",
-        "source": "com.actiontracker.app-main-41:/layout/activity_main.xml"
-    },
-    {
-        "merged": "com.actiontracker.app-merged_res-39:/drawable_ic_trash_white.xml.flat",
-        "source": "com.actiontracker.app-main-41:/drawable/ic_trash_white.xml"
     },
     {
         "merged": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-merged_res-39:/drawable_ic_launcher_foreground.xml.flat",
@@ -32,8 +28,16 @@
         "source": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-main-41:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
+        "merged": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-merged_res-39:/drawable_ic_trash_white.xml.flat",
+        "source": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-main-41:/drawable/ic_trash_white.xml"
+    },
+    {
         "merged": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-merged_res-39:/layout_item_action.xml.flat",
         "source": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-main-41:/layout/item_action.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-merged_res-39:/layout_activity_settings.xml.flat",
+        "source": "com.actiontracker.app-main-41:/layout/activity_settings.xml"
     },
     {
         "merged": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-merged_res-39:/layout_dialog_add_action.xml.flat",

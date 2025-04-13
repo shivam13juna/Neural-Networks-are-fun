@@ -1,8 +1,11 @@
 package com.actiontracker.app.ui
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +17,7 @@ import com.actiontracker.app.data.DayRecordRepository
 import com.actiontracker.app.databinding.ActivityMainBinding
 import com.actiontracker.app.databinding.DialogAddActionBinding
 import com.actiontracker.app.models.ActionEntity
+import com.actiontracker.app.util.ThemeHelper
 import com.google.android.material.snackbar.Snackbar
 import java.util.Calendar
 
@@ -24,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: ActionItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply the saved theme before calling super.onCreate()
+        ThemeHelper.applyTheme(this, ThemeHelper.getCurrentTheme(this))
+        
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -277,6 +284,28 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
+    /**
+     * Create the options menu with settings
+     */
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+    
+    /**
+     * Handle menu item selections
+     */
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                // Open the settings activity
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    
     /**
      * Helper method to create and position a Snackbar above the bottom action buttons
      */

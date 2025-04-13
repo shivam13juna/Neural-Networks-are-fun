@@ -1337,6 +1337,9 @@ int color background_floating_material_light 0x7f05001f
 int color background_material_dark 0x7f050020
 int color background_material_light 0x7f050021
 int color black 0x7f050022
+int color blue_accent 0x7f0502ec
+int color blue_primary 0x7f0502ed
+int color blue_primary_dark 0x7f0502ee
 int color bright_foreground_disabled_material_dark 0x7f050023
 int color bright_foreground_disabled_material_light 0x7f050024
 int color bright_foreground_inverse_material_dark 0x7f050025
@@ -1397,6 +1400,9 @@ int color error_color_material_dark 0x7f05005b
 int color error_color_material_light 0x7f05005c
 int color foreground_material_dark 0x7f05005d
 int color foreground_material_light 0x7f05005e
+int color green_accent 0x7f0502ef
+int color green_primary 0x7f0502f0
+int color green_primary_dark 0x7f0502f1
 int color highlighted_text_material_dark 0x7f05005f
 int color highlighted_text_material_light 0x7f050060
 int color light_gray 0x7f050061
@@ -2025,6 +2031,9 @@ int color mtrl_textinput_focused_box_stroke_color 0x7f0502cf
 int color mtrl_textinput_hovered_box_stroke_color 0x7f0502d0
 int color notification_action_color_filter 0x7f0502d1
 int color notification_icon_bg_color 0x7f0502d2
+int color orange_accent 0x7f0502f2
+int color orange_primary 0x7f0502f3
+int color orange_primary_dark 0x7f0502f4
 int color primary 0x7f0502d3
 int color primary_dark 0x7f0502d4
 int color primary_dark_material_dark 0x7f0502d5
@@ -2035,6 +2044,12 @@ int color primary_text_default_material_dark 0x7f0502d9
 int color primary_text_default_material_light 0x7f0502da
 int color primary_text_disabled_material_dark 0x7f0502db
 int color primary_text_disabled_material_light 0x7f0502dc
+int color purple_accent 0x7f0502f5
+int color purple_primary 0x7f0502f6
+int color purple_primary_dark 0x7f0502f7
+int color red_accent 0x7f0502f8
+int color red_primary 0x7f0502f9
+int color red_primary_dark 0x7f0502fa
 int color ripple_material_dark 0x7f0502dd
 int color ripple_material_light 0x7f0502de
 int color secondary_text_default_material_dark 0x7f0502df
@@ -3087,6 +3102,7 @@ int id action_mode_close_button 0x7f080043
 int id action_name 0x7f080044
 int id action_name_edit_text 0x7f080045
 int id action_name_layout 0x7f080046
+int id action_settings 0x7f0801fc
 int id action_text 0x7f080047
 int id actions 0x7f080048
 int id actions_recycler_view 0x7f080049
@@ -3119,6 +3135,7 @@ int id bounce 0x7f080063
 int id bounceBoth 0x7f080064
 int id bounceEnd 0x7f080065
 int id bounceStart 0x7f080066
+int id btn_apply_theme 0x7f0801fd
 int id btn_decrement 0x7f080067
 int id btn_increment 0x7f080068
 int id buttonPanel 0x7f080069
@@ -3369,6 +3386,11 @@ int id previous_day_button 0x7f08015c
 int id progress_circular 0x7f08015d
 int id progress_horizontal 0x7f08015e
 int id radio 0x7f08015f
+int id radio_blue 0x7f0801fe
+int id radio_green 0x7f0801ff
+int id radio_orange 0x7f080200
+int id radio_purple 0x7f080201
+int id radio_red 0x7f080202
 int id ratio 0x7f080160
 int id rectangles 0x7f080161
 int id reverseSawtooth 0x7f080162
@@ -3484,6 +3506,7 @@ int id textinput_helper_text 0x7f0801cf
 int id textinput_placeholder 0x7f0801d0
 int id textinput_prefix_text 0x7f0801d1
 int id textinput_suffix_text 0x7f0801d2
+int id theme_radio_group 0x7f080203
 int id time 0x7f0801d3
 int id title 0x7f0801d4
 int id titleDividerNoCustom 0x7f0801d5
@@ -3637,6 +3660,7 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_main 0x7f0b001c
+int layout activity_settings 0x7f0b006c
 int layout custom_dialog 0x7f0b001d
 int layout design_bottom_navigation_item 0x7f0b001e
 int layout design_bottom_sheet_dialog 0x7f0b001f
@@ -3716,6 +3740,7 @@ int layout select_dialog_item_material 0x7f0b0068
 int layout select_dialog_multichoice_material 0x7f0b0069
 int layout select_dialog_singlechoice_material 0x7f0b006a
 int layout support_simple_spinner_dropdown_item 0x7f0b006b
+int menu main_menu 0x7f120000
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int plurals mtrl_badge_content_description 0x7f0e0000
@@ -4410,6 +4435,10 @@ int style TextAppearance_Widget_AppCompat_ExpandedMenu_Item 0x7f1001ff
 int style TextAppearance_Widget_AppCompat_Toolbar_Subtitle 0x7f100200
 int style TextAppearance_Widget_AppCompat_Toolbar_Title 0x7f100201
 int style Theme_ActionTracker 0x7f100202
+int style Theme_ActionTracker_Blue 0x7f10044e
+int style Theme_ActionTracker_Green 0x7f10044f
+int style Theme_ActionTracker_Orange 0x7f100450
+int style Theme_ActionTracker_Red 0x7f100451
 int style Theme_AppCompat 0x7f100203
 int style Theme_AppCompat_CompactMenu 0x7f100204
 int style Theme_AppCompat_DayNight 0x7f100205

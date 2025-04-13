@@ -1338,6 +1338,9 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color blue_accent
+color blue_primary
+color blue_primary_dark
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1398,6 +1401,9 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color green_accent
+color green_primary
+color green_primary_dark
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color light_gray
@@ -2026,6 +2032,9 @@ color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color orange_accent
+color orange_primary
+color orange_primary_dark
 color primary
 color primary_dark
 color primary_dark_material_dark
@@ -2036,6 +2045,12 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color purple_accent
+color purple_primary
+color purple_primary_dark
+color red_accent
+color red_primary
+color red_primary_dark
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -3088,6 +3103,7 @@ id action_mode_close_button
 id action_name
 id action_name_edit_text
 id action_name_layout
+id action_settings
 id action_text
 id actions
 id actions_recycler_view
@@ -3120,6 +3136,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_apply_theme
 id btn_decrement
 id btn_increment
 id buttonPanel
@@ -3370,6 +3387,11 @@ id previous_day_button
 id progress_circular
 id progress_horizontal
 id radio
+id radio_blue
+id radio_green
+id radio_orange
+id radio_purple
+id radio_red
 id ratio
 id rectangles
 id reverseSawtooth
@@ -3485,6 +3507,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id theme_radio_group
 id time
 id title
 id titleDividerNoCustom
@@ -3638,6 +3661,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_settings
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3717,6 +3741,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu main_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -4411,6 +4436,10 @@ style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
 style Theme_ActionTracker
+style Theme_ActionTracker_Blue
+style Theme_ActionTracker_Green
+style Theme_ActionTracker_Orange
+style Theme_ActionTracker_Red
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight

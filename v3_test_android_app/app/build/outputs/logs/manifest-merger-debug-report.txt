@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
+ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
 MERGED from [androidx.databinding:viewbinding:8.0.2] /Users/shivam13juna/.gradle/caches/8.13/transforms/1a791b581dd63246ac18a91d065ea74c/transformed/viewbinding-8.0.2/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.9.0] /Users/shivam13juna/.gradle/caches/8.13/transforms/34676bfb462c78beb52537c9725515a8/transformed/material-1.9.0/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/shivam13juna/.gradle/caches/8.13/transforms/2522a696898f062299fa685c8e0877c0/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
@@ -55,25 +55,25 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/shivam13juna/.grad
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/shivam13juna/.gradle/caches/8.13/transforms/49a86d5d147fd368cdf1ba098d03eaaa/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/shivam13juna/.gradle/caches/8.13/transforms/de9f65a719e676742d63a416c14a7421/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] /Users/shivam13juna/.gradle/caches/8.13/transforms/33e708a26f689f132a1a7fce68399558/transformed/annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
-INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
+INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
 	package
 		INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
-		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
 		INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
-		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
 		INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
-		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-25:12
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:1-31:12
 		INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:2:11-69
 application
-ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:4:5-23:19
+ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:4:5-29:19
 MERGED from [com.google.android.material:material:1.9.0] /Users/shivam13juna/.gradle/caches/8.13/transforms/34676bfb462c78beb52537c9725515a8/transformed/material-1.9.0/AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.9.0] /Users/shivam13juna/.gradle/caches/8.13/transforms/34676bfb462c78beb52537c9725515a8/transformed/material-1.9.0/AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/shivam13juna/.gradle/caches/8.13/transforms/2522a696898f062299fa685c8e0877c0/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -128,6 +128,16 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:19:17-77
 	android:name
 		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:19:27-74
+activity#com.actiontracker.app.ui.SettingsActivity
+ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:23:9-27:61
+	android:parentActivityName
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:27:13-58
+	android:label
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:26:13-37
+	android:exported
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml:24:13-48
 uses-sdk
 INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/shivam13juna/Documents/learn/learn_stuff/v3_test_android_app/app/src/main/AndroidManifest.xml
