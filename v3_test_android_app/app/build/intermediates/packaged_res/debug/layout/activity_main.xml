@@ -79,7 +79,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:contentDescription="Delete actions"
-        android:src="@android:drawable/ic_menu_delete"
+        android:src="@drawable/ic_trash_white"
+        app:backgroundTint="#F44336"
+        app:tint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

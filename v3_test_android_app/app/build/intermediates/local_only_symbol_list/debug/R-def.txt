@@ -8,6 +8,8 @@ color primary_dark
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_trash_red_bg
+drawable ic_trash_white
 id action_checkbox
 id action_count
 id action_name

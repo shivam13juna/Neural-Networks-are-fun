@@ -2939,6 +2939,8 @@ int drawable ic_mtrl_chip_checked_black 0x7f070096
 int drawable ic_mtrl_chip_checked_circle 0x7f070097
 int drawable ic_mtrl_chip_close_circle 0x7f070098
 int drawable ic_search_black_24 0x7f070099
+int drawable ic_trash_red_bg 0x7f0700e4
+int drawable ic_trash_white 0x7f0700e5
 int drawable m3_appbar_background 0x7f07009a
 int drawable m3_avd_hide_password 0x7f07009b
 int drawable m3_avd_show_password 0x7f07009c

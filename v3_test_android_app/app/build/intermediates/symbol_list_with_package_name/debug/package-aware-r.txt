@@ -2940,6 +2940,8 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable ic_trash_red_bg
+drawable ic_trash_white
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password

@@ -12,10 +12,6 @@
         "source": "/Users/shivam13juna/.gradle/daemon/8.13/com.actiontracker.app-main-41:/layout/dialog_add_action.xml"
     },
     {
-        "merged": "com.actiontracker.app-mergeDebugResources-38:/layout/item_action.xml",
-        "source": "com.actiontracker.app-main-41:/layout/item_action.xml"
-    },
-    {
         "merged": "com.actiontracker.app-mergeDebugResources-38:/layout/activity_main.xml",
         "source": "com.actiontracker.app-main-41:/layout/activity_main.xml"
     }
