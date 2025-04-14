@@ -25,6 +25,12 @@
             android:exported="false"
             android:label="Settings"
             android:parentActivityName=".ui.MainActivity" />
+            
+        <activity
+            android:name=".ui.WallpaperActivity"
+            android:exported="false"
+            android:label="Set Wallpaper"
+            android:parentActivityName=".ui.MainActivity" />
         
     </application>
 

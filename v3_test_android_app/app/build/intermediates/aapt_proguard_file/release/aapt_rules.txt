@@ -4,6 +4,8 @@
 -keep class androidx.startup.InitializationProvider { <init>(); }
 -keep class com.actiontracker.app.ActionTrackerApplication { <init>(); }
 -keep class com.actiontracker.app.ui.MainActivity { <init>(); }
+-keep class com.actiontracker.app.ui.SettingsActivity { <init>(); }
+-keep class com.actiontracker.app.ui.WallpaperActivity { <init>(); }
 -keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
 
 -keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }

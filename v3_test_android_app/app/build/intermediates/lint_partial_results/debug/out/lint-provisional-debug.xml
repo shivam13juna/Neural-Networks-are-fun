@@ -29,4 +29,226 @@
         </map>
     </incident>
 
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffff800000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="156"
+            column="33"
+            startOffset="5930"
+            endLine="156"
+            endColumn="40"
+            endOffset="5937"/>
+        <map>
+            <entry
+                name="owner"
+                string="java.lang.Iterable"/>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffff800000"/>
+            <entry
+                name="name"
+                string="forEach"/>
+            <entry
+                name="message"
+                string="Call requires API level 24 (current min is %1$s): `java.lang.Iterable#forEach`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="195"
+            column="98"
+            startOffset="7350"
+            endLine="195"
+            endColumn="106"
+            endOffset="7358"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="195"
+            column="98"
+            startOffset="7350"
+            endLine="195"
+            endColumn="106"
+            endOffset="7358"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="196"
+            column="93"
+            startOffset="7484"
+            endLine="196"
+            endColumn="101"
+            endOffset="7492"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="196"
+            column="93"
+            startOffset="7484"
+            endLine="196"
+            endColumn="101"
+            endOffset="7492"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="215"
+            column="98"
+            startOffset="8219"
+            endLine="215"
+            endColumn="106"
+            endOffset="8227"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="215"
+            column="98"
+            startOffset="8219"
+            endLine="215"
+            endColumn="106"
+            endOffset="8227"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="216"
+            column="93"
+            startOffset="8353"
+            endLine="216"
+            endColumn="101"
+            endOffset="8361"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
+    <incident
+        id="NewApi"
+        severity="error"
+        message="">
+        <fix-data minSdk="fffffffffff00000" requiresApi="ffffffffffc00000"/>
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/actiontracker/app/ui/MainActivity.kt"
+            line="216"
+            column="93"
+            startOffset="8353"
+            endLine="216"
+            endColumn="101"
+            endOffset="8361"/>
+        <map>
+            <api-levels id="minSdk"
+                value="fffffffffff00000"/>
+            <api-levels id="requiresApi"
+                value="ffffffffffc00000"/>
+            <entry
+                name="message"
+                string="Call requires API level 23 (current min is %1$s): `android.content.Context#getColor`"/>
+        </map>
+    </incident>
+
 </incidents>

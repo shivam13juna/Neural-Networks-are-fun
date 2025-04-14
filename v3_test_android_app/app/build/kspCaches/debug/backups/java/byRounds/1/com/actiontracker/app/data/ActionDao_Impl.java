@@ -8,6 +8,7 @@ import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
 import androidx.room.RoomDatabase;
 import androidx.room.RoomSQLiteQuery;
+import androidx.room.SharedSQLiteStatement;
 import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
@@ -36,12 +37,14 @@ public final class ActionDao_Impl implements ActionDao {
 
   private final EntityDeletionOrUpdateAdapter<ActionEntity> __updateAdapterOfActionEntity;
 
+  private final SharedSQLiteStatement __preparedStmtOfUpdateActionColor;
+
   public ActionDao_Impl(RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfActionEntity = new EntityInsertionAdapter<ActionEntity>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `actions` (`actionId`,`actionName`,`creationTimestamp`) VALUES (nullif(?, 0),?,?)";
+        return "INSERT OR ABORT INTO `actions` (`actionId`,`actionName`,`creationTimestamp`,`backgroundColor`) VALUES (nullif(?, 0),?,?,?)";
       }
 
       @Override
@@ -53,6 +56,7 @@ public final class ActionDao_Impl implements ActionDao {
           stmt.bindString(2, value.getActionName());
         }
         stmt.bindLong(3, value.getCreationTimestamp());
+        stmt.bindLong(4, value.getBackgroundColor());
       }
     };
     this.__deletionAdapterOfActionEntity = new EntityDeletionOrUpdateAdapter<ActionEntity>(__db) {
@@ -69,7 +73,7 @@ public final class ActionDao_Impl implements ActionDao {
     this.__updateAdapterOfActionEntity = new EntityDeletionOrUpdateAdapter<ActionEntity>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `actions` SET `actionId` = ?,`actionName` = ?,`creationTimestamp` = ? WHERE `actionId` = ?";
+        return "UPDATE OR ABORT `actions` SET `actionId` = ?,`actionName` = ?,`creationTimestamp` = ?,`backgroundColor` = ? WHERE `actionId` = ?";
       }
 
       @Override
@@ -81,7 +85,15 @@ public final class ActionDao_Impl implements ActionDao {
           stmt.bindString(2, value.getActionName());
         }
         stmt.bindLong(3, value.getCreationTimestamp());
-        stmt.bindLong(4, value.getActionId());
+        stmt.bindLong(4, value.getBackgroundColor());
+        stmt.bindLong(5, value.getActionId());
+      }
+    };
+    this.__preparedStmtOfUpdateActionColor = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE actions SET backgroundColor = ? WHERE actionId = ?";
+        return _query;
       }
     };
   }
@@ -141,6 +153,30 @@ public final class ActionDao_Impl implements ActionDao {
   }
 
   @Override
+  public Object updateActionColor(final int actionId, final int color,
+      final Continuation<? super Unit> continuation) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateActionColor.acquire();
+        int _argIndex = 1;
+        _stmt.bindLong(_argIndex, color);
+        _argIndex = 2;
+        _stmt.bindLong(_argIndex, actionId);
+        __db.beginTransaction();
+        try {
+          _stmt.executeUpdateDelete();
+          __db.setTransactionSuccessful();
+          return Unit.INSTANCE;
+        } finally {
+          __db.endTransaction();
+          __preparedStmtOfUpdateActionColor.release(_stmt);
+        }
+      }
+    }, continuation);
+  }
+
+  @Override
   public LiveData<List<ActionEntity>> getAllActions() {
     final String _sql = "SELECT * FROM actions ORDER BY creationTimestamp ASC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
@@ -152,6 +188,7 @@ public final class ActionDao_Impl implements ActionDao {
           final int _cursorIndexOfActionId = CursorUtil.getColumnIndexOrThrow(_cursor, "actionId");
           final int _cursorIndexOfActionName = CursorUtil.getColumnIndexOrThrow(_cursor, "actionName");
           final int _cursorIndexOfCreationTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "creationTimestamp");
+          final int _cursorIndexOfBackgroundColor = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundColor");
           final List<ActionEntity> _result = new ArrayList<ActionEntity>(_cursor.getCount());
           while(_cursor.moveToNext()) {
             final ActionEntity _item;
@@ -165,7 +202,9 @@ public final class ActionDao_Impl implements ActionDao {
             }
             final long _tmpCreationTimestamp;
             _tmpCreationTimestamp = _cursor.getLong(_cursorIndexOfCreationTimestamp);
-            _item = new ActionEntity(_tmpActionId,_tmpActionName,_tmpCreationTimestamp);
+            final int _tmpBackgroundColor;
+            _tmpBackgroundColor = _cursor.getInt(_cursorIndexOfBackgroundColor);
+            _item = new ActionEntity(_tmpActionId,_tmpActionName,_tmpCreationTimestamp,_tmpBackgroundColor);
             _result.add(_item);
           }
           return _result;
@@ -197,6 +236,7 @@ public final class ActionDao_Impl implements ActionDao {
           final int _cursorIndexOfActionId = CursorUtil.getColumnIndexOrThrow(_cursor, "actionId");
           final int _cursorIndexOfActionName = CursorUtil.getColumnIndexOrThrow(_cursor, "actionName");
           final int _cursorIndexOfCreationTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "creationTimestamp");
+          final int _cursorIndexOfBackgroundColor = CursorUtil.getColumnIndexOrThrow(_cursor, "backgroundColor");
           final ActionEntity _result;
           if(_cursor.moveToFirst()) {
             final int _tmpActionId;
@@ -209,7 +249,9 @@ public final class ActionDao_Impl implements ActionDao {
             }
             final long _tmpCreationTimestamp;
             _tmpCreationTimestamp = _cursor.getLong(_cursorIndexOfCreationTimestamp);
-            _result = new ActionEntity(_tmpActionId,_tmpActionName,_tmpCreationTimestamp);
+            final int _tmpBackgroundColor;
+            _tmpBackgroundColor = _cursor.getInt(_cursorIndexOfBackgroundColor);
+            _result = new ActionEntity(_tmpActionId,_tmpActionName,_tmpCreationTimestamp,_tmpBackgroundColor);
           } else {
             _result = null;
           }

@@ -48,7 +48,11 @@ class ActionTrackerViewModel(
         ISO_FORMATTER.format(date.time) // Format: YYYY-MM-DD
     }
     
-    val allActions = actionRepository.allActions
+    // Trigger to force refresh the actions list
+    private val _refreshTrigger = MutableLiveData(0)
+    
+    // Combined LiveData that refreshes when either the actual data or the trigger changes
+    val allActions = _refreshTrigger.switchMap { actionRepository.allActions }
     
     val dayRecords: LiveData<List<DayRecordEntity>> = currentDateString.switchMap { date: String ->
         dayRecordRepository.getDayRecordsForDate(date)
@@ -110,6 +114,20 @@ class ActionTrackerViewModel(
             
             // Then delete the action itself
             actionRepository.deleteAction(action)
+        }
+    }
+    
+    fun updateActionColor(action: ActionEntity, color: Int) {
+        viewModelScope.launch {
+            // Update using the dedicated color update method
+            actionRepository.updateActionColor(action.actionId, color)
+            
+            // For additional safety, also update the full entity
+            val updatedAction = action.copy(backgroundColor = color)
+            actionRepository.updateAction(updatedAction)
+            
+            // Force a UI refresh by incrementing the refresh trigger
+            _refreshTrigger.postValue((_refreshTrigger.value ?: 0) + 1)
         }
     }
 }

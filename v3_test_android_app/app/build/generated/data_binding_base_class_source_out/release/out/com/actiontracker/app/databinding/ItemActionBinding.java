@@ -4,6 +4,7 @@ package com.actiontracker.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -21,6 +22,9 @@ public final class ItemActionBinding implements ViewBinding {
   private final CardView rootView;
 
   @NonNull
+  public final CheckBox actionCheckbox;
+
+  @NonNull
   public final TextView actionCount;
 
   @NonNull
@@ -32,10 +36,11 @@ public final class ItemActionBinding implements ViewBinding {
   @NonNull
   public final ImageButton btnIncrement;
 
-  private ItemActionBinding(@NonNull CardView rootView, @NonNull TextView actionCount,
-      @NonNull TextView actionName, @NonNull ImageButton btnDecrement,
-      @NonNull ImageButton btnIncrement) {
+  private ItemActionBinding(@NonNull CardView rootView, @NonNull CheckBox actionCheckbox,
+      @NonNull TextView actionCount, @NonNull TextView actionName,
+      @NonNull ImageButton btnDecrement, @NonNull ImageButton btnIncrement) {
     this.rootView = rootView;
+    this.actionCheckbox = actionCheckbox;
     this.actionCount = actionCount;
     this.actionName = actionName;
     this.btnDecrement = btnDecrement;
@@ -69,6 +74,12 @@ public final class ItemActionBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.action_checkbox;
+      CheckBox actionCheckbox = ViewBindings.findChildViewById(rootView, id);
+      if (actionCheckbox == null) {
+        break missingId;
+      }
+
       id = R.id.action_count;
       TextView actionCount = ViewBindings.findChildViewById(rootView, id);
       if (actionCount == null) {
@@ -93,8 +104,8 @@ public final class ItemActionBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemActionBinding((CardView) rootView, actionCount, actionName, btnDecrement,
-          btnIncrement);
+      return new ItemActionBinding((CardView) rootView, actionCheckbox, actionCount, actionName,
+          btnDecrement, btnIncrement);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

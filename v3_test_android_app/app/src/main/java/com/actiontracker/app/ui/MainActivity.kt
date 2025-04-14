@@ -1,11 +1,18 @@
 package com.actiontracker.app.ui
 
+import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -19,6 +26,7 @@ import com.actiontracker.app.databinding.DialogAddActionBinding
 import com.actiontracker.app.models.ActionEntity
 import com.actiontracker.app.util.ThemeHelper
 import com.google.android.material.snackbar.Snackbar
+import java.io.File
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +34,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: ActionTrackerViewModel
     private lateinit var adapter: ActionItemAdapter
+    
+    // ActivityResultLauncher for wallpaper selection
+    private val wallpaperActivityLauncher: ActivityResultLauncher<Intent> = 
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // Apply wallpaper when returning from WallpaperActivity
+                applyWallpaper()
+            }
+        }
+    
+    companion object {
+        const val WALLPAPER_REQUEST_CODE = 101
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Apply the saved theme before calling super.onCreate()
@@ -47,6 +68,9 @@ class MainActivity : AppCompatActivity() {
         setupAddActionButton()
         setupDeleteButton()
         setupObservers()
+        
+        // Apply any saved wallpaper
+        applyWallpaper()
     }
     
     private fun setupRecyclerView() {
@@ -58,12 +82,15 @@ class MainActivity : AppCompatActivity() {
                 viewModel.decrementCount(actionId)
             },
             onLongClick = { action ->
-                showDeleteConfirmationDialog(action)
+                showActionOptionsDialog(action)
             },
-            onSelectionChanged = { selectedCount ->
+            onSelectionChanged = { _ ->
                 // Do not hide the exit button (cross icon) when in delete mode
                 // The visibility will be managed by setupDeleteMode and exitSelectionMode
                 // This callback only updates the selected item count
+            },
+            onColorChangeClick = { action ->
+                showColorPickerDialog(action)
             }
         )
         
@@ -126,7 +153,7 @@ class MainActivity : AppCompatActivity() {
             .setTitle("Delete ${selectedActions.size} Actions?")
             .setMessage("This will permanently delete all selected actions and their records across all days. This action cannot be undone.")
             .setPositiveButton("Delete") { _, _ ->
-                selectedActions.forEach { action ->
+                for (action in selectedActions) {
                     viewModel.deleteAction(action)
                 }
                 exitSelectionMode()
@@ -285,6 +312,56 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
+     * Shows color picker dialog for an action
+     */
+    private fun showColorPickerDialog(action: ActionEntity) {
+        val colorPicker = ColorPickerDialog(this)
+        colorPicker.show(action, object : ColorPickerDialog.ColorPickerListener {
+            override fun onColorSelected(action: ActionEntity, color: Int) {
+                // Update in the database
+                viewModel.updateActionColor(action, color)
+                
+                // Force immediate UI update by manually updating the current list
+                viewModel.dayRecords.value?.let { _ ->
+                    val currentList = adapter.currentList.toMutableList()
+                    val index = currentList.indexOfFirst { it.first.actionId == action.actionId }
+                    
+                    if (index != -1) {
+                        // Create updated action with new color
+                        val updatedAction = action.copy(backgroundColor = color)
+                        val count = currentList[index].second
+                        
+                        // Replace the item in the list
+                        currentList[index] = Pair(updatedAction, count)
+                        
+                        // Submit the updated list to the adapter
+                        adapter.submitList(null) // Clear current list
+                        adapter.submitList(currentList) // Set new list
+                    }
+                }
+            }
+        })
+    }
+    
+    /**
+     * Shows options dialog for an action (delete or change color)
+     */
+    private fun showActionOptionsDialog(action: ActionEntity) {
+        val options = arrayOf("Change Color", "Delete")
+        
+        AlertDialog.Builder(this)
+            .setTitle(action.actionName)
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> showColorPickerDialog(action)
+                    1 -> showDeleteConfirmationDialog(action)
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    /**
      * Create the options menu with settings
      */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -300,6 +377,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> {
                 // Open the settings activity
                 startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            }
+            R.id.action_set_wallpaper -> {
+                // Open the wallpaper activity
+                wallpaperActivityLauncher.launch(Intent(this, WallpaperActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -324,5 +406,39 @@ class MainActivity : AppCompatActivity() {
         snackbar.setAnchorView(binding.fabAddAction)
         
         return snackbar
+    }
+    
+    private fun applyWallpaper() {
+        // Get wallpaper path from shared preferences
+        val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val wallpaperPath = prefs.getString("wallpaper_path", null)
+        
+        if (wallpaperPath != null) {
+            try {
+                val file = File(wallpaperPath)
+                if (file.exists()) {
+                    // Use ImageDecoder for Android P (API 28) and above
+                    val drawable = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+                        val source = android.graphics.ImageDecoder.createSource(file)
+                        android.graphics.drawable.BitmapDrawable(
+                            resources,
+                            android.graphics.ImageDecoder.decodeBitmap(source)
+                        )
+                    } else {
+                        // For older versions, use the deprecated method but with suppressed warning
+                        @Suppress("DEPRECATION")
+                        BitmapDrawable(resources, MediaStore.Images.Media.getBitmap(contentResolver, Uri.fromFile(file)))
+                    }
+                    
+                    // Set the drawable as the background of the root layout
+                    binding.root.background = drawable
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        } else {
+            // If no wallpaper is set, use default white background
+            binding.root.setBackgroundResource(android.R.color.white)
+        }
     }
 }

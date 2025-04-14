@@ -12,7 +12,8 @@ class ActionItemAdapter(
     private val onIncrementClicked: (actionId: Int) -> Unit,
     private val onDecrementClicked: (actionId: Int) -> Unit,
     private val onLongClick: ((ActionEntity) -> Unit)? = null,
-    private val onSelectionChanged: ((Int) -> Unit)? = null
+    private val onSelectionChanged: ((Int) -> Unit)? = null,
+    private val onColorChangeClick: ((ActionEntity) -> Unit)? = null
 ) : ListAdapter<Pair<ActionEntity, Int>, ActionItemAdapter.ActionViewHolder>(ActionDiffCallback()) {
 
     private var selectionMode = false
@@ -55,6 +56,21 @@ class ActionItemAdapter(
             binding.actionName.text = action.actionName
             binding.actionCount.text = count.toString()
             
+            // Apply custom background color if set
+            if (action.backgroundColor != 0xFFFFFFFF.toInt()) {
+                binding.root.setCardBackgroundColor(action.backgroundColor)
+            } else {
+                binding.root.setCardBackgroundColor(android.graphics.Color.WHITE)
+            }
+            
+            // Set an actual onClick for opening color picker directly
+            // This will provide an additional way to access color options
+            binding.root.setOnClickListener {
+                if (!selectionMode) {
+                    onColorChangeClick?.invoke(action)
+                }
+            }
+            
             // Handle selection mode display
             if (selectionMode) {
                 binding.actionCheckbox.visibility = android.view.View.VISIBLE
@@ -95,9 +111,10 @@ class ActionItemAdapter(
                     onDecrementClicked(action.actionId)
                 }
                 
-                // Set up long click listener for deletion
+                // Set up long click listener for showing action options menu (delete and change color)
                 binding.root.setOnLongClickListener {
-                    onLongClick?.invoke(action)
+                    // We'll show a context menu with options for deletion and color change
+                    onColorChangeClick?.invoke(action)
                     true
                 }
                 

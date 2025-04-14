@@ -15,6 +15,9 @@ interface ActionDao {
     @Update
     suspend fun updateAction(actionEntity: ActionEntity)
     
+    @Query("UPDATE actions SET backgroundColor = :color WHERE actionId = :actionId")
+    suspend fun updateActionColor(actionId: Int, color: Int)
+    
     @Delete
     suspend fun deleteAction(actionEntity: ActionEntity)
     

@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class ActionEntity(
     @PrimaryKey(autoGenerate = true) val actionId: Int = 0,
     val actionName: String,
-    val creationTimestamp: Long
+    val creationTimestamp: Long,
+    val backgroundColor: Int = 0xFFFFFFFF.toInt() // Default white color
 )

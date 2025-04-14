@@ -3102,6 +3102,7 @@ int id action_mode_close_button 0x7f080043
 int id action_name 0x7f080044
 int id action_name_edit_text 0x7f080045
 int id action_name_layout 0x7f080046
+int id action_set_wallpaper 0x7f080204
 int id action_settings 0x7f0801fc
 int id action_text 0x7f080047
 int id actions 0x7f080048
@@ -3136,8 +3137,11 @@ int id bounceBoth 0x7f080064
 int id bounceEnd 0x7f080065
 int id bounceStart 0x7f080066
 int id btn_apply_theme 0x7f0801fd
+int id btn_apply_wallpaper 0x7f080205
+int id btn_choose_image 0x7f080206
 int id btn_decrement 0x7f080067
 int id btn_increment 0x7f080068
+int id btn_remove_wallpaper 0x7f080207
 int id buttonPanel 0x7f080069
 int id cache_measures 0x7f08006a
 int id callMeasure 0x7f08006b
@@ -3161,6 +3165,18 @@ int id clip_vertical 0x7f08007c
 int id clockwise 0x7f08007d
 int id closest 0x7f08007e
 int id collapseActionView 0x7f08007f
+int id color_blue 0x7f080209
+int id color_cyan 0x7f08020a
+int id color_deep_purple 0x7f08020b
+int id color_green 0x7f08020c
+int id color_indigo 0x7f08020d
+int id color_light_blue 0x7f08020e
+int id color_pink 0x7f08020f
+int id color_purple 0x7f080210
+int id color_red 0x7f080211
+int id color_teal 0x7f080212
+int id color_white 0x7f080213
+int id color_yellow 0x7f080214
 int id compress 0x7f080080
 int id confirm_button 0x7f080081
 int id constraint 0x7f080082
@@ -3537,6 +3553,7 @@ int id view_tree_saved_state_registry_owner 0x7f0801ed
 int id view_tree_view_model_store_owner 0x7f0801ee
 int id visible 0x7f0801ef
 int id visible_removing_fragment_view_tag 0x7f0801f0
+int id wallpaper_preview 0x7f080208
 int id west 0x7f0801f1
 int id withText 0x7f0801f2
 int id with_icon 0x7f0801f3
@@ -3661,6 +3678,7 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_main 0x7f0b001c
 int layout activity_settings 0x7f0b006c
+int layout activity_wallpaper 0x7f0b006d
 int layout custom_dialog 0x7f0b001d
 int layout design_bottom_navigation_item 0x7f0b001e
 int layout design_bottom_sheet_dialog 0x7f0b001f
@@ -3678,6 +3696,7 @@ int layout design_navigation_menu_item 0x7f0b002a
 int layout design_text_input_end_icon 0x7f0b002b
 int layout design_text_input_start_icon 0x7f0b002c
 int layout dialog_add_action 0x7f0b002d
+int layout dialog_color_picker 0x7f0b006e
 int layout item_action 0x7f0b002e
 int layout m3_alert_dialog 0x7f0b002f
 int layout m3_alert_dialog_actions 0x7f0b0030

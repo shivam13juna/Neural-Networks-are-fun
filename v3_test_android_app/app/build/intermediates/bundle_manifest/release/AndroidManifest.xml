@@ -33,6 +33,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.actiontracker.app.ui.SettingsActivity"
+            android:exported="false"
+            android:label="Settings"
+            android:parentActivityName="com.actiontracker.app.ui.MainActivity" />
+        <activity
+            android:name="com.actiontracker.app.ui.WallpaperActivity"
+            android:exported="false"
+            android:label="Set Wallpaper"
+            android:parentActivityName="com.actiontracker.app.ui.MainActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

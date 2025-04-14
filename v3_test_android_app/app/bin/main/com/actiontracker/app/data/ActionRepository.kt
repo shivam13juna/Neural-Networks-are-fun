@@ -19,6 +19,10 @@ class ActionRepository(private val actionDao: ActionDao) {
         actionDao.updateAction(action)
     }
     
+    suspend fun updateActionColor(actionId: Int, color: Int) {
+        actionDao.updateActionColor(actionId, color)
+    }
+    
     suspend fun deleteAction(action: ActionEntity) {
         actionDao.deleteAction(action)
     }
