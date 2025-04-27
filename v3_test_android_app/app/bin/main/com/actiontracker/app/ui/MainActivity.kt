@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.actiontracker.app.ActionTrackerApplication
@@ -28,6 +30,7 @@ import com.actiontracker.app.util.ThemeHelper
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
 import java.util.Calendar
+import com.actiontracker.app.ui.ColorPickerDialogFixed
 
 class MainActivity : AppCompatActivity() {
 
@@ -192,8 +195,8 @@ class MainActivity : AppCompatActivity() {
         // Restore the delete button to its original state
         // Keep using our custom white trash icon, but ensure we maintain consistent styling
         binding.fabDeleteActions.setImageResource(R.drawable.ic_trash_white)
-        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.holo_red_light))
-        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.white))
+        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.holo_red_light))
+        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.white))
         
         // Reset the delete button's click listener
         binding.fabDeleteActions.setOnClickListener {
@@ -212,8 +215,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupDeleteMode() {
         // Ensure the delete button has a red background with white trash icon
         binding.fabDeleteActions.setImageResource(R.drawable.ic_trash_white)
-        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.holo_red_light))
-        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.white))
+        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.holo_red_light))
+        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.white))
         
         // Show cross icon on the right button for exiting delete mode
         binding.fabAddAction.setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
@@ -291,6 +294,27 @@ class MainActivity : AppCompatActivity() {
     
     private fun showAddActionDialog() {
         val dialogBinding = DialogAddActionBinding.inflate(LayoutInflater.from(this))
+        val colorButton = dialogBinding.btnChooseColor
+        
+        // Default color for new actions
+        var selectedColor = Color.parseColor("#3F51B5") // Material Blue default
+        colorButton.setBackgroundColor(selectedColor)
+        
+        // Set click listener on the color button to show color picker
+        colorButton.setOnClickListener { 
+            // Create a temporary action to use with the color picker
+            val tempAction = ActionEntity(0, "", System.currentTimeMillis(), selectedColor)
+            
+            // Show the enhanced color picker dialog
+            val colorPicker = EnhancedColorPickerDialog(this)
+            colorPicker.show(tempAction, object : EnhancedColorPickerDialog.ColorPickerListener {
+                override fun onColorSelected(action: ActionEntity, color: Int) {
+                    // Update the button color
+                    selectedColor = color
+                    colorButton.setBackgroundColor(color)
+                }
+            })
+        }
         
         AlertDialog.Builder(this)
             .setTitle(R.string.add_action)
@@ -298,7 +322,8 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton(R.string.save) { _, _ ->
                 val actionName = dialogBinding.actionNameEditText.text.toString().trim()
                 if (actionName.isNotBlank()) {
-                    viewModel.addAction(actionName)
+                    // Pass the selected color to the addAction method
+                    viewModel.addAction(actionName, selectedColor)
                 } else {
                     createPositionedSnackbar(
                         getString(R.string.action_name_required),
@@ -315,8 +340,8 @@ class MainActivity : AppCompatActivity() {
      * Shows color picker dialog for an action
      */
     private fun showColorPickerDialog(action: ActionEntity) {
-        val colorPicker = ColorPickerDialog(this)
-        colorPicker.show(action, object : ColorPickerDialog.ColorPickerListener {
+        val colorPicker = EnhancedColorPickerDialog(this)
+        colorPicker.show(action, object : EnhancedColorPickerDialog.ColorPickerListener {
             override fun onColorSelected(action: ActionEntity, color: Int) {
                 // Update in the database
                 viewModel.updateActionColor(action, color)

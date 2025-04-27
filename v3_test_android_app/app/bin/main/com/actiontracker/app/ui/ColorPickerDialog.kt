@@ -2,52 +2,66 @@ package com.actiontracker.app.ui
 
 import android.content.Context
 import android.graphics.Color
-import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AlertDialog
-import com.actiontracker.app.R
-import com.actiontracker.app.databinding.DialogColorPickerBinding
 import com.actiontracker.app.models.ActionEntity
+import com.skydoves.colorpickerview.ColorPickerView
+import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
+import com.skydoves.colorpickerview.ColorPickerDialog as SkyColorPickerDialog
 
+/**
+ * A wrapper class for the SkyDoves ColorPickerDialog to simplify color selection for actions
+ */
 class ColorPickerDialog(private val context: Context) {
-    
+
+    /**
+     * Interface for color selection events
+     */
     interface ColorPickerListener {
         fun onColorSelected(action: ActionEntity, color: Int)
     }
-    
+
+    /**
+     * Shows the color picker dialog for an action
+     */
     fun show(action: ActionEntity, listener: ColorPickerListener) {
-        val binding = DialogColorPickerBinding.inflate(LayoutInflater.from(context))
-        
-        val dialog = AlertDialog.Builder(context)
-            .setTitle("Change Color for ${action.actionName}")
-            .setView(binding.root)
-            .setNegativeButton("Cancel", null)
-            .create()
-        
-        // Define the colors
-        val colors = mapOf(
-            binding.colorWhite to Color.WHITE,
-            binding.colorRed to Color.parseColor("#FFCDD2"),
-            binding.colorPink to Color.parseColor("#F8BBD0"),
-            binding.colorPurple to Color.parseColor("#E1BEE7"),
-            binding.colorDeepPurple to Color.parseColor("#D1C4E9"),
-            binding.colorIndigo to Color.parseColor("#C5CAE9"),
-            binding.colorBlue to Color.parseColor("#BBDEFB"),
-            binding.colorLightBlue to Color.parseColor("#B3E5FC"),
-            binding.colorCyan to Color.parseColor("#B2EBF2"),
-            binding.colorTeal to Color.parseColor("#B2DFDB"),
-            binding.colorGreen to Color.parseColor("#C8E6C9"),
-            binding.colorYellow to Color.parseColor("#FFF9C4")
-        )
-        
-        // Set click listeners for all color buttons
-        colors.forEach { (button, color) ->
-            button.setOnClickListener {
-                listener.onColorSelected(action, color)
-                dialog.dismiss()
-            }
+        // Build the color picker dialog using the SkyDoves library
+        val initialColor = if (action.backgroundColor != 0) {
+            action.backgroundColor
+        } else {
+            Color.parseColor("#3F51B5") // Material Blue default
         }
         
+        val builder = SkyColorPickerDialog.Builder(context)
+            .setTitle("Choose Color")
+            .setPreferenceName("ActionColorPicker")
+            .setPositiveButton("Select", ColorEnvelopeListener { envelope, fromUser ->
+                // The color envelope contains the selected color
+                val selectedColor = envelope.color
+                listener.onColorSelected(action, selectedColor)
+            })
+            .setNegativeButton("Cancel", { dialogInterface, which ->
+                dialogInterface.dismiss()
+            })
+        
+        // Create the dialog
+        val dialog = builder.create()
+        
+        // Show the dialog and then try to set the initial color safely
         dialog.show()
+        
+        try {
+            // Find the ColorPickerView inside the dialog after it's shown
+            dialog.window?.decorView?.post {
+                val colorPickerViewId = context.resources.getIdentifier(
+                    "ColorPickerView", "id", "com.skydoves.colorpickerview"
+                )
+                val pickerView = dialog.findViewById<ColorPickerView>(colorPickerViewId)
+                
+                // Set the initial color based on action background
+                pickerView?.setInitialColor(initialColor)
+            }
+        } catch (e: Exception) {
+            // If we can't set the initial color, just continue showing the dialog
+        }
     }
 }

@@ -2,10 +2,3 @@
 plugins {
     // No direct plugins here typically. 
 }
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}

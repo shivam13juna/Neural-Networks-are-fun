@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Default Purple Theme -->
-    <color name="primary">#FF6200EE</color>
-    <color name="primary_dark">#FF3700B3</color>
-    <color name="accent">#FF03DAC5</color>
-    
-    <!-- Purple Theme -->
-    <color name="purple_primary">#FF6200EE</color>
-    <color name="purple_primary_dark">#FF3700B3</color>
-    <color name="purple_accent">#FF03DAC5</color>
-    
-    <!-- Blue Theme -->
-    <color name="blue_primary">#FF2196F3</color>
-    <color name="blue_primary_dark">#FF1976D2</color>
-    <color name="blue_accent">#FF4CAF50</color>
-    
-    <!-- Red Theme -->
-    <color name="red_primary">#FFF44336</color>
-    <color name="red_primary_dark">#FFD32F2F</color>
-    <color name="red_accent">#FFFF9800</color>
-    
-    <!-- Green Theme -->
-    <color name="green_primary">#FF4CAF50</color>
-    <color name="green_primary_dark">#FF388E3C</color>
-    <color name="green_accent">#FFFF9800</color>
-    
-    <!-- Orange Theme -->
-    <color name="orange_primary">#FFFF9800</color>
-    <color name="orange_primary_dark">#FFF57C00</color>
-    <color name="orange_accent">#FF4CAF50</color>
-    
-    <!-- Common Colors -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="light_gray">#FFEEEEEE</color>
+    <color name="primary">#3F51B5</color>
+    <color name="primaryDark">#303F9F</color>
+    <color name="accent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Blue theme colors -->
+    <color name="blue_primary">#2196F3</color>
+    <color name="blue_primary_dark">#1976D2</color>
+    <color name="blue_accent">#03A9F4</color>
+
+    <!-- Red theme colors -->
+    <color name="red_primary">#F44336</color>
+    <color name="red_primary_dark">#D32F2F</color>
+    <color name="red_accent">#FF5252</color>
+
+    <!-- Green theme colors -->
+    <color name="green_primary">#4CAF50</color>
+    <color name="green_primary_dark">#388E3C</color>
+    <color name="green_accent">#69F0AE</color>
+
+    <!-- Orange theme colors -->
+    <color name="orange_primary">#FF9800</color>
+    <color name="orange_primary_dark">#F57C00</color>
+    <color name="orange_accent">#FFC107</color>
 </resources>

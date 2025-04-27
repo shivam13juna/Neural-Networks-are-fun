@@ -7,10 +7,11 @@ class ActionRepository(private val actionDao: ActionDao) {
     
     val allActions: LiveData<List<ActionEntity>> = actionDao.getAllActions()
     
-    suspend fun insertAction(actionName: String): Long {
+    suspend fun insertAction(actionName: String, backgroundColor: Int = android.graphics.Color.WHITE): Long {
         val action = ActionEntity(
             actionName = actionName,
-            creationTimestamp = System.currentTimeMillis()
+            creationTimestamp = System.currentTimeMillis(),
+            backgroundColor = backgroundColor
         )
         return actionDao.insertAction(action)
     }

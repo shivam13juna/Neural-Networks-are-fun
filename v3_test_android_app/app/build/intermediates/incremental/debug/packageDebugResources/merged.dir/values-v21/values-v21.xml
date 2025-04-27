@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ActionTracker" parent="Theme.ActionTracker.Base">
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        
+    </style>
+    <style name="Theme.ActionTracker.Blue" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryDark">@color/blue_primary_dark</item>
+        <item name="colorAccent">@color/blue_accent</item>
+        <item name="android:statusBarColor">@color/blue_primary_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        
+    </style>
+    <style name="Theme.ActionTracker.Green" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryDark">@color/green_primary_dark</item>
+        <item name="colorAccent">@color/green_accent</item>
+        <item name="android:statusBarColor">@color/green_primary_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        
+    </style>
+    <style name="Theme.ActionTracker.Orange" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryDark">@color/orange_primary_dark</item>
+        <item name="colorAccent">@color/orange_accent</item>
+        <item name="android:statusBarColor">@color/orange_primary_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        
+    </style>
+    <style name="Theme.ActionTracker.Red" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryDark">@color/red_primary_dark</item>
+        <item name="colorAccent">@color/red_accent</item>
+        <item name="android:statusBarColor">@color/red_primary_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        
+    </style>
+</resources>

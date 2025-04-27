@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/activity_graph.xml",
+        "source": "com.actiontracker.app-main-44:/layout/activity_graph.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/item_action.xml",
+        "source": "com.actiontracker.app-main-44:/layout/item_action.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/activity_settings.xml",
+        "source": "com.actiontracker.app-main-44:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/dialog_enhanced_color_picker.xml",
+        "source": "com.actiontracker.app-main-44:/layout/dialog_enhanced_color_picker.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/activity_wallpaper.xml",
+        "source": "com.actiontracker.app-main-44:/layout/activity_wallpaper.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/activity_main.xml",
+        "source": "com.actiontracker.app-main-44:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/dialog_add_action.xml",
+        "source": "com.actiontracker.app-main-44:/layout/dialog_add_action.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/dialog_simple_color_picker.xml",
+        "source": "com.actiontracker.app-main-44:/layout/dialog_simple_color_picker.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-mergeDebugResources-41:/layout/activity_theme_selection.xml",
+        "source": "com.actiontracker.app-main-44:/layout/activity_theme_selection.xml"
+    }
+]

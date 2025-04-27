@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.actiontracker.app.R;
+import com.google.android.material.appbar.MaterialToolbar;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,38 +21,21 @@ public final class ActivitySettingsBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final Button btnApplyTheme;
+  public final Button btnChangeColorPalette;
 
   @NonNull
-  public final RadioButton radioBlue;
+  public final Button btnSetWallpaper;
 
   @NonNull
-  public final RadioButton radioGreen;
+  public final MaterialToolbar toolbarSettings;
 
-  @NonNull
-  public final RadioButton radioOrange;
-
-  @NonNull
-  public final RadioButton radioPurple;
-
-  @NonNull
-  public final RadioButton radioRed;
-
-  @NonNull
-  public final RadioGroup themeRadioGroup;
-
-  private ActivitySettingsBinding(@NonNull LinearLayout rootView, @NonNull Button btnApplyTheme,
-      @NonNull RadioButton radioBlue, @NonNull RadioButton radioGreen,
-      @NonNull RadioButton radioOrange, @NonNull RadioButton radioPurple,
-      @NonNull RadioButton radioRed, @NonNull RadioGroup themeRadioGroup) {
+  private ActivitySettingsBinding(@NonNull LinearLayout rootView,
+      @NonNull Button btnChangeColorPalette, @NonNull Button btnSetWallpaper,
+      @NonNull MaterialToolbar toolbarSettings) {
     this.rootView = rootView;
-    this.btnApplyTheme = btnApplyTheme;
-    this.radioBlue = radioBlue;
-    this.radioGreen = radioGreen;
-    this.radioOrange = radioOrange;
-    this.radioPurple = radioPurple;
-    this.radioRed = radioRed;
-    this.themeRadioGroup = themeRadioGroup;
+    this.btnChangeColorPalette = btnChangeColorPalette;
+    this.btnSetWallpaper = btnSetWallpaper;
+    this.toolbarSettings = toolbarSettings;
   }
 
   @Override
@@ -83,50 +65,26 @@ public final class ActivitySettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btn_apply_theme;
-      Button btnApplyTheme = ViewBindings.findChildViewById(rootView, id);
-      if (btnApplyTheme == null) {
+      id = R.id.btn_change_color_palette;
+      Button btnChangeColorPalette = ViewBindings.findChildViewById(rootView, id);
+      if (btnChangeColorPalette == null) {
         break missingId;
       }
 
-      id = R.id.radio_blue;
-      RadioButton radioBlue = ViewBindings.findChildViewById(rootView, id);
-      if (radioBlue == null) {
+      id = R.id.btn_set_wallpaper;
+      Button btnSetWallpaper = ViewBindings.findChildViewById(rootView, id);
+      if (btnSetWallpaper == null) {
         break missingId;
       }
 
-      id = R.id.radio_green;
-      RadioButton radioGreen = ViewBindings.findChildViewById(rootView, id);
-      if (radioGreen == null) {
+      id = R.id.toolbar_settings;
+      MaterialToolbar toolbarSettings = ViewBindings.findChildViewById(rootView, id);
+      if (toolbarSettings == null) {
         break missingId;
       }
 
-      id = R.id.radio_orange;
-      RadioButton radioOrange = ViewBindings.findChildViewById(rootView, id);
-      if (radioOrange == null) {
-        break missingId;
-      }
-
-      id = R.id.radio_purple;
-      RadioButton radioPurple = ViewBindings.findChildViewById(rootView, id);
-      if (radioPurple == null) {
-        break missingId;
-      }
-
-      id = R.id.radio_red;
-      RadioButton radioRed = ViewBindings.findChildViewById(rootView, id);
-      if (radioRed == null) {
-        break missingId;
-      }
-
-      id = R.id.theme_radio_group;
-      RadioGroup themeRadioGroup = ViewBindings.findChildViewById(rootView, id);
-      if (themeRadioGroup == null) {
-        break missingId;
-      }
-
-      return new ActivitySettingsBinding((LinearLayout) rootView, btnApplyTheme, radioBlue,
-          radioGreen, radioOrange, radioPurple, radioRed, themeRadioGroup);
+      return new ActivitySettingsBinding((LinearLayout) rootView, btnChangeColorPalette,
+          btnSetWallpaper, toolbarSettings);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

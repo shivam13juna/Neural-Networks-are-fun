@@ -32,6 +32,18 @@
             android:label="Set Wallpaper"
             android:parentActivityName=".ui.MainActivity" />
         
+        <activity
+            android:name=".ui.ThemeSelectionActivity"
+            android:exported="false"
+            android:label="@string/choose_app_theme"
+            android:parentActivityName=".ui.SettingsActivity" />
+        
+        <activity
+            android:name=".ui.GraphActivity"
+            android:exported="false"
+            android:label="@string/graph_title"
+            android:parentActivityName=".ui.MainActivity" />
+        
     </application>
 
 </manifest>

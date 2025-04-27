@@ -4,17 +4,20 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
+import android.graphics.Color
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.result.ActivityResultLauncher
+import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.actiontracker.app.ActionTrackerApplication
@@ -26,33 +29,26 @@ import com.actiontracker.app.databinding.DialogAddActionBinding
 import com.actiontracker.app.models.ActionEntity
 import com.actiontracker.app.util.ThemeHelper
 import com.google.android.material.snackbar.Snackbar
-import java.io.File
 import java.util.Calendar
+import com.actiontracker.app.ui.ColorPickerDialogFixed
+import androidx.core.view.WindowInsetsControllerCompat
+import java.io.File
+import android.graphics.drawable.BitmapDrawable
+import com.actiontracker.app.ui.GraphActivity
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: ActionTrackerViewModel
     private lateinit var adapter: ActionItemAdapter
-    
-    // ActivityResultLauncher for wallpaper selection
-    private val wallpaperActivityLauncher: ActivityResultLauncher<Intent> = 
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                // Apply wallpaper when returning from WallpaperActivity
-                applyWallpaper()
-            }
-        }
-    
-    companion object {
-        const val WALLPAPER_REQUEST_CODE = 101
-    }
 
+    @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
         // Apply the saved theme before calling super.onCreate()
         ThemeHelper.applyTheme(this, ThemeHelper.getCurrentTheme(this))
-        
+
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -64,13 +60,40 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory)[ActionTrackerViewModel::class.java]
         
         setupRecyclerView()
-        setupDateNavigation()
         setupAddActionButton()
         setupDeleteButton()
         setupObservers()
         
-        // Apply any saved wallpaper
+        // Removed old date buttons; using toolbar navigation instead
+        setSupportActionBar(binding.toolbar)
+        // Set static toolbar title
+        supportActionBar?.title = getString(R.string.app_name)
+        // Wire up date navigation row
+        binding.previousDayButton.setOnClickListener { viewModel.previousDay() }
+        binding.nextDayButton.setOnClickListener { viewModel.nextDay() }
+        binding.dateButton.setOnClickListener { showDatePickerDialog() }
+        // Initialize date button text
+        viewModel.currentDateFormatted.value?.let { binding.dateButton.text = it }
+        
+        // Fix for white status bar: Force status bar color and appearance
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        
+        // Use a dark color (primaryDark) for the status bar background
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primaryDark)
+        
+        // Clear any LIGHT_STATUS_BAR flag so icons are light (white)
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = 0
+    }
+    
+    @Suppress("DEPRECATION")
+    override fun onResume() {
+        super.onResume()
         applyWallpaper()
+        // Re-apply status bar color and appearance in case system overrides it
+        window.statusBarColor = ContextCompat.getColor(this, R.color.primaryDark)
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
     }
     
     private fun setupRecyclerView() {
@@ -110,20 +133,6 @@ class MainActivity : AppCompatActivity() {
                 adapter.setSelectionMode(true)
                 setupDeleteMode()
             }
-        }
-    }
-    
-    private fun setupDateNavigation() {
-        binding.previousDayButton.setOnClickListener {
-            viewModel.previousDay()
-        }
-        
-        binding.nextDayButton.setOnClickListener {
-            viewModel.nextDay()
-        }
-        
-        binding.selectDateButton.setOnClickListener {
-            showDatePickerDialog()
         }
     }
     
@@ -192,8 +201,8 @@ class MainActivity : AppCompatActivity() {
         // Restore the delete button to its original state
         // Keep using our custom white trash icon, but ensure we maintain consistent styling
         binding.fabDeleteActions.setImageResource(R.drawable.ic_trash_white)
-        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.holo_red_light))
-        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.white))
+        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.holo_red_light))
+        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.white))
         
         // Reset the delete button's click listener
         binding.fabDeleteActions.setOnClickListener {
@@ -212,8 +221,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupDeleteMode() {
         // Ensure the delete button has a red background with white trash icon
         binding.fabDeleteActions.setImageResource(R.drawable.ic_trash_white)
-        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.holo_red_light))
-        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(getColor(android.R.color.white))
+        binding.fabDeleteActions.backgroundTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.holo_red_light))
+        binding.fabDeleteActions.imageTintList = android.content.res.ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.white))
         
         // Show cross icon on the right button for exiting delete mode
         binding.fabAddAction.setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
@@ -238,6 +247,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         if (adapter.isSelectionModeActive()) {
             exitSelectionMode()
@@ -247,8 +257,9 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun setupObservers() {
+        // Update date button text when the date changes
         viewModel.currentDateFormatted.observe(this) { formattedDate ->
-            binding.dateTextView.text = formattedDate
+            binding.dateButton.text = formattedDate
         }
         
         viewModel.allActions.observe(this) { actions ->
@@ -291,6 +302,27 @@ class MainActivity : AppCompatActivity() {
     
     private fun showAddActionDialog() {
         val dialogBinding = DialogAddActionBinding.inflate(LayoutInflater.from(this))
+        val colorButton = dialogBinding.btnChooseColor
+        
+        // Default color for new actions
+        var selectedColor = Color.parseColor("#3F51B5") // Material Blue default
+        colorButton.setBackgroundColor(selectedColor)
+        
+        // Set click listener on the color button to show color picker
+        colorButton.setOnClickListener { 
+            // Create a temporary action to use with the color picker
+            val tempAction = ActionEntity(0, "", System.currentTimeMillis(), selectedColor)
+            
+            // Show the enhanced color picker dialog
+            val colorPicker = EnhancedColorPickerDialog(this)
+            colorPicker.show(tempAction, object : EnhancedColorPickerDialog.ColorPickerListener {
+                override fun onColorSelected(action: ActionEntity, color: Int) {
+                    // Update the button color
+                    selectedColor = color
+                    colorButton.setBackgroundColor(color)
+                }
+            })
+        }
         
         AlertDialog.Builder(this)
             .setTitle(R.string.add_action)
@@ -298,7 +330,8 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton(R.string.save) { _, _ ->
                 val actionName = dialogBinding.actionNameEditText.text.toString().trim()
                 if (actionName.isNotBlank()) {
-                    viewModel.addAction(actionName)
+                    // Pass the selected color to the addAction method
+                    viewModel.addAction(actionName, selectedColor)
                 } else {
                     createPositionedSnackbar(
                         getString(R.string.action_name_required),
@@ -315,8 +348,8 @@ class MainActivity : AppCompatActivity() {
      * Shows color picker dialog for an action
      */
     private fun showColorPickerDialog(action: ActionEntity) {
-        val colorPicker = ColorPickerDialog(this)
-        colorPicker.show(action, object : ColorPickerDialog.ColorPickerListener {
+        val colorPicker = EnhancedColorPickerDialog(this)
+        colorPicker.show(action, object : EnhancedColorPickerDialog.ColorPickerListener {
             override fun onColorSelected(action: ActionEntity, color: Int) {
                 // Update in the database
                 viewModel.updateActionColor(action, color)
@@ -365,7 +398,7 @@ class MainActivity : AppCompatActivity() {
      * Create the options menu with settings
      */
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
     
@@ -374,14 +407,12 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> {
-                // Open the settings activity
-                startActivity(Intent(this, SettingsActivity::class.java))
+            R.id.action_graph -> {
+                startActivity(Intent(this, GraphActivity::class.java))
                 true
             }
-            R.id.action_set_wallpaper -> {
-                // Open the wallpaper activity
-                wallpaperActivityLauncher.launch(Intent(this, WallpaperActivity::class.java))
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -407,37 +438,27 @@ class MainActivity : AppCompatActivity() {
         
         return snackbar
     }
-    
+
     private fun applyWallpaper() {
-        // Get wallpaper path from shared preferences
         val prefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         val wallpaperPath = prefs.getString("wallpaper_path", null)
-        
         if (wallpaperPath != null) {
             try {
                 val file = File(wallpaperPath)
                 if (file.exists()) {
-                    // Use ImageDecoder for Android P (API 28) and above
-                    val drawable = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
-                        val source = android.graphics.ImageDecoder.createSource(file)
-                        android.graphics.drawable.BitmapDrawable(
-                            resources,
-                            android.graphics.ImageDecoder.decodeBitmap(source)
-                        )
+                    val drawable = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        val source = ImageDecoder.createSource(file)
+                        BitmapDrawable(resources, ImageDecoder.decodeBitmap(source))
                     } else {
-                        // For older versions, use the deprecated method but with suppressed warning
                         @Suppress("DEPRECATION")
                         BitmapDrawable(resources, MediaStore.Images.Media.getBitmap(contentResolver, Uri.fromFile(file)))
                     }
-                    
-                    // Set the drawable as the background of the root layout
                     binding.root.background = drawable
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         } else {
-            // If no wallpaper is set, use default white background
             binding.root.setBackgroundResource(android.R.color.white)
         }
     }

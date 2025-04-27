@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.ActionTracker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.ActionTracker.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorPrimaryVariant">@color/primaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/primaryDark</item>
+        <!-- Status bar styling: Force dark status bar with light text -->
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:navigationBarColor">@color/primary</item>
+        <!-- Removed API 29+ system contrast and force dark attributes -->
+        <!-- System bars -->
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
+    <style name="Theme.ActionTracker" parent="Theme.ActionTracker.Base">
     </style>
 </resources>

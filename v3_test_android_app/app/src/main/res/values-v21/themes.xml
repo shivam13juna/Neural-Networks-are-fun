@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 21+ status bar styling -->
+    <style name="Theme.ActionTracker" parent="Theme.ActionTracker.Base">
+        <!-- Dynamic dark status bar color matching each theme's primaryVariant -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!-- Removed android:windowLightStatusBar to avoid NewApi lint error -->
+    </style>
+</resources>

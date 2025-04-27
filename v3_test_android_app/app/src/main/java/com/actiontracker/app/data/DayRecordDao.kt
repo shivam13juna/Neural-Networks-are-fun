@@ -12,6 +12,9 @@ interface DayRecordDao {
     @Query("SELECT * FROM day_records WHERE date = :date AND actionId = :actionId")
     suspend fun getDayRecordForDateAndAction(date: String, actionId: Int): DayRecordEntity?
     
+    @Query("SELECT * FROM day_records WHERE date BETWEEN :start AND :end AND actionId IN(:actionIds)")
+    fun getDayRecordsForRange(start: String, end: String, actionIds: List<Int>): LiveData<List<DayRecordEntity>>
+    
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdateDayRecord(dayRecordEntity: DayRecordEntity)
     

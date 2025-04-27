@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 21+ status bar styling for Red theme -->
+    <style name="Theme.ActionTracker.Red" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/red_primary</item>
+        <item name="colorPrimaryDark">@color/red_primary_dark</item>
+        <item name="colorAccent">@color/red_accent</item>
+        <item name="android:statusBarColor">@color/red_primary_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!-- Removed android:windowLightStatusBar for minSdk 21 compatibility -->
+    </style>
+</resources>

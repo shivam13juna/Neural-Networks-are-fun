@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Color palette with RGB sliders -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Custom Color"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+        
+    <!-- Color preview -->
+    <View
+        android:id="@+id/colorPreview"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FF0000"
+        android:layout_marginBottom="12dp" />
+        
+    <!-- Color Palette View -->
+    <com.actiontracker.app.ui.ColorPaletteView
+        android:id="@+id/colorPaletteView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="12dp" />
+        
+    <!-- RGB Sliders -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R"
+        android:textColor="#F44336"
+        android:textStyle="bold" />
+        
+    <SeekBar
+        android:id="@+id/redSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:progress="255" />
+        
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="G"
+        android:textColor="#4CAF50"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+        
+    <SeekBar
+        android:id="@+id/greenSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:progress="0" />
+        
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B"
+        android:textColor="#2196F3"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+        
+    <SeekBar
+        android:id="@+id/blueSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255"
+        android:progress="0" />
+        
+    <Button
+        android:id="@+id/applyCustomColorButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apply Custom Color"
+        android:layout_marginTop="8dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+        
+    <!-- Rainbow color palette section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rainbow Colors"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <GridLayout
+        android:id="@+id/rainbowColorsGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        android:useDefaultMargins="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Predefined color selection grid -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Predefined Colors"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <GridLayout
+        android:id="@+id/colorButtonsGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:useDefaultMargins="true" />
+
+</LinearLayout>

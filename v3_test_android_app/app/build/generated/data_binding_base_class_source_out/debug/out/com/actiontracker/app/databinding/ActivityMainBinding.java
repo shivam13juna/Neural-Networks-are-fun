@@ -4,10 +4,8 @@ package com.actiontracker.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.actiontracker.app.R;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -28,10 +28,10 @@ public final class ActivityMainBinding implements ViewBinding {
   public final RecyclerView actionsRecyclerView;
 
   @NonNull
-  public final LinearLayout dateNavigation;
+  public final MaterialButton dateButton;
 
   @NonNull
-  public final TextView dateTextView;
+  public final LinearLayout dateNavigation;
 
   @NonNull
   public final FloatingActionButton fabAddAction;
@@ -46,22 +46,22 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ImageButton previousDayButton;
 
   @NonNull
-  public final Button selectDateButton;
+  public final MaterialToolbar toolbar;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView actionsRecyclerView, @NonNull LinearLayout dateNavigation,
-      @NonNull TextView dateTextView, @NonNull FloatingActionButton fabAddAction,
+      @NonNull RecyclerView actionsRecyclerView, @NonNull MaterialButton dateButton,
+      @NonNull LinearLayout dateNavigation, @NonNull FloatingActionButton fabAddAction,
       @NonNull FloatingActionButton fabDeleteActions, @NonNull ImageButton nextDayButton,
-      @NonNull ImageButton previousDayButton, @NonNull Button selectDateButton) {
+      @NonNull ImageButton previousDayButton, @NonNull MaterialToolbar toolbar) {
     this.rootView = rootView;
     this.actionsRecyclerView = actionsRecyclerView;
+    this.dateButton = dateButton;
     this.dateNavigation = dateNavigation;
-    this.dateTextView = dateTextView;
     this.fabAddAction = fabAddAction;
     this.fabDeleteActions = fabDeleteActions;
     this.nextDayButton = nextDayButton;
     this.previousDayButton = previousDayButton;
-    this.selectDateButton = selectDateButton;
+    this.toolbar = toolbar;
   }
 
   @Override
@@ -97,15 +97,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.date_navigation;
-      LinearLayout dateNavigation = ViewBindings.findChildViewById(rootView, id);
-      if (dateNavigation == null) {
+      id = R.id.date_button;
+      MaterialButton dateButton = ViewBindings.findChildViewById(rootView, id);
+      if (dateButton == null) {
         break missingId;
       }
 
-      id = R.id.date_text_view;
-      TextView dateTextView = ViewBindings.findChildViewById(rootView, id);
-      if (dateTextView == null) {
+      id = R.id.date_navigation;
+      LinearLayout dateNavigation = ViewBindings.findChildViewById(rootView, id);
+      if (dateNavigation == null) {
         break missingId;
       }
 
@@ -133,15 +133,15 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.select_date_button;
-      Button selectDateButton = ViewBindings.findChildViewById(rootView, id);
-      if (selectDateButton == null) {
+      id = R.id.toolbar;
+      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, actionsRecyclerView,
-          dateNavigation, dateTextView, fabAddAction, fabDeleteActions, nextDayButton,
-          previousDayButton, selectDateButton);
+      return new ActivityMainBinding((ConstraintLayout) rootView, actionsRecyclerView, dateButton,
+          dateNavigation, fabAddAction, fabDeleteActions, nextDayButton, previousDayButton,
+          toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

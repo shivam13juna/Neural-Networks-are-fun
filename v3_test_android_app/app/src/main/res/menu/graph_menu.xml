@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_filter_list"
+        android:title="@string/filter"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_graph"
+        android:icon="@drawable/ic_trending_up"
+        android:title="@string/view_graph"
+        app:showAsAction="ifRoom" />
+</menu>

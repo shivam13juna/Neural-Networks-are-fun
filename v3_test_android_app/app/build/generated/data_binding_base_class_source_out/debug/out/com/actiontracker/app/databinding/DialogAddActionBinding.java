@@ -4,6 +4,7 @@ package com.actiontracker.app.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,11 +27,16 @@ public final class DialogAddActionBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout actionNameLayout;
 
+  @NonNull
+  public final Button btnChooseColor;
+
   private DialogAddActionBinding(@NonNull LinearLayout rootView,
-      @NonNull TextInputEditText actionNameEditText, @NonNull TextInputLayout actionNameLayout) {
+      @NonNull TextInputEditText actionNameEditText, @NonNull TextInputLayout actionNameLayout,
+      @NonNull Button btnChooseColor) {
     this.rootView = rootView;
     this.actionNameEditText = actionNameEditText;
     this.actionNameLayout = actionNameLayout;
+    this.btnChooseColor = btnChooseColor;
   }
 
   @Override
@@ -72,8 +78,14 @@ public final class DialogAddActionBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_choose_color;
+      Button btnChooseColor = ViewBindings.findChildViewById(rootView, id);
+      if (btnChooseColor == null) {
+        break missingId;
+      }
+
       return new DialogAddActionBinding((LinearLayout) rootView, actionNameEditText,
-          actionNameLayout);
+          actionNameLayout, btnChooseColor);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

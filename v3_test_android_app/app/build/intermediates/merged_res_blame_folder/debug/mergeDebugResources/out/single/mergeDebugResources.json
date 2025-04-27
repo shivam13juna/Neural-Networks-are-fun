@@ -1,0 +1,98 @@
+[
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_wheel.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/wheel.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_ic_filter_list.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/ic_filter_list.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_color_button_selected.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/color_button_selected.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_selected_color_background.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/selected_color_background.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_ic_trash_red_bg.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/ic_trash_red_bg.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_activity_wallpaper.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/activity_wallpaper.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_dialog_enhanced_color_picker.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/dialog_enhanced_color_picker.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_activity_main.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_activity_graph.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/activity_graph.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/menu_toolbar_menu.xml.flat",
+        "source": "com.actiontracker.app-main-44:/menu/toolbar_menu.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_dialog_simple_color_picker.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/dialog_simple_color_picker.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_item_action.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/item_action.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.actiontracker.app-main-44:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_ic_trash_white.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/ic_trash_white.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/menu_main_menu.xml.flat",
+        "source": "com.actiontracker.app-main-44:/menu/main_menu.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_activity_settings.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_activity_theme_selection.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/activity_theme_selection.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/layout_dialog_add_action.xml.flat",
+        "source": "com.actiontracker.app-main-44:/layout/dialog_add_action.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/menu_graph_menu.xml.flat",
+        "source": "com.actiontracker.app-main-44:/menu/graph_menu.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.actiontracker.app-main-44:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_palette.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/palette.xml"
+    },
+    {
+        "merged": "com.actiontracker.app-debug-42:/drawable_ic_trending_up.xml.flat",
+        "source": "com.actiontracker.app-main-44:/drawable/ic_trending_up.xml"
+    }
+]

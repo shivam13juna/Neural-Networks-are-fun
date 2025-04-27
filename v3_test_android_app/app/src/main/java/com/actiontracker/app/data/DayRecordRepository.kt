@@ -24,4 +24,8 @@ class DayRecordRepository(private val dayRecordDao: DayRecordDao) {
     suspend fun deleteAllRecordsForAction(actionId: Int) {
         dayRecordDao.deleteAllRecordsForAction(actionId)
     }
+    
+    // Fetch day records within a date range for specific actions
+    fun getDayRecordsForRange(start: String, end: String, actionIds: List<Int>) =
+        dayRecordDao.getDayRecordsForRange(start, end, actionIds)
 }

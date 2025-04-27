@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- API 21+ status bar styling for Orange theme -->
+    <style name="Theme.ActionTracker.Orange" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/orange_primary</item>
+        <item name="colorPrimaryDark">@color/orange_primary_dark</item>
+        <item name="colorAccent">@color/orange_accent</item>
+        <item name="android:statusBarColor">@color/orange_primary_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <!-- Removed android:windowLightStatusBar for minSdk 21 compatibility -->
+    </style>
+</resources>

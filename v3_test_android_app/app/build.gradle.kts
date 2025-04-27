@@ -3,17 +3,17 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     // Replace kapt with KSP
-    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
+    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
 }
 
 android {
-    namespace = "com.actiontracker.app" // Changed from example.actiontracker to actiontracker.app
-    compileSdk = 33
+    namespace = "com.actiontracker.app"
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.actiontracker.app" // Changed to unique package name
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 35 // Updated targetSdk to 35
         versionCode = 1
         versionName = "1.0.0"
 
@@ -52,20 +52,21 @@ android {
     // Experimental if you want ViewBinding or DataBinding
     buildFeatures {
         viewBinding = true
+        // dataBinding disabled to avoid binding conflicts; using viewBinding only
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.toVersion(17)
+        targetCompatibility = JavaVersion.toVersion(17)
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     
     // Use JVM toolchain as suggested in the error message
     kotlin {
         jvmToolchain {
-            languageVersion.set(JavaLanguageVersion.of(8))
+            languageVersion.set(JavaLanguageVersion.of(17))
         }
     }
     
@@ -92,20 +93,26 @@ dependencies {
     implementation(libs.lifecycle.runtime)
     
     // Java 8 Date/Time API backport
-    implementation("com.jakewharton.threetenabp:threetenabp:1.4.6")
+    implementation("com.jakewharton.threetenabp:threetenabp:1.4.9")
 
     // Coroutines
     implementation(libs.coroutines.android)
 
     // Room with KSP instead of kapt
-    implementation("androidx.room:room-runtime:2.5.1")
-    implementation("androidx.room:room-ktx:2.5.1")
-    ksp("androidx.room:room-compiler:2.5.1")
+    implementation("androidx.room:room-runtime:2.7.0")
+    implementation("androidx.room:room-ktx:2.7.0")
+    ksp("androidx.room:room-compiler:2.7.0")
 
     // Unit Testing
-    testImplementation("junit:junit:${libs.versions.junit.get()}")
+    testImplementation("junit:junit:4.13.2")
 
     // Android Instrumented Testing
-    androidTestImplementation("androidx.test.espresso:espresso-core:${libs.versions.espresso.get()}")
-    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    
+    // Color Picker Wheel
+    implementation("com.github.skydoves:colorpickerview:2.3.0")
+
+    // MPAndroidChart for plotting graphs
+    implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
 }

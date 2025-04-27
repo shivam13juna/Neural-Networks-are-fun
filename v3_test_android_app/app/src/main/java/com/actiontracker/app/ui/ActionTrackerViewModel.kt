@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.map
 import androidx.lifecycle.switchMap
+import android.graphics.Color
 import com.actiontracker.app.data.ActionRepository
 import com.actiontracker.app.data.DayRecordRepository
 import com.actiontracker.app.models.ActionEntity
@@ -78,11 +79,11 @@ class ActionTrackerViewModel(
         }
     }
     
-    fun addAction(actionName: String) {
+    fun addAction(actionName: String, color: Int = Color.WHITE) {
         if (actionName.isBlank()) return
         
         viewModelScope.launch {
-            actionRepository.insertAction(actionName)
+            actionRepository.insertAction(actionName, color)
         }
     }
     
