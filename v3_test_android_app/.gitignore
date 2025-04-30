@@ -1,0 +1,26 @@
+# Android/IntelliJ
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local configuration
+local.properties
+
+# Logs
+*.log
+
+# Captures (Android Studio)
+captures/
+
+# NDK
+obj/
+
+# Kotlin
+*.kotlin_module
+
+# Temporary files
+tmp/
