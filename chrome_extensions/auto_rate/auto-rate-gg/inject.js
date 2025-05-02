@@ -5,6 +5,8 @@ const OPEN_SELECTOR     = '#react-root > div > div > div > div.layout.m-layout >
 const STAR_SELECTOR     = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open.p-10 > div > div._2fKzMNF6cYlq9-KewCTCJ6 > div.eu7aj2zuIRCOZVf8U0eK0 > div:nth-child(5) > img'; // 5-star button
 const TEXTBOX_SELECTOR  = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open.p-10 > div > div._2fKzMNF6cYlq9-KewCTCJ6 > div._1hJTd9S9ODrUD9lkKSAMgU > textarea';              // comment box
 const SUBMIT_SELECTOR   = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open.p-10 > div > div._3TWODmj7Gz3dam-MhP3ZA1 > button';       // submit button
+// After submit, close the feedback confirmation popup
+const CLOSE_SELECTOR    = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--open._3CscLbgqWnl_n0trBnMJTM > div > div._160cWsFZvy39cggItvG1TA > a > i';    // close confirmation button
 /* ******************************************************************* */
 
 (async function autoRate() {
@@ -37,4 +39,12 @@ const SUBMIT_SELECTOR   = '#react-root > div > div.sr-modal.sr-modal--center.sr-
 
   // 3) click submit
   submit.click();
+  // 4) close confirmation popup
+  await new Promise(resolve => setTimeout(resolve, 500));
+  const closer = document.querySelector(CLOSE_SELECTOR);
+  if (closer) {
+    closer.click();
+  } else {
+    console.warn('Auto-Rate GG: Could not find close button. Check CLOSE_SELECTOR in inject.js');
+  }
 })();

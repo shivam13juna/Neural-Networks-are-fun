@@ -3,7 +3,13 @@
   "description": "One-click 5★ rating + GG message.",
   "version": "1.0.0",
   "manifest_version": 3,
-  "action": { "default_popup": "popup.html" },
+  "icons": {
+    "128": "feedback.png"
+  },
+  "action": {
+    "default_icon": "feedback.png"
+  },
+  "background": { "service_worker": "background.js" },
   "permissions": ["scripting", "activeTab"],
   "host_permissions": ["https://example.com/*"]
 }
