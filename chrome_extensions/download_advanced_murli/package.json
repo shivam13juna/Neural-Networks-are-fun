@@ -1,0 +1,19 @@
+{
+  "name": "advance-murli-merger",
+  "version": "1.0.0",
+  "description": "Downloads and merges the latest Hindi Advance Murli PDFs.",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "rollup": "^2.0.0",
+    "rollup-plugin-copy": "^3.5.0"
+  }
+}
