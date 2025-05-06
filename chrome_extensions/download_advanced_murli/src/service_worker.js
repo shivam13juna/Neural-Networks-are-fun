@@ -17,7 +17,7 @@ function extractHindiPdfLinks() {
 }
 
 
-// Listen for the extension icon click
+// REINSTATE the chrome.action.onClicked listener
 chrome.action.onClicked.addListener(async (tab) => {
   console.log("Action clicked on tab:", tab.id, tab.url);
 
@@ -31,17 +31,16 @@ chrome.action.onClicked.addListener(async (tab) => {
         console.log(`Clicked on an invalid tab (${tab.url}). Opening new tab.`);
         const newTab = await chrome.tabs.create({ url: startUrl, active: true });
         targetTabId = newTab.id;
-        await new Promise(resolve => setTimeout(resolve, 2500)); // Wait for new tab
+        await new Promise(resolve => setTimeout(resolve, 2500)); // TODO: Replace with better wait
     } else if (!tab.url.startsWith('https://www.shivbabas.org')) {
         console.log(`Tab ${targetTabId} is not on the correct domain. Navigating to ${startUrl}`);
         await chrome.tabs.update(targetTabId, { url: startUrl, active: true });
-        // Wait for navigation after update
-        await new Promise(resolve => setTimeout(resolve, 2500)); // Allow time for navigation
+        await new Promise(resolve => setTimeout(resolve, 2500)); // TODO: Replace with better wait
     } else if (!tab.url.startsWith(startUrl)) {
          // If on the domain but not the specific start page, navigate
          console.log(`Tab ${targetTabId} is on the domain but not start URL. Navigating to ${startUrl}`);
          await chrome.tabs.update(targetTabId, { url: startUrl, active: true });
-         await new Promise(resolve => setTimeout(resolve, 1500));
+         await new Promise(resolve => setTimeout(resolve, 1500)); // TODO: Replace with better wait
     } else {
          // Make sure the tab is active if it's already correct
          await chrome.tabs.update(targetTabId, { active: true });
@@ -59,7 +58,7 @@ chrome.action.onClicked.addListener(async (tab) => {
         });
     } catch (scriptError) {
         console.error("Error injecting script to find month URL:", scriptError);
-        throw new Error(`Failed to execute script on tab ${targetTabId}. Ensure the extension has permissions for the page. Error: ${scriptError.message}`);
+        throw new Error(`Failed to execute script on tab ${targetTabId}. Error: ${scriptError.message}`);
     }
 
 
@@ -78,12 +77,12 @@ chrome.action.onClicked.addListener(async (tab) => {
     // --- Use scripting to get PDF links from the month page ---
     console.log(`Navigating tab ${targetTabId} to month URL: ${monthUrl}`);
     await chrome.tabs.update(targetTabId, { url: monthUrl });
-    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for page load
+    await new Promise(resolve => setTimeout(resolve, 2000)); // TODO: Replace with better wait
 
     console.log('Extracting PDF links...');
     try {
         injectionResults = await chrome.scripting.executeScript({
-            target: { tabId: targetTabId }, // Execute in the same tab
+            target: { tabId: targetTabId },
             func: extractHindiPdfLinks,
         });
     } catch (scriptError) {
@@ -106,25 +105,34 @@ chrome.action.onClicked.addListener(async (tab) => {
 
     if (!pdfLinks.length) throw new Error('No Hindi PDF links found on the month page');
 
+    // --- Download PDFs ---
     const fileBuffers = [];
-    for (let i = 0; i < pdfLinks.length; i++) {
+    const totalPdfs = pdfLinks.length;
+    for (let i = 0; i < totalPdfs; i++) {
       const { href, text } = pdfLinks[i];
-      // Ensure href is absolute
       const absoluteHref = new URL(href, monthUrl).href;
-      console.log(`Downloading ${i + 1}/${pdfLinks.length}: ${text} (${absoluteHref})`);
-      // Removed progress message
-      const res = await fetch(absoluteHref); // Use absolute URL
-      if (!res.ok) {
-        console.warn(`Failed to download ${absoluteHref}: ${res.status}`);
-        continue; // Skip failed downloads
+      console.log(`Downloading ${i + 1}/${totalPdfs}: ${text} (${absoluteHref})`);
+      // REMOVED progress message
+      try {
+          const res = await fetch(absoluteHref);
+          if (!res.ok) {
+            console.warn(`Failed to download ${absoluteHref}: ${res.status}`);
+            continue; // Skip failed downloads
+          }
+          const arrayBuffer = await res.arrayBuffer();
+          fileBuffers.push(arrayBuffer);
+      } catch (fetchError) {
+          console.warn(`Error fetching ${absoluteHref}:`, fetchError);
+          continue; // Skip failed downloads
       }
-      const arrayBuffer = await res.arrayBuffer();
-      fileBuffers.push(arrayBuffer);
     }
+    // --- End Download PDFs ---
 
     if (!fileBuffers.length) throw new Error('Downloaded no valid PDFs');
     console.log('Merging PDFs...');
+    // REMOVED progress message
 
+    // --- Merge PDFs ---
     const mergedPdf = await PDFDocument.create();
     for (const buf of fileBuffers) {
       try {
@@ -135,6 +143,7 @@ chrome.action.onClicked.addListener(async (tab) => {
         console.warn("Skipping a PDF due to loading error:", loadErr.message);
       }
     }
+    // --- End Merge PDFs ---
 
     if (mergedPdf.getPageCount() === 0) {
         throw new Error("Failed to merge any PDFs. Check individual file downloads.");
@@ -142,7 +151,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 
     const mergedBytes = await mergedPdf.save();
 
-    // --- Convert Uint8Array to Base64 Data URL ---
+    // --- Convert to Data URL ---
     let binary = '';
     const len = mergedBytes.byteLength;
     for (let i = 0; i < len; i++) {
@@ -152,9 +161,8 @@ chrome.action.onClicked.addListener(async (tab) => {
     const dataUrl = `data:application/pdf;base64,${base64Data}`;
     // --- End Data URL conversion ---
 
-    // Construct filename from monthUrl or fallback to current date
+    // --- Determine Filename ---
     let filename;
-    // Updated regex to be more flexible with separators and case
     const match = monthUrl.match(/advance[-_]?murli[-_]([a-zA-Z]+)[-_]([0-9]{4})/i);
     if (match) {
       const month = match[1].toLowerCase();
@@ -162,32 +170,38 @@ chrome.action.onClicked.addListener(async (tab) => {
       filename = `advance-murli-hindi-${month}-${year}.pdf`;
     } else {
       const now = new Date();
-      // Use consistent month formatting
       const month = now.toLocaleString('default', { month: 'long' }).toLowerCase();
       const year = now.getFullYear();
       filename = `advance-murli-hindi-${month}-${year}.pdf`;
     }
-
+    // --- End Determine Filename ---
 
     console.log(`Initiating download for: ${filename}`);
+    // REMOVED progress message
+
     await chrome.downloads.download({
-      url: dataUrl, // Use the data URL instead of blob URL
+      url: dataUrl,
       filename,
-      saveAs: true // Prompt user where to save
+      saveAs: true
     });
-    // Removed progress message and sendResponse
+
+    console.log('Download initiated successfully.');
+    // REMOVED progress message
 
   } catch (e) {
     console.error("Error during action click processing:", e);
-    // Maybe notify the user via other means if needed, e.g., chrome.notifications API
-    // Cannot use sendResponse here as there's no message listener context
+    // REMOVED sendMessage call
+    chrome.notifications.create({
+        type: 'basic',
+        iconUrl: 'icons/128.png', // Make sure this path is correct relative to manifest.json
+        title: 'Murli Download Error',
+        message: `Failed to download/merge Murlis: ${e.message}`
+    });
+  } finally {
+      // Optional: Close the tab if we created it? Or leave it open?
+      // if (createdTab && targetTabId) {
+      //    chrome.tabs.remove(targetTabId);
+      // }
   }
-  // No need to return true here
+  // No need to return true here as it's not an onMessage listener
 });
-
-// Ensure the old chrome.runtime.onMessage listener is removed or commented out.
-/*
-chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-  // ... old code ...
-});
-*/
