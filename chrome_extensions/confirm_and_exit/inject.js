@@ -5,11 +5,11 @@
 
 (async () => {
   //                                     ▼▼ REPLACE THESE ▼▼
-  const SELECTOR_END_BUTTON   = "#meeting-sidebar > div.right-dock.scroll > div:nth-child(2) > div > div > a > i";           // top‑level “End” button
+  const SELECTOR_END_BUTTON   = "#meeting-sidebar > div.right-dock.scroll > div:nth-child(2) > div > div > a";           // top‑level “End” button
   const SELECTOR_LEAVE_ALL_BUTTON = "body > div.react-root.react-root--auto.meeting-app > div > a.tappable.dropdown-item.btn.btn-danger"; // Button for "End meeting for all"
-  const SELECTOR_DIALOG       = "#root > div > div.sr-modal.sr-modal--open.dialog > div.sr-modal__header > div.sr-modal__title";              // modal container (optional wait target)
-  const SELECTOR_INPUT        = "#root > div > div.sr-modal.sr-modal--open.dialog > div.sr-modal__body > div.dialog__body > div > input";        // text box inside dialog
-  const SELECTOR_SUBMIT       = "#root > div > div.sr-modal.sr-modal--open.dialog > div.sr-modal__body > div.dialog__actions > a.tappable.btn.dialog__action.btn-danger";           // final “End / Submit” button
+  const SELECTOR_DIALOG       = "#react-root > div > div > div > div.sr-modal.sr-modal--open.dialog > div.sr-modal__header > div.sr-modal__title";              // modal container (optional wait target)
+  const SELECTOR_INPUT        = "#react-root > div > div > div > div.sr-modal.sr-modal--open.dialog > div.sr-modal__body > div.dialog__body > div > input";        // text box inside dialog
+  const SELECTOR_SUBMIT       = "#react-root > div > div > div > div.sr-modal.sr-modal--open.dialog > div.sr-modal__body > div.dialog__actions > a.tappable.btn.dialog__action.btn-danger";           // final “End / Submit” button
   const CONFIRM_TEXT          = "confirm";                     // text to type (lower‑case)
   const RETRIES               = 5;                             // how many times to retry each step
   const RETRY_DELAY_MS        = 500;                           // delay between retries

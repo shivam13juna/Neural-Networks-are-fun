@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Traffic Control V2</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_hourly_chime">Hourly Chime</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Playlists -->
+    <string name="playlist_hindi">Hindi</string>
+    <string name="playlist_english">English</string>
+    <string name="playlist_music_only">Music Only</string>
+    <string name="playlist_hourly_chime">Hourly Chime</string>
+    <string name="playlist_custom">Custom</string>
+    
+    <!-- Actions -->
+    <string name="action_add">Add</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_play">Play</string>
+    <string name="action_stop">Stop</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_create">Create</string>
+    <string name="action_export">Export</string>
+    <string name="action_import">Import</string>
+    
+    <!-- Settings -->
+    <string name="settings_audio">Audio Settings</string>
+    <string name="settings_system">System Settings</string>
+    <string name="settings_data">Data Management</string>
+    <string name="settings_app_info">App Information</string>
+    <string name="settings_master_volume">Master Volume</string>
+    <string name="settings_clip_threshold">Clip Length Threshold (seconds)</string>
+    <string name="settings_start_on_boot">Start on Boot</string>
+    <string name="settings_start_on_boot_desc">Automatically start scheduling after device restart</string>
+    
+    <!-- Days of week -->
+    <string name="day_monday">Monday</string>
+    <string name="day_tuesday">Tuesday</string>
+    <string name="day_wednesday">Wednesday</string>
+    <string name="day_thursday">Thursday</string>
+    <string name="day_friday">Friday</string>
+    <string name="day_saturday">Saturday</string>
+    <string name="day_sunday">Sunday</string>
+    
+    <!-- Short days -->
+    <string name="day_mon">Mon</string>
+    <string name="day_tue">Tue</string>
+    <string name="day_wed">Wed</string>
+    <string name="day_thu">Thu</string>
+    <string name="day_fri">Fri</string>
+    <string name="day_sat">Sat</string>
+    <string name="day_sun">Sun</string>
+    
+    <!-- Messages -->
+    <string name="msg_audio_playing">Playing audio</string>
+    <string name="msg_audio_stopped">Audio stopped</string>
+    <string name="msg_schedule_saved">Schedule saved</string>
+    <string name="msg_data_exported">Data exported successfully</string>
+    <string name="msg_data_imported">Data imported successfully</string>
+    <string name="msg_error_general">An error occurred</string>
+    
+    <!-- Notifications -->
+    <string name="notification_channel_playback">Audio Playback</string>
+    <string name="notification_channel_playback_desc">Notification for audio playback</string>
+    <string name="notification_playing">Playing: %1$s</string>
+    
+    <!-- Content descriptions -->
+    <string name="cd_add_playlist">Add Playlist</string>
+    <string name="cd_add_track">Add Track</string>
+    <string name="cd_play_audio">Play Audio</string>
+    <string name="cd_stop_audio">Stop Audio</string>
+    <string name="cd_audio_icon">Audio Icon</string>
+</resources>

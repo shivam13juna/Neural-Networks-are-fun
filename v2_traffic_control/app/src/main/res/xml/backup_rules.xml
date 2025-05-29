@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Include app's private directory in backup -->
+    <include domain="file" path="." />
+    
+    <!-- Include shared preferences -->
+    <include domain="sharedpref" path="." />
+    
+    <!-- Include databases -->
+    <include domain="database" path="." />
+    
+    <!-- Exclude temporary files -->
+    <exclude domain="file" path="temp" />
+    <exclude domain="file" path="cache" />
+</full-backup-content>

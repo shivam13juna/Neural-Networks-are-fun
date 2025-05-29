@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_shiv_pita_ko_6.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/shiv_pita_ko_6.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_shiv_ki_yaad_2.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/shiv_ki_yaad_2.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_satya_hi_shiv_3.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/satya_hi_shiv_3.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_prem_se_9.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/prem_se_9.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/xml_data_extraction_rules.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/drawable_ic_stop.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/drawable/ic_stop.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_yogi_bano_7.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/yogi_bano_7.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_amritvela_1.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/amritvela_1.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_shiv_ki_yaad_8.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/shiv_ki_yaad_8.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/xml_backup_rules.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_nit_yaad_karo_5.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/nit_yaad_karo_5.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/raw_antarman_4.mp3.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/raw/antarman_4.mp3"
+    },
+    {
+        "merged": "com.bk.trafficcontrol.app-debug-80:/drawable_ic_notification.xml.flat",
+        "source": "com.bk.trafficcontrol.app-main-82:/drawable/ic_notification.xml"
+    }
+]

@@ -1,0 +1,140 @@
+{
+  "project_name": "Traffic Control V2 (Android)",
+  "last_updated": "20 May 2025",
+  "functional_requirements": [
+    {
+      "id": "FR-01",
+      "requirement": "Playlists page shows Hindi, English, Music-Only, Custom (extensible) with master On/Off."
+    },
+    {
+      "id": "FR-02",
+      "requirement": "Per-playlist schedule screen offers two modes: 'Common Schedule' and 'Day-wise Schedule'. Both modes will have the following pre-defined, non-editable time slots with default (dummy) songs assigned from the 'songs' folder:\\n- 03:30 AM: Amritvela\\n- 04:00 AM: Shiv Ki Yaad\\n- 05:45 AM: Satya Hi Shiv\\n- 07:00 AM: Antarman\\n- 10:30 AM: Nit Yaad Karo\\n- 12:00 PM: Shiv Pita Ko\\n- 05:30 PM: Yogi Bano\\n- 07:30 PM: Shiv Ki Yaad\\n- 09:30 PM: Prem Se\\nUsers can only toggle each pre-defined slot On/Off. No functionality to create or modify slots is required. 'Common Schedule' applies the same On/Off toggles for these slots to all days. 'Day-wise Schedule' (Mon-Sun selector) allows different On/Off toggles for these slots for each day."
+    },
+    {
+      "id": "FR-03",
+      "requirement": "Hourly-chime module (extra tab on Home): 24 slots/h and day-picker grid. Each slot can hold a ≤ 60 s audio clip."
+    },
+    {
+      "id": "FR-04",
+      "requirement": "Upload (ACTION_OPEN_DOCUMENT) supports MP3/Ogg/WAV. If > 6ˀ0 s, automatically clip to 60 s (fade-out last 2 s) using FFmpeg-Kit, store the trimmed version in app-private storage."
+    },
+    {
+      "id": "FR-05",
+      "requirement": "Settings: master volume, “Start on boot”, clip-length threshold (default = 60 s), default TC mode."
+    },
+    {
+      "id": "FR-06",
+      "requirement": "Exact playback: audio must trigger even in Doze and after reboot."
+    },
+    {
+      "id": "FR-07",
+      "requirement": "Foreground Playback Service with media notification + pause/stop."
+    },
+    {
+      "id": "FR-08",
+      "requirement": "Data Backup/Restore via AutoBackup (XML/DB)."
+    },
+    {
+      "id": "FR-09",
+      "requirement": "Accessibility & localisation: English strings provided; Hindi translation placeholder."
+    },
+    {
+      "id": "FR-10",
+      "requirement": "Minimum Android 7.0 (API 24), target API 34."
+    }
+  ],
+  "ui_definition": {
+    "navigation_map": {
+      "main_activity": {
+        "home_screen": {
+          "description": "Lists playlists + Hourly Chime entry",
+          "children": {
+            "playlist_screen": {
+              "example": "Hindi Songs",
+              "children": {
+                "schedule_tab_uniform": "Same times every day",
+                "schedule_tab_per_day": {
+                  "description": "Mon … Sun tabs",
+                  "children": {
+                    "hour_grid_sheet": "Toggle hour-slots (bottom-sheet)"
+                  }
+                }
+              }
+            },
+            "chime_screen": "24 × 7 grid of ≤ 60 s clips"
+          }
+        }
+      },
+      "navigation_library": "androidx.navigation.compose + Accompanist Navigation-Animation (Material Motion spec for slide-in/fade-in)"
+    },
+    "visual_language_and_components": [
+      {
+        "element": "Segmented “Uniform / Per-day” switch",
+        "compose_equivalent": "SegmentedButtonRow (Material 3)",
+        "notes": "Sticks below the top AppBar"
+      },
+      {
+        "element": "Weekday selector",
+        "compose_equivalent": "ScrollableTabRow",
+        "notes": "Seven text tabs (Mon … Sun)"
+      },
+      {
+        "element": "Hour toggles",
+        "compose_equivalent": "24-slot LazyVerticalGrid (3–4 cols) OR LazyColumn with timeline row",
+        "notes": "Each slot has Track title + Switch; press row to edit track"
+      },
+      {
+        "element": "Add / edit track",
+        "compose_equivalent": "ModalBottomSheet",
+        "notes": "Sheet lets user pick existing file or upload; shows waveform + trim preview"
+      },
+      {
+        "element": "Upload button",
+        "compose_equivalent": "FloatingActionButton on bottom-sheet",
+        "notes": "Launches SAF picker"
+      },
+      {
+        "element": "Volume & misc settings",
+        "compose_equivalent": "SettingsActivity with PreferenceScreen or Compose-equivalent list"
+      },
+      {
+        "element": "Overall Theme",
+        "notes": "All surfaces follow Material 3 color tokens with dynamic color (Android 12+) fallback to BK green/white palette."
+      }
+    ],
+    "interaction_flows": {
+      "uniform_to_per_day_pivot": [
+        "Default: new playlist starts in Uniform mode – one schedule list persisted with dayOfWeek = 0 (sentinel).",
+        "User toggles → Per-day: Migration dialog: “Copy current schedule to all days?” Yes / No.",
+        "On Yes: duplicate rows for Mon-Sun. On No: clear each list.",
+        "Switch back to Uniform: merges distinct per-day times; if conflicts, prompt: “Keep earliest time / Keep all (duplicates trimmed) / Cancel”."
+      ]
+    },
+    "wireframes_summary": {
+      "playlist_screen": "AppBar, SegmentedButtonRow (Uniform/Per-day), ScrollableTabRow (Mon-Sun for Per-day), Playlist for selected day (Time, Track, Toggle), FAB for adding.",
+      "hour_grid_sheet": "Bottom sheet to edit hours for a day, grid of hour toggles, shows selected track, options to Change Track/Remove, Save button.",
+      "hourly_chime_screen": "AppBar, Weekday chips (multi-select), 24-slot grid for chime clips (clip name, toggle), FAB to Add/Upload clip."
+    }
+  },
+  "non_functional_requirements": [
+    "Reliability: missed alarms ≤ 0.5 % in 30-day run.",
+    "Battery: no excessive wake-ups (≤ 1 wake-lock / scheduled play).",
+    "Performance: UI first-draw < 400 ms, schedule list scroll > 60 fps on Pixel 4a.",
+    "Security: app-private storage; no external WRITE permission; follow scoped storage.",
+    "Scalability: table schema supports arbitrary playlists/tracks."
+  ],
+  "technical_stack_summary": {
+    "language": "Kotlin 1.9.24",
+    "build": "Android Gradle Plugin 8.2.2 (JDK 17)",
+    "ui": "Jetpack Compose BOM 2025.05.00",
+    "animation_helpers": "Accompanist 0.37.2",
+    "media": "ExoPlayer 2.19.1",
+    "audio_trim": "FFmpeg-Kit-min-gpl 4.5.LTS",
+    "schedulers": "WorkManager 2.9.0",
+    "di": "Hilt 2.50",
+    "db": "Room 2.6.1",
+    "serialization": "Kotlinx-serialization JSON 1.7.0",
+    "testing": "JUnit 5 / Turbine / Robolectric 4.11",
+    "ci": "GitHub Actions + Gradle 8.8 (Detekt 1.23)"
+  }
+}

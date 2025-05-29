@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="md_theme_dark_background">#1C1B1F</color>
+    <color name="md_theme_dark_error">#FFB4AB</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_inverseOnSurface">#313033</color>
+    <color name="md_theme_dark_inversePrimary">#6750A4</color>
+    <color name="md_theme_dark_inverseSurface">#E6E1E5</color>
+    <color name="md_theme_dark_onBackground">#E6E1E5</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+    <color name="md_theme_dark_onSecondary">#332D41</color>
+    <color name="md_theme_dark_onSecondaryContainer">#E8DEF8</color>
+    <color name="md_theme_dark_onSurface">#E6E1E5</color>
+    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
+    <color name="md_theme_dark_onTertiary">#492532</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFD8E4</color>
+    <color name="md_theme_dark_outline">#938F99</color>
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_secondary">#CCC2DC</color>
+    <color name="md_theme_dark_secondaryContainer">#4A4458</color>
+    <color name="md_theme_dark_surface">#1C1B1F</color>
+    <color name="md_theme_dark_surfaceVariant">#49454F</color>
+    <color name="md_theme_dark_tertiary">#EFB8C8</color>
+    <color name="md_theme_dark_tertiaryContainer">#633B48</color>
+    <color name="md_theme_light_background">#FFFBFE</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_inverseOnSurface">#F4EFF4</color>
+    <color name="md_theme_light_inversePrimary">#D0BCFF</color>
+    <color name="md_theme_light_inverseSurface">#313033</color>
+    <color name="md_theme_light_onBackground">#1C1B1F</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#21005D</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_onSecondaryContainer">#1D192B</color>
+    <color name="md_theme_light_onSurface">#1C1B1F</color>
+    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_onTertiaryContainer">#31111D</color>
+    <color name="md_theme_light_outline">#79747E</color>
+    <color name="md_theme_light_primary">#6750A4</color>
+    <color name="md_theme_light_primaryContainer">#EADDFF</color>
+    <color name="md_theme_light_secondary">#625B71</color>
+    <color name="md_theme_light_secondaryContainer">#E8DEF8</color>
+    <color name="md_theme_light_surface">#FFFBFE</color>
+    <color name="md_theme_light_surfaceVariant">#E7E0EC</color>
+    <color name="md_theme_light_tertiary">#7D5260</color>
+    <color name="md_theme_light_tertiaryContainer">#FFD8E4</color>
+    <string name="action_add">Add</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_create">Create</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_export">Export</string>
+    <string name="action_import">Import</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_play">Play</string>
+    <string name="action_save">Save</string>
+    <string name="action_stop">Stop</string>
+    <string name="app_name">Traffic Control V2</string>
+    <string name="cd_add_playlist">Add Playlist</string>
+    <string name="cd_add_track">Add Track</string>
+    <string name="cd_audio_icon">Audio Icon</string>
+    <string name="cd_play_audio">Play Audio</string>
+    <string name="cd_stop_audio">Stop Audio</string>
+    <string name="day_fri">Fri</string>
+    <string name="day_friday">Friday</string>
+    <string name="day_mon">Mon</string>
+    <string name="day_monday">Monday</string>
+    <string name="day_sat">Sat</string>
+    <string name="day_saturday">Saturday</string>
+    <string name="day_sun">Sun</string>
+    <string name="day_sunday">Sunday</string>
+    <string name="day_thu">Thu</string>
+    <string name="day_thursday">Thursday</string>
+    <string name="day_tue">Tue</string>
+    <string name="day_tuesday">Tuesday</string>
+    <string name="day_wed">Wed</string>
+    <string name="day_wednesday">Wednesday</string>
+    <string name="msg_audio_playing">Playing audio</string>
+    <string name="msg_audio_stopped">Audio stopped</string>
+    <string name="msg_data_exported">Data exported successfully</string>
+    <string name="msg_data_imported">Data imported successfully</string>
+    <string name="msg_error_general">An error occurred</string>
+    <string name="msg_schedule_saved">Schedule saved</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_hourly_chime">Hourly Chime</string>
+    <string name="nav_schedule">Schedule</string>
+    <string name="nav_settings">Settings</string>
+    <string name="notification_channel_playback">Audio Playback</string>
+    <string name="notification_channel_playback_desc">Notification for audio playback</string>
+    <string name="notification_playing">Playing: %1$s</string>
+    <string name="playlist_custom">Custom</string>
+    <string name="playlist_english">English</string>
+    <string name="playlist_hindi">Hindi</string>
+    <string name="playlist_hourly_chime">Hourly Chime</string>
+    <string name="playlist_music_only">Music Only</string>
+    <string name="settings_app_info">App Information</string>
+    <string name="settings_audio">Audio Settings</string>
+    <string name="settings_clip_threshold">Clip Length Threshold (seconds)</string>
+    <string name="settings_data">Data Management</string>
+    <string name="settings_master_volume">Master Volume</string>
+    <string name="settings_start_on_boot">Start on Boot</string>
+    <string name="settings_start_on_boot_desc">Automatically start scheduling after device restart</string>
+    <string name="settings_system">System Settings</string>
+    <style name="Theme.TrafficControlV2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorPrimaryDark">@color/md_theme_light_primaryContainer</item>
+        <item name="colorAccent">@color/md_theme_light_secondary</item>
+        
+        
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        
+        
+        <item name="colorError">@color/md_theme_light_error</item>
+        
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+    </style>
+</resources>

@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.bk.trafficcontrol.app-mergeDebugResources-78:/values-v16/values-v16.xml",
+            "map": [
+                {
+                    "source": "/Users/shivam13juna/.gradle/caches/8.11.1/transforms/4ffb5c72390e86f7badb13c71b233a2d/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    }
+                }
+            ]
+        }
+    ]
+}
