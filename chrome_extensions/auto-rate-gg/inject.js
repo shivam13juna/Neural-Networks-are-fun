@@ -16,16 +16,18 @@ const JOIN_SELECTOR       = '#react-root > div > div > div > div.layout.m-layout
 /* ******************************************************************* */
 
 (async function autoRate() {
-  // 0) initiate test setup, then join session
+  // 0) initiate test setup, then join session (attempt up to 5 times)
   {
-    let testSetupBtn = document.querySelector(TEST_SETUP_SELECTOR);
-    if (!testSetupBtn) {
-      console.warn('Auto-Rate GG: Could not find test-setup button with primary selector, trying alternative.');
-      testSetupBtn = document.querySelector(ALT_TEST_SETUP_SELECTOR);
+    // attempt to find and click test-setup button (up to 5 attempts, 500ms apart)
+    let testSetupBtn;
+    for (let attempt = 1; attempt <= 5; attempt++) {
+      testSetupBtn = document.querySelector(TEST_SETUP_SELECTOR) || document.querySelector(ALT_TEST_SETUP_SELECTOR);
+      if (testSetupBtn) break;
+      console.warn(`Auto-Rate GG: Test-setup button not found (attempt ${attempt}), retrying in 500ms...`);
+      await new Promise(r => setTimeout(r, 500));
     }
-
     if (!testSetupBtn) {
-      console.warn('Auto-Rate GG: Could not find test-setup button. Skipping pre-setup.');
+      console.warn('Auto-Rate GG: Could not find test-setup button after 5 attempts. Skipping pre-setup.');
     } else {
       testSetupBtn.click();
       // wait for setup UI to render
@@ -36,17 +38,18 @@ const JOIN_SELECTOR       = '#react-root > div > div > div > div.layout.m-layout
       if (videoIcon) videoIcon.click(); else console.warn('Auto-Rate GG: Cannot find video icon');
       // wait before attempting to join session
       await new Promise(r => setTimeout(r, 500));
-      // attempt to find and click join button, retry once after 500ms
-      let joinBtn = document.querySelector(JOIN_SELECTOR);
-      if (!joinBtn) {
-        console.warn('Auto-Rate GG: Join button not found, retrying in 500ms...');
-        await new Promise(r => setTimeout(r, 500));
+      // attempt to find and click join button (up to 5 attempts, 500ms apart)
+      let joinBtn;
+      for (let attempt = 1; attempt <= 5; attempt++) {
         joinBtn = document.querySelector(JOIN_SELECTOR);
+        if (joinBtn) break;
+        console.warn(`Auto-Rate GG: Join button not found (attempt ${attempt}), retrying in 500ms...`);
+        await new Promise(r => setTimeout(r, 500));
       }
       if (joinBtn) {
         joinBtn.click();
       } else {
-        console.warn('Auto-Rate GG: Cannot find join button');
+        console.warn('Auto-Rate GG: Cannot find join button after 5 attempts');
       }
       // wait for session to join
       await new Promise(r => setTimeout(r, 1000));
