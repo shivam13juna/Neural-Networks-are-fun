@@ -8,7 +8,13 @@
   },
   "permissions": ["scripting", "activeTab"],
   "host_permissions": [
-    "https://example.com/*"
+    "https://www.scaler.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["bookmark-automation.js"],
+      "matches": ["https://www.scaler.com/*"]
+    }
   ],
   "background": {
     "service_worker": "background.js"
