@@ -32,8 +32,19 @@
     return false;
   }
 
+  /** Helper: retry an async fn up to N times WITHOUT showing popup (for optional checks) */
+  async function retryQuiet(fn, label) {
+    for (let i = 0; i < RETRIES; i++) {
+      const ok = await fn();
+      if (ok) return true;
+      await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
+    }
+    console.log(`Confirm and Exit: ${label} – not found after ${RETRIES} attempts (this is normal)`);
+    return false;
+  }
+
   /** Step 1: click End Meeting */
-  if (!(await retry(() => {
+  if (!(await retryQuiet(() => {
     const btn = document.querySelector(SELECTOR_END_BUTTON); // Reverted to SELECTOR_END_BUTTON
     if (!btn) return false;
     btn.click();
@@ -41,7 +52,7 @@
   }, "End button"))) return; // Reverted label
 
   /** Step 1.5: click Leave All Button */
-  if (!(await retry(() => {
+  if (!(await retryQuiet(() => {
     // Try primary selector first
     let btn = document.querySelector(SELECTOR_LEAVE_ALL_BUTTON);
     if (btn) {
@@ -67,7 +78,7 @@
   // For now, reusing SELECTOR_DIALOG or assuming the confirm input is now available.
   if (SELECTOR_DIALOG) {
     // This wait is now more critical: it's for the dialog expected to contain the input field.
-    if (!(await retry(() => {
+    if (!(await retryQuiet(() => {
       // Try primary dialog selector first
       if (document.querySelector(SELECTOR_DIALOG)) {
         console.log("✓ Dialog found using primary selector");
@@ -86,7 +97,7 @@
   }
 
   /** Step 2: type 'confirm' */
-  if (!(await retry(() => {
+  if (!(await retryQuiet(() => {
     // Try primary input selector first
     let input = document.querySelector(SELECTOR_INPUT);
     if (input) {
@@ -112,7 +123,7 @@
   }, "confirm box"))) return;
 
   /** Step 3: click Submit */
-  if (!(await retry(() => {
+  if (!(await retryQuiet(() => {
     // Try primary submit selector first
     let btn = document.querySelector(SELECTOR_SUBMIT);
     if (btn) {
@@ -139,7 +150,7 @@
   // Wait a moment for the page to process the meeting end
   await new Promise(r => setTimeout(r, 2000));
   
-  const hasBookmarkMessage = await retry(() => {
+  const hasBookmarkMessage = await retryQuiet(() => {
     // Method 1: Look for the specific div element
     const bookmarkDiv = document.querySelector('.adios__bookmark-title');
     if (bookmarkDiv && bookmarkDiv.textContent.includes('This class has bookmarks missing')) {
@@ -170,17 +181,17 @@
   }
 
   console.log("📋 Missing bookmarks detected!");
-  console.log("⏳ You have 10 seconds to upload notes if needed...");
-  console.log("🔄 Bookmark automation will start after 10 seconds");
-  
+  console.log("⏳ You have 30 seconds to upload notes if needed...");
+  console.log("🔄 Bookmark automation will start after 30 seconds");
+
   // Store a flag to indicate we need to run bookmark automation after reload
   sessionStorage.setItem('needsBookmarkAutomation', 'true');
-  
-  // Wait 10 seconds on the current page (giving time for notes upload & recording to become valid)
-  await new Promise(r => setTimeout(r, 10000));
+
+  // Wait 30 seconds on the current page (giving time for notes upload & recording to become valid)
+  await new Promise(r => setTimeout(r, 30000));
   
   // Now refresh the page for bookmark automation
-  console.log("✓ 10 seconds completed - starting bookmark automation...");
+  console.log("✓ 30 seconds completed - starting bookmark automation...");
   console.log("🔄 Refreshing page for bookmark automation...");
   location.reload();
 
