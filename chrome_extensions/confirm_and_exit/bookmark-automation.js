@@ -157,23 +157,19 @@ async function clickSeekbar(position) {
 
 /** Calculate position on seekbar based on percentage */
 function calculateSeekPosition(percentage) {
-  console.log(`🔍 Calculating seekbar position for ${percentage}%...`);
-  
   // Try to find the main seekbar container (not just the handle)
   const seekbarSelectors = [
     "div.vp-controls__seekbar.vp-bookmarks-container",  // Main seekbar container
     "div.vp-controls__seekbar",                         // Alternative seekbar
     ".vp-controls__seekbar",                            // Simplified selector
-    ".archive-player .vp-controls .vp-controls__seekbar",
-    SEEKBAR_SELECTOR                                    // Your specific selector as fallback
+    SEEKBAR_SELECTOR,                                   // Your specific selector as fallback
+    ".archive-player .vp-controls .vp-controls__seekbar"
   ];
   
   let seekbar = null;
-  let usedSelector = "";
   for (const selector of seekbarSelectors) {
     seekbar = document.querySelector(selector);
     if (seekbar) {
-      usedSelector = selector;
       console.log(`✓ Found seekbar for calculation using: ${selector}`);
       console.log(`📏 Seekbar dimensions: ${seekbar.offsetWidth}x${seekbar.offsetHeight}px`);
       break;
@@ -191,19 +187,10 @@ function calculateSeekPosition(percentage) {
     return 50; // Fallback
   }
   
-  // Add some padding to avoid clicking at the very edges
-  const padding = 10;
-  const effectiveWidth = seekbarWidth - (2 * padding);
-  const position = padding + Math.round((percentage / 100) * effectiveWidth);
+  const position = Math.round((percentage / 100) * seekbarWidth);
+  console.log(`📊 Calculated position: ${position}px for ${percentage}% of ${seekbarWidth}px seekbar`);
   
-  console.log(`📊 Seekbar calculation details:`);
-  console.log(`   - Selector used: ${usedSelector}`);
-  console.log(`   - Total width: ${seekbarWidth}px`);
-  console.log(`   - Effective width (with padding): ${effectiveWidth}px`);
-  console.log(`   - Target percentage: ${percentage}%`);
-  console.log(`   - Calculated position: ${position}px`);
-  
-  return Math.max(padding, Math.min(position, seekbarWidth - padding)); // Ensure we stay within bounds
+  return Math.max(5, Math.min(position, seekbarWidth - 5)); // Ensure we don't click at the very edges
 }
 
 /** Helper: verify that the video position has changed to approximately the expected percentage */
@@ -326,7 +313,6 @@ async function setVideoTime(percentage) {
     
     const targetTime = (percentage / 100) * duration;
     console.log(`🎬 Setting video time to ${targetTime.toFixed(2)}s (${percentage}% of ${duration.toFixed(2)}s)`);
-    console.log(`📊 Video duration: ${duration.toFixed(2)}s, Target percentage: ${percentage}%, Target time: ${targetTime.toFixed(2)}s`);
     
     // Pause the video to prevent it from continuing to play while we set the time
     const wasPlaying = !video.paused;
@@ -335,26 +321,14 @@ async function setVideoTime(percentage) {
       console.log("⏸️ Paused video to set position");
     }
     
-    // Store original time for comparison
-    const originalTime = video.currentTime;
-    console.log(`⏰ Original video time: ${originalTime.toFixed(2)}s`);
-    
-    // Set the video time multiple times to ensure it sticks
+    // Set the video time
     video.currentTime = targetTime;
-    console.log(`🎯 Attempted to set video.currentTime to ${targetTime.toFixed(2)}s`);
     
-    // Wait a moment and try again to ensure it sticks
-    setTimeout(() => {
-      video.currentTime = targetTime;
-      console.log(`🔄 Re-set video.currentTime to ${targetTime.toFixed(2)}s (ensuring it sticks)`);
-    }, 100);
-    
-    // Trigger seeking events
+    // Trigger seeking event
     video.dispatchEvent(new Event('seeking'));
-    video.dispatchEvent(new Event('timeupdate'));
     
     let attempts = 0;
-    const maxAttempts = 50; // 5 seconds max wait
+    const maxAttempts = 20; // 2 seconds max wait
     
     // Wait for the time to be set and seeked event
     const checkTime = () => {
@@ -419,37 +393,25 @@ async function addSingleBookmark(bookmarkConfig) {
   }
   
   // Try to set video time directly first
-  console.log("🎯 Attempting direct video time setting...");
   const videoTimeSet = await setVideoTime(percentage);
   
-  // Wait and verify the position
-  await new Promise(r => setTimeout(r, 1000));
-  let positionCorrect = verifyVideoPosition(percentage);
-  
-  if (!videoTimeSet || !positionCorrect) {
+  if (!videoTimeSet) {
     // Fallback: Click on video seekbar to set position
-    console.log("🔄 Direct video time failed, trying seekbar click method...");
+    console.log("🔄 Falling back to seekbar click method...");
     const seekPosition = calculateSeekPosition(percentage);
-    if (await clickSeekbar(seekPosition)) {
-      // Wait and verify seekbar method
-      await new Promise(r => setTimeout(r, 1000));
-      positionCorrect = verifyVideoPosition(percentage);
+    if (!(await clickSeekbar(seekPosition))) {
+      console.error(`❌ Failed to set video position for ${percentage}%`);
+      return false;
     }
   }
   
-  // If still not correct, try one more time with both methods
+  // Wait for position to settle and verify
+  console.log("⏳ Waiting for video position to settle...");
+  await new Promise(r => setTimeout(r, 1500)); // Increased wait time
+  const positionCorrect = verifyVideoPosition(percentage);
+  
   if (!positionCorrect) {
-    console.log("🔄 Second attempt: Trying both methods again...");
-    await setVideoTime(percentage);
-    await new Promise(r => setTimeout(r, 500));
-    const seekPosition = calculateSeekPosition(percentage);
-    await clickSeekbar(seekPosition);
-    await new Promise(r => setTimeout(r, 1000));
-    positionCorrect = verifyVideoPosition(percentage);
-    
-    if (!positionCorrect) {
-      console.log(`⚠️ Warning: Could not reliably set video to ${percentage}%, but continuing with bookmark creation...`);
-    }
+    console.log(`⚠️ Video position verification failed, but continuing...`);
   }
   
   // Step 3: Enter note text AFTER setting position
