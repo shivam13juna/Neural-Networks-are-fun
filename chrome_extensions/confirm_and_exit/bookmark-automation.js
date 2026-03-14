@@ -10,7 +10,8 @@ const BOOKMARK_SELECTORS = {
   ADD_BOOKMARK_BUTTON: "div.m-sidebar > div.layout a, div.p-10 > a, .add-bookmark-btn, button[title*='bookmark'], a[title*='bookmark']", // Multiple possible selectors
   NOTE_INPUT: "textarea, div.layout > form textarea, input[placeholder*='note'], textarea[placeholder*='note']", // Note text input field
   VIDEO_SEEKBAR: "div.vp-controls__seekbar > div, .seekbar, .video-progress", // Video timeline for positioning
-  SUBMIT_BUTTON: "div.layout > form div.m-bookmark-item__footer i, div.archive-sidebar button, button[type='submit'], .submit-bookmark, .save-bookmark", // Submit bookmark button
+  // CRITICAL FIX: Enhanced submit button selector order with more reliable patterns
+  SUBMIT_BUTTON: "div.layout > form div.m-bookmark-item__footer i, div.layout > form button[type='submit'], div.archive-sidebar button, button[type='submit'], .submit-bookmark, .save-bookmark, form button:last-child, .m-bookmark-item__footer button, .m-bookmark-item__footer i", // Submit bookmark button with enhanced reliability
   SIDEBAR_CLOSE: "div.m-sidebar__header i, .close-sidebar, .sidebar-close" // Close sidebar button
 };
 
@@ -73,9 +74,21 @@ async function setInputValue(selector, value, label) {
       const input = document.querySelector(sel);
       if (input) {
         input.focus();
-        input.value = value;
-        
-        // Trigger input events to ensure proper form handling
+
+        // Use native setter for React-controlled inputs.
+        // React overrides the value property; setting .value directly
+        // doesn't trigger React's state update, so the form sees empty text.
+        const proto = input.tagName === 'TEXTAREA'
+            ? HTMLTextAreaElement.prototype
+            : HTMLInputElement.prototype;
+        const nativeSetter = Object.getOwnPropertyDescriptor(proto, 'value')?.set;
+        if (nativeSetter) {
+          nativeSetter.call(input, value);
+        } else {
+          input.value = value;
+        }
+
+        // Dispatch events that React's synthetic event system detects
         input.dispatchEvent(new Event('input', { bubbles: true }));
         input.dispatchEvent(new Event('change', { bubbles: true }));
         
@@ -314,74 +327,105 @@ async function setVideoTime(percentage) {
     const targetTime = (percentage / 100) * duration;
     console.log(`🎬 Setting video time to ${targetTime.toFixed(2)}s (${percentage}% of ${duration.toFixed(2)}s)`);
     
-    // Pause the video to prevent it from continuing to play while we set the time
+    // CRITICAL FIX: Improved video state management to prevent race conditions
     const wasPlaying = !video.paused;
+    
+    // Always pause first and wait for pause to complete
     if (wasPlaying) {
       video.pause();
       console.log("⏸️ Paused video to set position");
     }
     
-    // Set the video time
-    video.currentTime = targetTime;
-    
-    // Trigger seeking event
-    video.dispatchEvent(new Event('seeking'));
-    
-    let attempts = 0;
-    const maxAttempts = 20; // 2 seconds max wait
-    
-    // Wait for the time to be set and seeked event
-    const checkTime = () => {
-      attempts++;
-      const currentTime = video.currentTime;
-      const timeDiff = Math.abs(currentTime - targetTime);
+    // Wait a moment for pause to settle
+    setTimeout(() => {
+      // Set the video time
+      video.currentTime = targetTime;
       
-      console.log(`🕐 Check ${attempts}: video at ${currentTime.toFixed(2)}s, target ${targetTime.toFixed(2)}s (diff: ${timeDiff.toFixed(2)}s)`);
+      // Trigger seeking event
+      video.dispatchEvent(new Event('seeking'));
       
-      if (timeDiff < 1 || attempts >= maxAttempts) {
-        if (timeDiff < 1) {
-          console.log(`✓ Video time successfully set to ${currentTime.toFixed(2)}s (${((currentTime/duration)*100).toFixed(1)}%)`);
+      let attempts = 0;
+      const maxAttempts = 20; // 2 seconds max wait
+      
+      // Wait for the time to be set and seeked event
+      const checkTime = () => {
+        attempts++;
+        const currentTime = video.currentTime;
+        const timeDiff = Math.abs(currentTime - targetTime);
+        
+        console.log(`🕐 Check ${attempts}: video at ${currentTime.toFixed(2)}s, target ${targetTime.toFixed(2)}s (diff: ${timeDiff.toFixed(2)}s)`);
+        
+        if (timeDiff < 1 || attempts >= maxAttempts) {
+          if (timeDiff < 1) {
+            console.log(`✓ Video time successfully set to ${currentTime.toFixed(2)}s (${((currentTime/duration)*100).toFixed(1)}%)`);
+          } else {
+            console.log(`⚠️ Video time setting timed out after ${attempts} attempts`);
+          }
+          
+          // Keep video paused during bookmark automation to prevent
+          // AbortError race conditions between consecutive bookmarks.
+          
+          resolve(timeDiff < 1);
         } else {
-          console.log(`⚠️ Video time setting timed out after ${attempts} attempts`);
+          setTimeout(checkTime, 100);
         }
-        
-        // Resume playing if it was playing before
-        if (wasPlaying) {
-          video.play();
-          console.log("▶️ Resumed video playback");
-        }
-        
-        resolve(timeDiff < 1);
-      } else {
-        setTimeout(checkTime, 100);
-      }
-    };
-    
-    // Add event listener for seeked event
-    const onSeeked = () => {
-      console.log(`🎯 Video seeked to ${video.currentTime.toFixed(2)}s`);
-      video.removeEventListener('seeked', onSeeked);
-    };
-    video.addEventListener('seeked', onSeeked, { once: true });
-    
-    setTimeout(checkTime, 100);
+      };
+      
+      // Add event listener for seeked event
+      const onSeeked = () => {
+        console.log(`🎯 Video seeked to ${video.currentTime.toFixed(2)}s`);
+        video.removeEventListener('seeked', onSeeked);
+      };
+      video.addEventListener('seeked', onSeeked, { once: true });
+      
+      setTimeout(checkTime, 100);
+    }, 200); // Wait 200ms for pause to settle
   });
+}
+
+/** Dismiss any open bookmark form to prevent cascading failures */
+async function dismissOpenForm() {
+  const textarea = document.querySelector(BOOKMARK_SELECTORS.NOTE_INPUT);
+  if (!textarea) return;
+
+  // Check if form has unsaved content
+  const formEl = textarea.closest('form');
+  if (!formEl) return;
+
+  console.log("🧹 Dismissing leftover bookmark form...");
+  // Try pressing Escape to cancel
+  document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+  await new Promise(r => setTimeout(r, 500));
+
+  // If form is still there, try clicking outside or a cancel button
+  const stillOpen = document.querySelector(BOOKMARK_SELECTORS.NOTE_INPUT)?.closest('form');
+  if (stillOpen) {
+    const cancelBtn = stillOpen.querySelector('button:not([type="submit"]), a.cancel, .cancel, i.close');
+    if (cancelBtn) {
+      cancelBtn.click();
+      await new Promise(r => setTimeout(r, 500));
+    }
+  }
 }
 
 /** Main function: Add a single bookmark */
 async function addSingleBookmark(bookmarkConfig) {
   const { note, percentage } = bookmarkConfig;
-  
+
   console.log(`\n🔖 Adding bookmark: "${note}" at ${percentage}%`);
-  
+
+  // Dismiss any leftover form from a previous failed attempt
+  await dismissOpenForm();
+
   // Step 1: Click "Add Bookmark" button
   console.log("📌 Step 1: Clicking Add Bookmark button...");
   if (!(await clickElement(BOOKMARK_SELECTORS.ADD_BOOKMARK_BUTTON, "Add Bookmark button"))) {
     return false;
   }
   
-  // Wait for bookmark form to appear
-  await new Promise(r => setTimeout(r, 800));
+  // CRITICAL FIX: Enhanced wait for bookmark form to appear and stabilize
+  console.log("⏳ Waiting for bookmark form to appear and stabilize...");
+  await new Promise(r => setTimeout(r, 1200)); // Increased from 800ms
   
   // Step 2: Set video position FIRST (before entering note)
   console.log(`🎯 Step 2: Setting video to ${percentage}% position...`);
@@ -405,9 +449,9 @@ async function addSingleBookmark(bookmarkConfig) {
     }
   }
   
-  // Wait for position to settle and verify
+  // CRITICAL FIX: Enhanced wait for position to settle and verify
   console.log("⏳ Waiting for video position to settle...");
-  await new Promise(r => setTimeout(r, 1500)); // Increased wait time
+  await new Promise(r => setTimeout(r, 2000)); // Increased from 1500ms
   const positionCorrect = verifyVideoPosition(percentage);
   
   if (!positionCorrect) {
@@ -420,12 +464,64 @@ async function addSingleBookmark(bookmarkConfig) {
     return false;
   }
   
-  // Wait a moment before submitting
-  await new Promise(r => setTimeout(r, 500));
+  // CRITICAL FIX: Enhanced wait before submitting to ensure UI stability
+  await new Promise(r => setTimeout(r, 800)); // Increased from 500ms
   
-  // Step 4: Submit the bookmark
+  // Step 4: Submit the bookmark with enhanced retry logic
   console.log("✅ Step 4: Submitting bookmark...");
-  if (!(await clickElement(BOOKMARK_SELECTORS.SUBMIT_BUTTON, "submit bookmark"))) {
+  
+  let submitSuccess = false;
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    console.log(`🔄 Submit attempt ${attempt}/5...`);
+
+    // Strategy 1: click the submit button/icon
+    await clickElement(BOOKMARK_SELECTORS.SUBMIT_BUTTON, "submit bookmark");
+
+    // Strategy 2: try form.requestSubmit() as backup
+    const formEl = document.querySelector('div.layout > form, .m-bookmark-item form');
+    if (formEl && attempt >= 2) {
+      try {
+        formEl.requestSubmit();
+        console.log("🔄 Tried form.requestSubmit() as backup");
+      } catch (e) {
+        // requestSubmit may not be available or may throw
+      }
+    }
+
+    await new Promise(r => setTimeout(r, 1500));
+
+    // Verify: check if form textarea is gone or cleared (not just any textarea)
+    const textarea = document.querySelector(BOOKMARK_SELECTORS.NOTE_INPUT);
+    const formGone = !textarea?.closest('form');
+    const textCleared = textarea && (!textarea.value || textarea.value.trim() === '');
+
+    if (formGone || textCleared) {
+      console.log(`✅ Submit succeeded on attempt ${attempt}`);
+      submitSuccess = true;
+      break;
+    }
+
+    console.log(`⚠️ Submit attempt ${attempt} - form still has content, retrying...`);
+
+    // Re-enter the value in case React lost it
+    if (textarea && attempt < 5) {
+      const proto = textarea.tagName === 'TEXTAREA'
+          ? HTMLTextAreaElement.prototype
+          : HTMLInputElement.prototype;
+      const nativeSetter = Object.getOwnPropertyDescriptor(proto, 'value')?.set;
+      if (nativeSetter) {
+        nativeSetter.call(textarea, note);
+      }
+      textarea.dispatchEvent(new Event('input', { bubbles: true }));
+      textarea.dispatchEvent(new Event('change', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 500));
+    }
+  }
+
+  if (!submitSuccess) {
+    console.error(`❌ Failed to submit bookmark "${note}" after 5 attempts`);
+    // Clean up the failed form so the next bookmark has a chance
+    await dismissOpenForm();
     return false;
   }
   
@@ -468,10 +564,10 @@ async function addBookmarks() {
         console.error(`❌ Failed to add bookmark ${i + 1}: "${bookmark.note}" at ${bookmark.percentage}%`);
       }
       
-      // Wait longer between bookmarks to ensure proper processing
+      // CRITICAL FIX: Enhanced wait between bookmarks to ensure proper processing and DOM stability
       if (i < BOOKMARKS.length - 1) {
-        console.log(`⏳ Waiting 3 seconds before next bookmark...`);
-        await new Promise(r => setTimeout(r, 3000)); // Increased to 3 seconds
+        console.log(`⏳ Waiting 4 seconds before next bookmark to ensure DOM stability...`);
+        await new Promise(r => setTimeout(r, 4000)); // Increased from 3 seconds to 4 seconds
       }
     }
     

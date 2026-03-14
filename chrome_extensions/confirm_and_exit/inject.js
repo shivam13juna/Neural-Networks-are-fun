@@ -4,6 +4,12 @@
  */
 
 (async () => {
+  // Skip meeting-end flow if we're here for bookmark automation after reload
+  if (sessionStorage.getItem('needsBookmarkAutomation') === 'true') {
+    console.log("Confirm and Exit: skipping meeting-end flow — bookmark automation pending");
+    return;
+  }
+
   //                                     ▼▼ REPLACE THESE ▼▼
   const SELECTOR_END_BUTTON   = "#meeting-sidebar > div.right-dock.scroll > div:nth-child(2) > div > div > a";           // top‑level "End" button
   const SELECTOR_LEAVE_ALL_BUTTON = "body > div.react-root.react-root--auto.meeting-app > div > a.tappable.dropdown-item.btn.btn-danger"; // Button for "End meeting for all"
@@ -98,28 +104,28 @@
 
   /** Step 2: type 'confirm' */
   if (!(await retryQuiet(() => {
-    // Try primary input selector first
-    let input = document.querySelector(SELECTOR_INPUT);
-    if (input) {
-      input.focus();
-      input.value = CONFIRM_TEXT;
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      console.log("✓ Confirm text entered using primary selector");
-      return true;
+    let input = document.querySelector(SELECTOR_INPUT)
+             || document.querySelector(SELECTOR_INPUT_ALT);
+    if (!input) {
+      console.log("✗ Input field not found with either selector");
+      return false;
     }
-    
-    // Try alternative input selector if primary fails
-    input = document.querySelector(SELECTOR_INPUT_ALT);
-    if (input) {
-      input.focus();
+
+    input.focus();
+
+    // Use native setter — works for both React-controlled and plain inputs
+    const nativeSetter = Object.getOwnPropertyDescriptor(
+        HTMLInputElement.prototype, 'value')?.set;
+    if (nativeSetter) {
+      nativeSetter.call(input, CONFIRM_TEXT);
+    } else {
       input.value = CONFIRM_TEXT;
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      console.log("✓ Confirm text entered using alternative selector");
-      return true;
     }
-    
-    console.log("✗ Input field not found with either selector");
-    return false;
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+
+    console.log("✓ Confirm text entered");
+    return true;
   }, "confirm box"))) return;
 
   /** Step 3: click Submit */
@@ -181,17 +187,17 @@
   }
 
   console.log("📋 Missing bookmarks detected!");
-  console.log("⏳ You have 30 seconds to upload notes if needed...");
-  console.log("🔄 Bookmark automation will start after 30 seconds");
+  console.log("⏳ You have 75 seconds to upload notes if needed...");
+  console.log("🔄 Bookmark automation will start after 75 seconds");
 
   // Store a flag to indicate we need to run bookmark automation after reload
   sessionStorage.setItem('needsBookmarkAutomation', 'true');
 
-  // Wait 30 seconds on the current page (giving time for notes upload & recording to become valid)
-  await new Promise(r => setTimeout(r, 30000));
-  
+  // Wait 75 seconds on the current page (giving time for notes upload & recording to become valid)
+  await new Promise(r => setTimeout(r, 75000));
+
   // Now refresh the page for bookmark automation
-  console.log("✓ 30 seconds completed - starting bookmark automation...");
+  console.log("✓ 75 seconds completed - starting bookmark automation...");
   console.log("🔄 Refreshing page for bookmark automation...");
   location.reload();
 
@@ -215,19 +221,40 @@ async function initBookmarkAutomation() {
   
   console.log("🔖 Initializing bookmark automation...");
   
+  // CRITICAL FIX: Direct script injection using chrome extension APIs
+  // Send message to background script to inject bookmark automation
   try {
-    // Load and execute the bookmark automation script
-    const response = await fetch(chrome.runtime.getURL('bookmark-automation.js'));
-    const scriptText = await response.text();
+    const response = await chrome.runtime.sendMessage({
+      action: 'injectBookmarkScript',
+      tabId: 'current'
+    });
     
-    // Create and execute the script
-    const script = document.createElement('script');
-    script.textContent = scriptText;
-    document.head.appendChild(script);
-    
-    console.log("🔖 Bookmark automation script loaded and executed!");
+    if (response && response.success) {
+      console.log("🔖 Bookmark automation script injection requested successfully!");
+    } else {
+      console.log("🔄 Falling back to direct bookmark automation execution...");
+      // If messaging fails, we'll trigger bookmark automation directly
+      setTimeout(() => {
+        if (typeof addBookmarks === 'function') {
+          addBookmarks();
+        } else {
+          console.log("⚠️ Bookmark automation function not available - script may not be loaded");
+        }
+      }, 2000);
+    }
     
   } catch (error) {
-    console.error("Failed to load bookmark automation:", error);
+    console.log("🔄 Background script messaging failed, using direct approach...", error.message);
+    
+    // Fallback: Try to load the script directly via extension URL
+    const script = document.createElement('script');
+    script.src = chrome.runtime.getURL('bookmark-automation.js');
+    script.onload = function() {
+      console.log("✅ Bookmark automation script loaded via direct injection!");
+    };
+    script.onerror = function() {
+      console.error("❌ Failed to load bookmark automation script");
+    };
+    document.head.appendChild(script);
   }
 }

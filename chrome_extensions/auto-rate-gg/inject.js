@@ -15,6 +15,12 @@ const ADMIN_TAB_SELECTOR_XPATH = 'a.m-setting-panels__item span.m-setting-panels
 const CHAT_COOLDOWN_SELECTOR = 'div.m-settings__sections > div > label:nth-of-type(1) input'; // chat cooldown checkbox
 const SETTINGS_CLOSE_SELECTOR = '[data-testid="backdrop"]';                          // close settings by clicking backdrop
 const POPUP_DIALOG_CLOSE_SELECTOR = '#react-root > div > div > div > div.sr-modal.sr-modal--open.m-modal.m-settings > div > div > div.m-settings__main.m-settings__main--active > div.m-settings__header > span.hide-in-mobile > div > a > i'; // close popup dialog cross icon
+// Unlock assignments selectors
+const UNLOCK_ASSIGNMENTS_SELECTOR = '#react-root > div > div > div > div.layout.m-layout > div > div.live.layout > div.meeting.layout__content.layout__content--transparent > div.meeting-main > div.m-header > div.m-header__actions > div:nth-child(2) > a'; // unlock assignments button
+const UNLOCK_ALREADY_DONE_CLOSE_SELECTOR = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open > div > div > a > i'; // close "already unlocked" popup
+const UNLOCK_CONFIRM_SELECTOR = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open.p-10 > div > div._2_60S30j25YVKhJCkt5qe6 > button'; // first confirm unlock button
+const UNLOCK_CONFIRM_2_SELECTOR = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open.p-10 > div > div._3b6vt6P6u83cb8fJ6n_KUp > button'; // second confirm unlock button
+const UNLOCK_CLOSE_SELECTOR = '#react-root > div > div.sr-modal.sr-modal--center.sr-modal--large.sr-modal--open.p-10 > div > div._1l8BLAYy_1FYT-MSo-Cmwd > a > i'; // close unlock confirmation popup
 // Test-session setup selectors
 const TEST_SETUP_SELECTOR = '#react-root > div > div > div > div.layout.m-layout > div > div > div.row.flex-c.m-t-20 > a:nth-child(7)';       // opens test setup UI
 const ALT_TEST_SETUP_SELECTOR = '#root > div > div.layout.m-layout > div > div.m-upcoming > div.row.flex-c.m-t-20 > a:nth-child(7)'; // alternative test setup UI opener
@@ -62,10 +68,10 @@ const JOIN_SELECTOR       = '#react-root > div > div > div > div.layout.m-layout
       // wait for session to join
       await new Promise(r => setTimeout(r, 1000));
     }
-  }
+  } 
 // 1) open the rating UI (up to 3 attempts, 1s apart)
 let opener;
-for (let attempt = 1; attempt <= 3; attempt++) {
+for (let attempt = 1; attempt <= 5; attempt++) {
     opener = document.querySelector(OPEN_SELECTOR);
     if (opener) break;
     console.warn(`Auto-Rate GG: Rating button not found (attempt ${attempt}), retrying in 1s…`);
@@ -187,5 +193,64 @@ if (!opener) {
     }
   } else {
     console.warn('Auto-Rate GG: Could not find settings button');
+  }
+
+  // 11) Unlock assignments if needed
+  console.log('Auto-Rate GG: Checking for unlock assignments button...');
+  let unlockBtn;
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    unlockBtn = document.querySelector(UNLOCK_ASSIGNMENTS_SELECTOR);
+    if (unlockBtn) break;
+    console.log(`Auto-Rate GG: Unlock assignments button not found (attempt ${attempt}), retrying in 1s...`);
+    await new Promise(r => setTimeout(r, 1000));
+  }
+
+  if (!unlockBtn) {
+    console.log('Auto-Rate GG: Unlock assignments button not found after 5 attempts. Assignments may already be unlocked.');
+  } else {
+    console.log('Auto-Rate GG: Unlock assignments button found, clicking...');
+    unlockBtn.click();
+
+    // Wait for modal to render
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Check for confirm button first (normal unlock flow)
+    const confirmBtn = document.querySelector(UNLOCK_CONFIRM_SELECTOR);
+    if (confirmBtn) {
+      // Normal unlock flow - click the update changes button
+      confirmBtn.click();
+      console.log('Auto-Rate GG: First unlock confirm button (update changes) clicked');
+
+      // Wait for second confirmation modal (OK button)
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      const confirmBtn2 = document.querySelector(UNLOCK_CONFIRM_2_SELECTOR);
+      if (confirmBtn2) {
+        confirmBtn2.click();
+        console.log('Auto-Rate GG: Second unlock confirm button (OK) clicked');
+
+        // Wait for confirmation popup
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        const closeBtn = document.querySelector(UNLOCK_CLOSE_SELECTOR);
+        if (closeBtn) {
+          closeBtn.click();
+          console.log('Auto-Rate GG: Unlock confirmation popup closed');
+        } else {
+          console.warn('Auto-Rate GG: Could not find unlock confirmation close button');
+        }
+      } else {
+        console.warn('Auto-Rate GG: Could not find second unlock confirm button (OK)');
+      }
+    } else {
+      // If confirm button not found, check if "already unlocked" popup appears
+      const alreadyUnlockedClose = document.querySelector(UNLOCK_ALREADY_DONE_CLOSE_SELECTOR);
+      if (alreadyUnlockedClose) {
+        alreadyUnlockedClose.click();
+        console.log('Auto-Rate GG: Assignments were already unlocked, closed popup');
+      } else {
+        console.warn('Auto-Rate GG: Could not find unlock confirm button or already unlocked message');
+      }
+    }
   }
 })();

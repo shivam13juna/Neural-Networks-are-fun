@@ -1,18 +1,18 @@
 {
   "name": "Confirm and Exit",
   "description": "One‑click end meeting automation (click End, type ‘confirm’, submit).",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 3,
   "icons": {
     "128": "icons/end.png"
   },
-  "permissions": ["scripting", "activeTab"],
+  "permissions": ["scripting", "activeTab", "webNavigation"],
   "host_permissions": [
     "https://www.scaler.com/*"
   ],
   "web_accessible_resources": [
     {
-      "resources": ["bookmark-automation.js"],
+      "resources": ["bookmark-automation.js", "validation-test.js"],
       "matches": ["https://www.scaler.com/*"]
     }
   ],
