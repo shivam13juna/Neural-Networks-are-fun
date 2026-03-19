@@ -36,6 +36,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     return true; // synchronous — keeps message channel open
   }
+
+
 });
 
 // Listen for page navigation completion

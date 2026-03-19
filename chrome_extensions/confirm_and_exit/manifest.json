@@ -1,7 +1,7 @@
 {
   "name": "Confirm and Exit",
   "description": "One‑click end meeting automation (click End, type ‘confirm’, submit).",
-  "version": "1.1.0",
+  "version": "1.7.0",
   "manifest_version": 3,
   "icons": {
     "128": "icons/end.png"

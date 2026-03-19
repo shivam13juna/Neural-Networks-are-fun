@@ -6,13 +6,13 @@
 
 // CSS Selectors extracted from recorded steps for Scaler.com
 const BOOKMARK_SELECTORS = {
-  BOOKMARKS_TAB: "[data-cy='archived-meetings-sidebar-bookmark-tab'] > div, .archive-sidebar .bookmark-tab, [role='tab']:contains('Bookmark')",
-  ADD_BOOKMARK_BUTTON: "div.m-sidebar > div.layout a, div.p-10 > a, .add-bookmark-btn, button[title*='bookmark'], a[title*='bookmark']", // Multiple possible selectors
-  NOTE_INPUT: "textarea, div.layout > form textarea, input[placeholder*='note'], textarea[placeholder*='note']", // Note text input field
-  VIDEO_SEEKBAR: "div.vp-controls__seekbar > div, .seekbar, .video-progress", // Video timeline for positioning
-  // CRITICAL FIX: Enhanced submit button selector order with more reliable patterns
-  SUBMIT_BUTTON: "div.layout > form div.m-bookmark-item__footer i, div.layout > form button[type='submit'], div.archive-sidebar button, button[type='submit'], .submit-bookmark, .save-bookmark, form button:last-child, .m-bookmark-item__footer button, .m-bookmark-item__footer i", // Submit bookmark button with enhanced reliability
-  SIDEBAR_CLOSE: "div.m-sidebar__header i, .close-sidebar, .sidebar-close" // Close sidebar button
+  BOOKMARKS_TAB: "[data-cy='archived-meetings-sidebar-bookmark-tab'], [data-cy='archived-meetings-sidebar-bookmark-tab'] > div",
+  VIDEO_SEEKBAR: "div.vp-controls__seekbar > div",
+  // NOTE: CSS selectors for "Add Bookmark" shift after bookmarks exist, so we
+  // find it by text content instead. See clickAddBookmark().
+  ADD_BOOKMARK_FALLBACK: "div.p-10 > a, div.m-sidebar > div.layout a",
+  SUBMIT_BUTTON: "div.archive-sidebar button, div.layout > form button, div.layout > form div.m-bookmark-item__footer button",
+  SIDEBAR_CLOSE: "div.m-sidebar__header i, div.m-sidebar__header a"
 };
 
 // Updated seekbar selector based on your provided selector
@@ -64,41 +64,35 @@ async function clickElement(selector, label) {
   }, `Click ${label}`);
 }
 
-/** Helper: set input value with proper event triggering, trying multiple selectors */
-async function setInputValue(selector, value, label) {
+/** Helper: click the "Add Bookmark" link by its text content.
+ *  CSS selectors for this link change depending on how many bookmarks already
+ *  exist, so matching by text is the most reliable approach. */
+async function clickAddBookmark() {
   return retryBookmarkAction(() => {
-    // Handle multiple selectors separated by comma
-    const selectors = selector.split(',').map(s => s.trim());
-    
-    for (const sel of selectors) {
-      const input = document.querySelector(sel);
-      if (input) {
-        input.focus();
-
-        // Use native setter for React-controlled inputs.
-        // React overrides the value property; setting .value directly
-        // doesn't trigger React's state update, so the form sees empty text.
-        const proto = input.tagName === 'TEXTAREA'
-            ? HTMLTextAreaElement.prototype
-            : HTMLInputElement.prototype;
-        const nativeSetter = Object.getOwnPropertyDescriptor(proto, 'value')?.set;
-        if (nativeSetter) {
-          nativeSetter.call(input, value);
-        } else {
-          input.value = value;
-        }
-
-        // Dispatch events that React's synthetic event system detects
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-        
-        console.log(`✓ Set ${label} to "${value}" using selector: ${sel}`);
+    // Strategy 1: find <a> whose text is "Add Bookmark"
+    const links = document.querySelectorAll('a');
+    for (const link of links) {
+      if (link.textContent.trim() === 'Add Bookmark') {
+        link.click();
+        console.log("✓ Clicked 'Add Bookmark' (found by text content)");
         return true;
       }
     }
-    console.log(`✗ Could not find ${label} input with any selector: ${selector}`);
+
+    // Strategy 2: CSS fallback selectors from the recording
+    const fallbacks = BOOKMARK_SELECTORS.ADD_BOOKMARK_FALLBACK.split(',').map(s => s.trim());
+    for (const sel of fallbacks) {
+      const el = document.querySelector(sel);
+      if (el) {
+        el.click();
+        console.log(`✓ Clicked 'Add Bookmark' using fallback selector: ${sel}`);
+        return true;
+      }
+    }
+
+    console.log("✗ Could not find 'Add Bookmark' link");
     return false;
-  }, `Set ${label} input`);
+  }, 'Click Add Bookmark');
 }
 
 /** Helper: click on video seekbar at specific position */
@@ -383,29 +377,26 @@ async function setVideoTime(percentage) {
   });
 }
 
-/** Dismiss any open bookmark form to prevent cascading failures */
-async function dismissOpenForm() {
-  const textarea = document.querySelector(BOOKMARK_SELECTORS.NOTE_INPUT);
-  if (!textarea) return;
+/** Clear leftover text from the new bookmark form (only the unsaved "new" form, not existing bookmarks) */
+async function clearNewBookmarkForm() {
+  // Only target the explicit "new bookmark" form — never use a broad selector
+  // that could match existing saved bookmarks and accidentally wipe their text.
+  const newForm = document.querySelector('form.m-bookmark-item:not(.m-bookmark-item--shadow)');
+  if (!newForm) return;
 
-  // Check if form has unsaved content
-  const formEl = textarea.closest('form');
-  if (!formEl) return;
+  const textarea = newForm.querySelector('textarea');
+  if (!textarea || !textarea.value || textarea.value.trim() === '') return;
 
-  console.log("🧹 Dismissing leftover bookmark form...");
-  // Try pressing Escape to cancel
-  document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-  await new Promise(r => setTimeout(r, 500));
-
-  // If form is still there, try clicking outside or a cancel button
-  const stillOpen = document.querySelector(BOOKMARK_SELECTORS.NOTE_INPUT)?.closest('form');
-  if (stillOpen) {
-    const cancelBtn = stillOpen.querySelector('button:not([type="submit"]), a.cancel, .cancel, i.close');
-    if (cancelBtn) {
-      cancelBtn.click();
-      await new Promise(r => setTimeout(r, 500));
-    }
+  console.log("🧹 Clearing leftover content from new bookmark form...");
+  const nativeSetter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')?.set;
+  if (nativeSetter) {
+    nativeSetter.call(textarea, '');
+  } else {
+    textarea.value = '';
   }
+  textarea.dispatchEvent(new Event('input', { bubbles: true }));
+  textarea.dispatchEvent(new Event('change', { bubbles: true }));
+  await new Promise(r => setTimeout(r, 500));
 }
 
 /** Main function: Add a single bookmark */
@@ -414,86 +405,152 @@ async function addSingleBookmark(bookmarkConfig) {
 
   console.log(`\n🔖 Adding bookmark: "${note}" at ${percentage}%`);
 
-  // Dismiss any leftover form from a previous failed attempt
-  await dismissOpenForm();
+  // Clear any leftover text from a previous failed attempt
+  await clearNewBookmarkForm();
 
-  // Step 1: Click "Add Bookmark" button
-  console.log("📌 Step 1: Clicking Add Bookmark button...");
-  if (!(await clickElement(BOOKMARK_SELECTORS.ADD_BOOKMARK_BUTTON, "Add Bookmark button"))) {
-    return false;
-  }
-  
-  // CRITICAL FIX: Enhanced wait for bookmark form to appear and stabilize
-  console.log("⏳ Waiting for bookmark form to appear and stabilize...");
-  await new Promise(r => setTimeout(r, 1200)); // Increased from 800ms
-  
-  // Step 2: Set video position FIRST (before entering note)
-  console.log(`🎯 Step 2: Setting video to ${percentage}% position...`);
-  
-  // Wait for video to be ready
+  // Step 1: Seek video to the target position.
+  // We set video.currentTime AND click the seekbar so the platform's internal
+  // bookmark-timestamp tracker is updated (it listens to seekbar interactions).
+  console.log(`🎯 Step 1: Setting video to ${percentage}% position...`);
+
   const videoReady = await waitForVideoReady();
   if (!videoReady) {
     console.log("⚠️ Video not ready, but continuing with positioning attempt...");
   }
-  
-  // Try to set video time directly first
-  const videoTimeSet = await setVideoTime(percentage);
-  
-  if (!videoTimeSet) {
-    // Fallback: Click on video seekbar to set position
-    console.log("🔄 Falling back to seekbar click method...");
-    const seekPosition = calculateSeekPosition(percentage);
-    if (!(await clickSeekbar(seekPosition))) {
-      console.error(`❌ Failed to set video position for ${percentage}%`);
-      return false;
+
+  // 1a: Set video.currentTime directly
+  await setVideoTime(percentage);
+
+  // 1b: Also click the seekbar at the matching position so the platform
+  //     registers the change in its own state (not just the <video> element).
+  const seekPosition = calculateSeekPosition(percentage);
+  await clickSeekbar(seekPosition);
+
+  // 1c: Wait for the native 'seeked' event to confirm the video has arrived
+  console.log("⏳ Waiting for video to reach target position...");
+  await new Promise((resolve) => {
+    const video = document.querySelector('video');
+    if (!video) { resolve(); return; }
+
+    const targetTime = (percentage / 100) * video.duration;
+    const alreadyThere = Math.abs(video.currentTime - targetTime) < 1;
+    if (alreadyThere) {
+      console.log(`✓ Video already at target position (${video.currentTime.toFixed(2)}s)`);
+      resolve();
+      return;
     }
-  }
-  
-  // CRITICAL FIX: Enhanced wait for position to settle and verify
-  console.log("⏳ Waiting for video position to settle...");
-  await new Promise(r => setTimeout(r, 2000)); // Increased from 1500ms
-  const positionCorrect = verifyVideoPosition(percentage);
-  
-  if (!positionCorrect) {
-    console.log(`⚠️ Video position verification failed, but continuing...`);
-  }
-  
-  // Step 3: Enter note text AFTER setting position
-  console.log("✏️ Step 3: Entering bookmark note...");
-  if (!(await setInputValue(BOOKMARK_SELECTORS.NOTE_INPUT, note, "bookmark note"))) {
+
+    const onSeeked = () => {
+      video.removeEventListener('seeked', onSeeked);
+      console.log(`✓ Video seeked event fired — now at ${video.currentTime.toFixed(2)}s`);
+      resolve();
+    };
+    video.addEventListener('seeked', onSeeked);
+
+    // Safety timeout so we don't hang forever
+    setTimeout(() => {
+      video.removeEventListener('seeked', onSeeked);
+      console.log(`⚠️ Seeked event timeout — video at ${video.currentTime.toFixed(2)}s`);
+      resolve();
+    }, 5000);
+  });
+
+  // 1d: Extra settle time for the platform to sync its internal state
+  await new Promise(r => setTimeout(r, 2000));
+  verifyVideoPosition(percentage);
+
+  // Step 2: Click "Add Bookmark" to open the bookmark form
+  console.log("📝 Step 2: Clicking 'Add Bookmark' button...");
+  if (!(await clickAddBookmark())) {
+    console.error("❌ Could not find 'Add Bookmark' button");
     return false;
   }
-  
-  // CRITICAL FIX: Enhanced wait before submitting to ensure UI stability
-  await new Promise(r => setTimeout(r, 800)); // Increased from 500ms
-  
-  // Step 4: Submit the bookmark with enhanced retry logic
+
+  // Wait for the form to appear
+  await new Promise(r => setTimeout(r, 1000));
+
+  // Step 2b: Find the bookmark form (textarea)
+  console.log("📝 Step 2b: Finding bookmark form...");
+  const formFound = await retryBookmarkAction(() => {
+    const ta = document.querySelector('form textarea, form.m-bookmark-item textarea, div.layout form textarea');
+    if (ta) {
+      console.log("✓ Found bookmark textarea");
+      return true;
+    }
+    return false;
+  }, 'Find bookmark textarea');
+
+  if (!formFound) {
+    console.error("❌ Could not find bookmark textarea");
+    return false;
+  }
+
+  const formEl = document.querySelector('form textarea, form.m-bookmark-item textarea, div.layout form textarea')?.closest('form');
+  const textarea = formEl?.querySelector('textarea');
+  if (!textarea) {
+    console.error("❌ Could not find textarea in new bookmark form");
+    return false;
+  }
+
+  // Step 3: Enter note text
+  console.log("✏️ Step 3: Entering bookmark note...");
+  textarea.focus();
+  const nativeSetter = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value')?.set;
+  if (nativeSetter) {
+    nativeSetter.call(textarea, note);
+  } else {
+    textarea.value = note;
+  }
+  textarea.dispatchEvent(new Event('input', { bubbles: true }));
+  textarea.dispatchEvent(new Event('change', { bubbles: true }));
+  console.log(`✓ Set bookmark note to "${note}"`);
+
+  await new Promise(r => setTimeout(r, 800));
+
+  // Step 4: Submit — the form says "Enter to save, Shift+Enter for new line"
   console.log("✅ Step 4: Submitting bookmark...");
-  
+
   let submitSuccess = false;
   for (let attempt = 1; attempt <= 5; attempt++) {
     console.log(`🔄 Submit attempt ${attempt}/5...`);
 
-    // Strategy 1: click the submit button/icon
-    await clickElement(BOOKMARK_SELECTORS.SUBMIT_BUTTON, "submit bookmark");
-
-    // Strategy 2: try form.requestSubmit() as backup
-    const formEl = document.querySelector('div.layout > form, .m-bookmark-item form');
-    if (formEl && attempt >= 2) {
-      try {
-        formEl.requestSubmit();
-        console.log("🔄 Tried form.requestSubmit() as backup");
-      } catch (e) {
-        // requestSubmit may not be available or may throw
+    // Strategy 1: Click the submit button (matches recorded selectors)
+    const submitSelectors = BOOKMARK_SELECTORS.SUBMIT_BUTTON.split(',').map(s => s.trim());
+    let clicked = false;
+    for (const sel of submitSelectors) {
+      const submitBtn = document.querySelector(sel);
+      if (submitBtn) {
+        submitBtn.click();
+        console.log(`✓ Clicked submit button using: ${sel}`);
+        clicked = true;
+        break;
       }
+    }
+    // Also try the button inside the form itself
+    if (!clicked) {
+      const formBtn = formEl.querySelector('button');
+      if (formBtn) {
+        formBtn.click();
+        console.log("✓ Clicked form button fallback");
+        clicked = true;
+      }
+    }
+
+    // Strategy 2: Press Enter in the textarea as backup
+    if (!clicked) {
+      textarea.dispatchEvent(new KeyboardEvent('keydown', {
+        key: 'Enter', code: 'Enter', keyCode: 13, which: 13,
+        bubbles: true, cancelable: true
+      }));
+      console.log("✓ Dispatched Enter keydown as fallback");
     }
 
     await new Promise(r => setTimeout(r, 1500));
 
-    // Verify: check if form textarea is gone or cleared (not just any textarea)
-    const textarea = document.querySelector(BOOKMARK_SELECTORS.NOTE_INPUT);
-    const formGone = !textarea?.closest('form');
-    const textCleared = textarea && (!textarea.value || textarea.value.trim() === '');
+    // Verify: textarea should be cleared or form replaced after successful submit
+    const currentTextarea = formEl.querySelector('textarea');
+    const formGone = !formEl.isConnected;
+    const textCleared = currentTextarea && (!currentTextarea.value || currentTextarea.value.trim() === '');
 
     if (formGone || textCleared) {
       console.log(`✅ Submit succeeded on attempt ${attempt}`);
@@ -504,30 +561,25 @@ async function addSingleBookmark(bookmarkConfig) {
     console.log(`⚠️ Submit attempt ${attempt} - form still has content, retrying...`);
 
     // Re-enter the value in case React lost it
-    if (textarea && attempt < 5) {
-      const proto = textarea.tagName === 'TEXTAREA'
-          ? HTMLTextAreaElement.prototype
-          : HTMLInputElement.prototype;
-      const nativeSetter = Object.getOwnPropertyDescriptor(proto, 'value')?.set;
+    if (currentTextarea && attempt < 5) {
       if (nativeSetter) {
-        nativeSetter.call(textarea, note);
+        nativeSetter.call(currentTextarea, note);
       }
-      textarea.dispatchEvent(new Event('input', { bubbles: true }));
-      textarea.dispatchEvent(new Event('change', { bubbles: true }));
+      currentTextarea.dispatchEvent(new Event('input', { bubbles: true }));
+      currentTextarea.dispatchEvent(new Event('change', { bubbles: true }));
       await new Promise(r => setTimeout(r, 500));
     }
   }
 
   if (!submitSuccess) {
     console.error(`❌ Failed to submit bookmark "${note}" after 5 attempts`);
-    // Clean up the failed form so the next bookmark has a chance
-    await dismissOpenForm();
+    await clearNewBookmarkForm();
     return false;
   }
-  
+
   // Wait for the bookmark to be processed
   await new Promise(r => setTimeout(r, 1500));
-  
+
   console.log(`✅ Bookmark "${note}" added successfully at ${percentage}%`);
   return true;
 }
@@ -582,10 +634,17 @@ async function addBookmarks() {
       console.log(`⚠️ ${BOOKMARKS.length - successCount} bookmarks failed to create`);
     }
     
-    // Step 3: Close the sidebar (optional)
+    // Step 3: Pause the video
+    const video = document.querySelector('video');
+    if (video && !video.paused) {
+      video.pause();
+      console.log("⏸️ Video paused");
+    }
+
+    // Step 4: Close the sidebar (optional)
     console.log("\n📂 Closing sidebar...");
     await clickElement(BOOKMARK_SELECTORS.SIDEBAR_CLOSE, "close sidebar");
-    
+
     console.log("🔖 Bookmark automation completed!");
     return successCount === BOOKMARKS.length;
     
