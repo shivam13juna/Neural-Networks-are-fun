@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thyrocare Package Finder</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; }
+
+  .header { background: linear-gradient(135deg, #161b22, #1a2332); color: #e6edf3; padding: 2rem; text-align: center; border-bottom: 1px solid #30363d; }
+  .header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  .header p { opacity: 0.7; font-size: 0.95rem; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; border: 1px solid #30363d; }
+  .tab { flex: 1; padding: 0.8rem; text-align: center; background: #161b22; cursor: pointer; font-weight: 600; font-size: 0.9rem; border: none; color: #8b949e; transition: all 0.2s; }
+  .tab:hover { background: #1c2433; color: #e6edf3; }
+  .tab.active { background: #58a6ff; color: #0d1117; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Shared form styles */
+  .search-box { background: #161b22; border-radius: 12px; padding: 1.5rem; border: 1px solid #30363d; margin-bottom: 1.5rem; }
+  .search-box label { font-weight: 600; font-size: 1rem; display: block; margin-bottom: 0.5rem; color: #e6edf3; }
+  .search-box .hint { font-size: 0.82rem; color: #8b949e; margin-bottom: 0.6rem; }
+
+  .input-row { display: flex; gap: 0.5rem; position: relative; }
+  .input-row input { flex: 1; padding: 0.7rem 1rem; border: 1px solid #30363d; border-radius: 8px; font-size: 0.95rem; outline: none; transition: border-color 0.2s; background: #0d1117; color: #e6edf3; }
+  .input-row input:focus { border-color: #58a6ff; }
+  .input-row button { padding: 0.7rem 1.2rem; background: #238636; color: white; border: none; border-radius: 8px; font-size: 0.95rem; cursor: pointer; white-space: nowrap; }
+  .input-row button:hover { background: #2ea043; }
+
+  .autocomplete { position: absolute; top: 100%; left: 0; right: 80px; background: #1c2128; border: 1px solid #30363d; border-radius: 8px; max-height: 220px; overflow-y: auto; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.4); display: none; }
+  .autocomplete div { padding: 0.6rem 1rem; cursor: pointer; font-size: 0.9rem; border-bottom: 1px solid #21262d; color: #e6edf3; }
+  .autocomplete div:hover, .autocomplete div.active { background: #263545; }
+  .ac-meta { float: right; color: #8b949e; font-size: 0.8rem; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+  .tag { display: inline-flex; align-items: center; gap: 0.4rem; background: #1f3a5f; color: #58a6ff; padding: 0.35rem 0.7rem; border-radius: 20px; font-size: 0.85rem; }
+  .tag .remove { cursor: pointer; font-weight: bold; opacity: 0.6; font-size: 1rem; line-height: 1; }
+  .tag .remove:hover { opacity: 1; }
+
+  .action-btn { display: block; width: 100%; margin-top: 1rem; padding: 0.8rem; background: linear-gradient(135deg, #238636, #2ea043); color: white; border: none; border-radius: 8px; font-size: 1.05rem; font-weight: 600; cursor: pointer; }
+  .action-btn:hover { opacity: 0.92; }
+  .action-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .section-title { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid #58a6ff; color: #e6edf3; }
+
+  /* Combo box */
+  .combo-box { background: #1c2128; border: 1px solid #238636; border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem; }
+  .combo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
+  .combo-header h3 { color: #58a6ff; font-size: 1.1rem; }
+  .combo-price { font-size: 1.4rem; font-weight: 700; color: #3fb950; }
+  .combo-pkg { background: #0d1117; border-radius: 8px; padding: 0.8rem; margin-bottom: 0.5rem; border: 1px solid #30363d; }
+  .combo-pkg-header { display: flex; justify-content: space-between; align-items: center; }
+  .combo-pkg-name { font-weight: 600; font-size: 0.95rem; }
+  .combo-pkg-name a { color: #58a6ff; text-decoration: none; }
+  .combo-pkg-name a:hover { text-decoration: underline; }
+  .combo-pkg-price { color: #8b949e; font-size: 0.9rem; }
+  .combo-pkg-tests { margin-top: 0.4rem; font-size: 0.82rem; color: #8b949e; }
+  .combo-missing { margin-top: 0.8rem; padding: 0.6rem; background: #2d1b00; border: 1px solid #6e4000; border-radius: 6px; font-size: 0.85rem; color: #d29922; }
+
+  /* Package cards */
+  .pkg-card { background: #161b22; border-radius: 10px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; border: 1px solid #30363d; border-left: 4px solid #58a6ff; cursor: pointer; transition: all 0.2s; }
+  .pkg-card:hover { border-color: #58a6ff; background: #1c2128; }
+  .pkg-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .pkg-name { font-weight: 600; font-size: 1rem; }
+  .pkg-name a { color: #e6edf3; text-decoration: none; }
+  .pkg-name a:hover { color: #58a6ff; }
+  .pkg-price { font-weight: 700; color: #3fb950; font-size: 1.05rem; white-space: nowrap; margin-left: 1rem; }
+  .pkg-meta { display: flex; gap: 1rem; margin-top: 0.4rem; font-size: 0.82rem; color: #8b949e; flex-wrap: wrap; }
+  .coverage-bar { height: 6px; background: #21262d; border-radius: 3px; margin-top: 0.5rem; overflow: hidden; }
+  .coverage-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
+  .pkg-tests { margin-top: 0.6rem; display: none; }
+  .pkg-tests.open { display: block; }
+  .pkg-tests-list { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.3rem; }
+  .test-chip { font-size: 0.78rem; padding: 0.2rem 0.5rem; border-radius: 12px; }
+  .test-covered { background: #1b3a2d; color: #3fb950; }
+  .test-missing { background: #3d1a1a; color: #f85149; }
+  .test-shared { background: #1f3a5f; color: #58a6ff; }
+  .test-unique { background: #2d1b00; color: #d29922; }
+  .pkg-toggle { font-size: 0.82rem; color: #58a6ff; cursor: pointer; margin-top: 0.4rem; display: inline-block; }
+
+  /* Compare */
+  .compare-grid { display: grid; gap: 1rem; margin-bottom: 1.5rem; }
+  .compare-card { background: #161b22; border-radius: 10px; padding: 1.2rem; border: 1px solid #30363d; }
+  .compare-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .compare-card .price { font-size: 1.3rem; font-weight: 700; color: #3fb950; }
+  .compare-card .stats { font-size: 0.85rem; color: #8b949e; margin: 0.4rem 0; }
+  .compare-card .diff { font-size: 0.85rem; color: #f85149; }
+  .compare-section { margin-top: 1rem; }
+  .compare-section h4 { font-size: 0.95rem; margin-bottom: 0.5rem; color: #e6edf3; }
+
+  /* Breakdown */
+  .savings-box { background: #1b3a2d; border: 2px solid #238636; border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem; text-align: center; }
+  .savings-box.no-savings { background: #3d1a1a; border-color: #f85149; }
+  .savings-amount { font-size: 2rem; font-weight: 700; color: #3fb950; }
+  .no-savings .savings-amount { color: #f85149; }
+  .savings-detail { font-size: 0.9rem; color: #8b949e; margin-top: 0.3rem; }
+  .vs-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin-bottom: 1.5rem; }
+  .vs-label { text-align: center; font-weight: 700; font-size: 1.2rem; color: #484f58; }
+  .price-box { background: #161b22; border-radius: 10px; padding: 1rem; text-align: center; border: 1px solid #30363d; }
+  .price-box .label { font-size: 0.82rem; color: #8b949e; margin-bottom: 0.3rem; }
+  .price-box .amount { font-size: 1.5rem; font-weight: 700; }
+  .price-box .amount.original { color: #f85149; }
+  .price-box .amount.breakdown { color: #3fb950; }
+
+  .empty-state { text-align: center; padding: 3rem; color: #484f58; }
+
+  @media (max-width: 600px) {
+    .container { padding: 1rem; }
+    .header h1 { font-size: 1.4rem; }
+    .pkg-top { flex-direction: column; }
+    .pkg-price { margin: 0.3rem 0 0; }
+    .tabs { flex-direction: column; }
+    .vs-row { grid-template-columns: 1fr; }
+    .vs-label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Thyrocare Package Finder</h1>
+  <p>Find the best value packages, compare options, and save money</p>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('find')">Find Packages</button>
+    <button class="tab" onclick="switchTab('compare')">Compare Packages</button>
+    <button class="tab" onclick="switchTab('breakdown')">Break Down Package</button>
+  </div>
+
+  <!-- TAB 1: Find packages by tests -->
+  <div class="tab-panel active" id="panel-find">
+    <div class="search-box">
+      <label>What tests do you need?</label>
+      <div class="hint">Type test names to find the best package or cheapest combination</div>
+      <div class="input-row">
+        <input type="text" id="testInput" placeholder="e.g. Hemoglobin, Vitamin D..." autocomplete="off">
+        <button onclick="addTest()">Add</button>
+        <div class="autocomplete" id="acTests"></div>
+      </div>
+      <div class="tags" id="testTags"></div>
+      <button class="action-btn" id="findBtn" onclick="doSearch()" disabled>Find Best Packages</button>
+    </div>
+    <div id="findResults" style="display:none">
+      <div id="comboSection"></div>
+      <div id="singlesSection"></div>
+      <div class="section-title">All Matching Packages</div>
+      <div id="packageList"></div>
+    </div>
+  </div>
+
+  <!-- TAB 2: Compare packages -->
+  <div class="tab-panel" id="panel-compare">
+    <div class="search-box">
+      <label>Select packages to compare</label>
+      <div class="hint">Add 2 or more packages to see which tests overlap and which are exclusive to each</div>
+      <div class="input-row">
+        <input type="text" id="cmpInput" placeholder="Type a package name..." autocomplete="off">
+        <button onclick="addCompare()">Add</button>
+        <div class="autocomplete" id="acCompare"></div>
+      </div>
+      <div class="tags" id="cmpTags"></div>
+      <button class="action-btn" id="cmpBtn" onclick="doCompare()" disabled>Compare</button>
+    </div>
+    <div id="compareResults" style="display:none"></div>
+  </div>
+
+  <!-- TAB 3: Break down a package -->
+  <div class="tab-panel" id="panel-breakdown">
+    <div class="search-box">
+      <label>Select a package to break down</label>
+      <div class="hint">Find out if buying multiple smaller packages or individual tests is cheaper</div>
+      <div class="input-row">
+        <input type="text" id="bdInput" placeholder="Type a package name..." autocomplete="off">
+        <button onclick="pickBreakdown()">Select</button>
+        <div class="autocomplete" id="acBreakdown"></div>
+      </div>
+      <div class="tags" id="bdTags"></div>
+      <button class="action-btn" id="bdBtn" onclick="doBreakdown()" disabled>Find Cheaper Alternative</button>
+    </div>
+    <div id="breakdownResults" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+// ── Tab switching ──
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.toggle('active', t.textContent.toLowerCase().includes(name.slice(0,4)));
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+}
+
+// ── Shared autocomplete logic ──
+function setupAC(inputId, acId, fetchUrl, onPick, renderItem) {
+  const input = document.getElementById(inputId);
+  const ac = document.getElementById(acId);
+  let items = [], idx = -1;
+
+  input.addEventListener('input', async () => {
+    const q = input.value.trim();
+    if (q.length < 2) { ac.style.display = 'none'; return; }
+    const res = await fetch(fetchUrl + '?q=' + encodeURIComponent(q));
+    items = await res.json(); idx = -1;
+    render();
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); idx = Math.min(idx + 1, items.length - 1); render(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); idx = Math.max(idx - 1, 0); render(); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (idx >= 0 && items[idx]) { pick(items[idx]); } }
+    else if (e.key === 'Escape') { ac.style.display = 'none'; }
+  });
+
+  function render() {
+    if (!items.length) { ac.style.display = 'none'; return; }
+    const getName = (item) => typeof item === 'string' ? item : item.name;
+    ac.innerHTML = items.map((t, i) => {
+      const n = getName(t);
+      const label = renderItem ? renderItem(t) : n;
+      return `<div class="${i === idx ? 'active' : ''}" onmousedown="event.preventDefault()" onclick="window._acPick_${inputId}(${i})">${label}</div>`;
+    }).join('');
+    ac.style.display = 'block';
+  }
+
+  function pick(item) {
+    onPick(item);
+    input.value = '';
+    ac.style.display = 'none';
+    input.focus();
+  }
+
+  window['_acPick_' + inputId] = (i) => pick(items[i]);
+  document.addEventListener('click', (e) => { if (!e.target.closest('#' + inputId) && !e.target.closest('#' + acId)) ac.style.display = 'none'; });
+}
+
+// ── TAB 1: Find packages ──
+const selectedTests = [];
+
+setupAC('testInput', 'acTests', '/api/tests', (name) => {
+  if (!selectedTests.includes(name)) { selectedTests.push(name); renderTestTags(); }
+});
+
+function addTest() {
+  const v = document.getElementById('testInput').value.trim();
+  if (v && !selectedTests.includes(v)) { selectedTests.push(v); renderTestTags(); }
+  document.getElementById('testInput').value = '';
+}
+
+function removeTest(i) { selectedTests.splice(i, 1); renderTestTags(); }
+
+function renderTestTags() {
+  document.getElementById('testTags').innerHTML = selectedTests.map((t, i) =>
+    `<span class="tag">${t}<span class="remove" onclick="removeTest(${i})">&times;</span></span>`
+  ).join('');
+  document.getElementById('findBtn').disabled = selectedTests.length === 0;
+}
+
+async function doSearch() {
+  const btn = document.getElementById('findBtn');
+  btn.disabled = true; btn.textContent = 'Searching...';
+  const res = await fetch('/api/search', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({tests: selectedTests}) });
+  const data = await res.json();
+  renderCombo(data.combo);
+  renderSingles(data.singles);
+  renderPackages(data.packages);
+  document.getElementById('findResults').style.display = 'block';
+  btn.disabled = false; btn.textContent = 'Find Best Packages';
+  document.getElementById('findResults').scrollIntoView({behavior: 'smooth'});
+}
+
+function renderCombo(combo) {
+  const el = document.getElementById('comboSection');
+  const pkgCount = combo?.packages?.length || 0;
+  const stCount = combo?.single_tests?.length || 0;
+  if (!pkgCount && !stCount) { el.innerHTML = ''; return; }
+
+  let headerText;
+  if (pkgCount === 1 && !stCount) headerText = 'Single package covers everything';
+  else if (pkgCount && stCount) headerText = `${pkgCount} package${pkgCount > 1 ? 's' : ''} + ${stCount} single test${stCount > 1 ? 's' : ''}`;
+  else if (pkgCount) headerText = `${pkgCount} packages needed`;
+  else headerText = `${stCount} single test${stCount > 1 ? 's' : ''} needed`;
+
+  let h = `<div class="section-title">Best Combination</div><div class="combo-box">`;
+  h += `<div class="combo-header"><h3>${headerText}</h3>`;
+  h += `<div class="combo-price">${combo.total_price_display}</div></div>`;
+  for (const p of (combo.packages || [])) {
+    h += `<div class="combo-pkg"><div class="combo-pkg-header"><span class="combo-pkg-name"><a href="${p.url}" target="_blank">${p.name}</a></span><span class="combo-pkg-price">${p.price}</span></div><div class="combo-pkg-tests">Covers: ${p.covers.join(', ')}</div></div>`;
+  }
+  for (const p of (combo.single_tests || [])) {
+    h += `<div class="combo-pkg"><div class="combo-pkg-header"><span class="combo-pkg-name"><a href="${p.url}" target="_blank">${p.name}</a> <span style="color:#8b949e;font-weight:normal">(single test)</span></span><span class="combo-pkg-price">${p.price}</span></div><div class="combo-pkg-tests">Covers: ${p.covers.join(', ')}</div></div>`;
+  }
+  if (combo.missing && combo.missing.length) h += `<div class="combo-missing">Not available in any package or single test: ${combo.missing.join(', ')}</div>`;
+  h += '</div>';
+  el.innerHTML = h;
+}
+
+function renderSingles(singles) {
+  const el = document.getElementById('singlesSection');
+  if (!singles || !singles.tests?.length) { el.innerHTML = ''; return; }
+  let h = `<div class="section-title">Buy Tests Individually</div><div class="combo-box" style="border-color: #58a6ff;">`;
+  h += `<div class="combo-header"><h3>${singles.covers_count}/${singles.wanted_count} tests available individually</h3>`;
+  h += `<div class="combo-price">${singles.total_display}</div></div>`;
+  for (const t of singles.tests) {
+    h += `<div class="combo-pkg"><div class="combo-pkg-header"><span class="combo-pkg-name"><a href="${t.url}" target="_blank">${t.name}</a></span><span class="combo-pkg-price">${t.price}</span></div></div>`;
+  }
+  if (singles.missing?.length) h += `<div class="combo-missing">Not available as single tests: ${singles.missing.join(', ')}</div>`;
+  h += '</div>';
+  el.innerHTML = h;
+}
+
+function renderPackages(packages) {
+  const el = document.getElementById('packageList');
+  if (!packages.length) { el.innerHTML = '<div class="empty-state">No matching packages found</div>'; return; }
+  el.innerHTML = packages.map((p, i) => {
+    const col = p.coverage_pct === 100 ? '#28a745' : p.coverage_pct >= 50 ? '#ffc107' : '#dc3545';
+    return `<div class="pkg-card" onclick="toggleTests('find',${i})"><div class="pkg-top"><div><div class="pkg-name"><a href="${p.url}" target="_blank" onclick="event.stopPropagation()">${p.name}</a></div><div class="pkg-meta"><span>${p.coverage_pct}% coverage (${p.covered_count}/${p.covered_count + p.missing_count})</span><span>${p.total_tests} total tests</span><span>₹${p.price_per_covered}/matched test</span></div></div><div class="pkg-price">${p.price}</div></div><div class="coverage-bar"><div class="coverage-fill" style="width:${p.coverage_pct}%;background:${col}"></div></div><span class="pkg-toggle" id="toggle-find-${i}">Show tests</span><div class="pkg-tests" id="tests-find-${i}"><div class="pkg-tests-list">${p.covered.map(t=>`<span class="test-chip test-covered">${t}</span>`).join('')}${p.missing.map(t=>`<span class="test-chip test-missing">${t}</span>`).join('')}</div></div></div>`;
+  }).join('');
+}
+
+function toggleTests(prefix, i) {
+  const el = document.getElementById('tests-' + prefix + '-' + i);
+  const tog = document.getElementById('toggle-' + prefix + '-' + i);
+  el.classList.toggle('open');
+  tog.textContent = el.classList.contains('open') ? 'Hide tests' : 'Show tests';
+}
+
+// ── TAB 2: Compare packages ──
+const comparePkgs = [];
+
+setupAC('cmpInput', 'acCompare', '/api/packages', (item) => {
+  const name = item.name || item;
+  if (!comparePkgs.includes(name)) { comparePkgs.push(name); renderCmpTags(); }
+}, (item) => `${item.name} <span class="ac-meta">${item.price} | ${item.total_tests} tests</span>`);
+
+function addCompare() {
+  const v = document.getElementById('cmpInput').value.trim();
+  if (v && !comparePkgs.includes(v)) { comparePkgs.push(v); renderCmpTags(); }
+  document.getElementById('cmpInput').value = '';
+}
+
+function removeCmp(i) { comparePkgs.splice(i, 1); renderCmpTags(); }
+
+function renderCmpTags() {
+  document.getElementById('cmpTags').innerHTML = comparePkgs.map((t, i) =>
+    `<span class="tag">${t}<span class="remove" onclick="removeCmp(${i})">&times;</span></span>`
+  ).join('');
+  document.getElementById('cmpBtn').disabled = comparePkgs.length < 2;
+}
+
+async function doCompare() {
+  const btn = document.getElementById('cmpBtn');
+  btn.disabled = true; btn.textContent = 'Comparing...';
+  const res = await fetch('/api/compare', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({packages: comparePkgs}) });
+  const data = await res.json();
+  renderCompare(data);
+  document.getElementById('compareResults').style.display = 'block';
+  btn.disabled = false; btn.textContent = 'Compare';
+}
+
+function renderCompare(data) {
+  const el = document.getElementById('compareResults');
+  if (!data.packages || !data.packages.length) { el.innerHTML = '<div class="empty-state">Could not compare these packages</div>'; return; }
+
+  let h = `<div class="section-title">Comparison: ${data.packages.length} packages</div>`;
+
+  // Package cards
+  h += `<div class="compare-grid" style="grid-template-columns: repeat(${Math.min(data.packages.length, 3)}, 1fr)">`;
+  for (const p of data.packages) {
+    const sharedCnt = p.total_tests - p.unique_count;
+    h += `<div class="compare-card"><h3><a href="${p.url}" target="_blank" style="color:#58a6ff;text-decoration:none">${p.name}</a></h3><div class="price">${p.price}</div><div class="stats">${p.total_tests} tests total | ${sharedCnt} shared with others | ${p.unique_count} exclusive to this package</div>`;
+    if (p.price_diff > 0) h += `<div class="diff">+₹${p.price_diff} more for ${p.unique_count} extra test${p.unique_count !== 1 ? 's' : ''} you won't get elsewhere</div>`;
+    h += `</div>`;
+  }
+  h += `</div>`;
+
+  // Shared tests
+  h += `<div class="compare-section"><h4>Shared across all (${data.shared_count})</h4><div class="pkg-tests-list">`;
+  h += data.shared_tests.map(t => `<span class="test-chip test-shared">${t}</span>`).join('');
+  h += `</div></div>`;
+
+  // Unique per package
+  for (const p of data.packages) {
+    if (p.unique_tests.length === 0) continue;
+    h += `<div class="compare-section"><h4>Exclusive to ${p.name} (${p.unique_count} tests not in the other package${data.packages.length > 2 ? 's' : ''})</h4><div class="pkg-tests-list">`;
+    h += p.unique_tests.map(t => `<span class="test-chip test-unique">${t}</span>`).join('');
+    h += `</div></div>`;
+  }
+
+  el.innerHTML = h;
+}
+
+// ── TAB 3: Break down package ──
+let breakdownPkg = '';
+
+setupAC('bdInput', 'acBreakdown', '/api/packages', (item) => {
+  breakdownPkg = item.name || item;
+  renderBdTags();
+}, (item) => `${item.name} <span class="ac-meta">${item.price} | ${item.total_tests} tests</span>`);
+
+function pickBreakdown() {
+  const v = document.getElementById('bdInput').value.trim();
+  if (v) { breakdownPkg = v; renderBdTags(); }
+  document.getElementById('bdInput').value = '';
+}
+
+function clearBd() { breakdownPkg = ''; renderBdTags(); }
+
+function renderBdTags() {
+  document.getElementById('bdTags').innerHTML = breakdownPkg
+    ? `<span class="tag">${breakdownPkg}<span class="remove" onclick="clearBd()">&times;</span></span>` : '';
+  document.getElementById('bdBtn').disabled = !breakdownPkg;
+}
+
+async function doBreakdown() {
+  const btn = document.getElementById('bdBtn');
+  btn.disabled = true; btn.textContent = 'Analyzing...';
+  const res = await fetch('/api/breakdown', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({package: breakdownPkg}) });
+  const data = await res.json();
+  renderBreakdown(data);
+  document.getElementById('breakdownResults').style.display = 'block';
+  btn.disabled = false; btn.textContent = 'Find Cheaper Alternative';
+}
+
+function renderBreakdown(data) {
+  const el = document.getElementById('breakdownResults');
+  if (!data.original) { el.innerHTML = '<div class="empty-state">Could not analyze this package</div>'; return; }
+
+  const cheaper = data.is_cheaper;
+  const fullyCovered = data.fully_covered;
+  let h = '';
+
+  // Savings box
+  if (cheaper && fullyCovered) {
+    h += `<div class="savings-box"><div class="savings-amount">Save ${data.savings_display} (${data.savings_pct}%)</div><div class="savings-detail">All ${data.original.total_tests} tests covered by ${data.breakdown.length} cheaper item${data.breakdown.length > 1 ? 's' : ''}</div></div>`;
+  } else if (cheaper && !fullyCovered) {
+    h += `<div class="savings-box"><div class="savings-amount">Save ${data.savings_display} (${data.savings_pct}%)</div><div class="savings-detail">${data.covered_count}/${data.original.total_tests} tests covered — ${data.missing_count} can't fit within budget</div></div>`;
+  } else if (data.missing_count > 0) {
+    h += `<div class="savings-box no-savings"><div class="savings-amount">Can't fully replace within budget</div><div class="savings-detail">${data.covered_count}/${data.original.total_tests} tests covered for ${data.breakdown_price_display} — ${data.missing_count} remaining would exceed ₹${data.original.price_num}</div></div>`;
+  } else {
+    h += `<div class="savings-box no-savings"><div class="savings-amount">No savings</div><div class="savings-detail">The original package is already the best deal</div></div>`;
+  }
+
+  // Price comparison
+  const pkgCount = (data.breakdown_packages || []).length;
+  const stCount = (data.breakdown_single_tests || []).length;
+  let itemDesc = '';
+  if (pkgCount && stCount) itemDesc = `${pkgCount} package${pkgCount > 1 ? 's' : ''} + ${stCount} single test${stCount > 1 ? 's' : ''}`;
+  else if (pkgCount) itemDesc = `${pkgCount} package${pkgCount > 1 ? 's' : ''}`;
+  else if (stCount) itemDesc = `${stCount} single test${stCount > 1 ? 's' : ''}`;
+  else itemDesc = 'nothing found';
+
+  h += `<div class="vs-row"><div class="price-box"><div class="label">Original Package</div><div class="amount original">₹${data.original.price_num}</div><div class="label">${data.original.name}</div><div class="label">${data.original.total_tests} tests</div></div><div class="vs-label">vs</div><div class="price-box"><div class="label">Breakdown (${itemDesc})</div><div class="amount ${cheaper ? 'breakdown' : 'original'}">${data.breakdown_price_display}</div><div class="label">${data.covered_count}/${data.original.total_tests} tests covered</div></div></div>`;
+
+  // Packages section
+  const pkgs = data.breakdown_packages || [];
+  if (pkgs.length) {
+    h += `<div class="section-title">Step 1: Packages (${pkgs.length})</div>`;
+    let runningCovered = 0;
+    for (const p of pkgs) {
+      runningCovered += p.covers_count;
+      h += `<div class="combo-pkg"><div class="combo-pkg-header"><span class="combo-pkg-name"><a href="${p.url}" target="_blank">${p.name}</a></span><span class="combo-pkg-price">${p.price}</span></div><div class="combo-pkg-tests">Covers ${p.covers_count} of the remaining tests (${runningCovered}/${data.original.total_tests} total so far): ${p.covers.join(', ')}</div></div>`;
+    }
+  }
+
+  // Single tests section
+  const sts = data.breakdown_single_tests || [];
+  if (sts.length) {
+    h += `<div class="section-title">Step 2: Fill gaps with single tests (${sts.length})</div>`;
+    for (const p of sts) {
+      h += `<div class="combo-pkg"><div class="combo-pkg-header"><span class="combo-pkg-name"><a href="${p.url}" target="_blank">${p.name}</a> <span style="color:#888;font-weight:normal">(single test)</span></span><span class="combo-pkg-price">${p.price}</span></div></div>`;
+    }
+  }
+
+  // Missing tests
+  if (data.missing && data.missing.length) {
+    h += `<div class="section-title">Not covered (${data.missing_count})</div>`;
+    h += `<div class="combo-missing">These tests couldn't be added without exceeding the original price of ₹${data.original.price_num}:<br><br>${data.missing.join(', ')}</div>`;
+  }
+
+  el.innerHTML = h;
+}
+</script>
+</body>
+</html>

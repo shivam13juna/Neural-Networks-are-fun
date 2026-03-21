@@ -1,0 +1,3972 @@
+[
+  {
+    "name": "HEALTHY 2026 PACKAGE",
+    "price": "₹2026",
+    "mode": "package"
+  },
+  {
+    "name": "COMPLETE HEALTH CHECK WITH VITAMINS",
+    "price": "₹1999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM XL WITH UTSH",
+    "price": "₹9999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM X WITH UTSH",
+    "price": "₹8499",
+    "mode": "package"
+  },
+  {
+    "name": "EXTENSIVE FULL BODY HEALTH CHECKUP",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM BASIC 1 WITH UTSH",
+    "price": "₹899",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM BASIC 2 WITH UTSH",
+    "price": "₹1050",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.1 WITH UTSH",
+    "price": "₹1799",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.2 WITH UTSH",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.3 WITH UTSH",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.4 WITH UTSH",
+    "price": "₹3999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.5 WITH UTSH",
+    "price": "₹4499",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.6 WITH UTSH",
+    "price": "₹4999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.7 WITH UTSH",
+    "price": "₹5999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.8 WITH UTSH",
+    "price": "₹6999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 24X7 (NON FASTING) - ADVANCED",
+    "price": "₹5664",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 24X7 (NON FASTING) - BASIC",
+    "price": "₹3409",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM CAMP PROFILE 1",
+    "price": "₹2299",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM CAMP PROFILE 2",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM FEMALE WITH UTSH",
+    "price": "₹2799",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM MALE WITH UTSH",
+    "price": "₹2599",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM TAX SAVER - ADVANCED WITH UTSH",
+    "price": "₹5499",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM TAX SAVER - BASIC WITH UTSH",
+    "price": "₹2999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM WINTER ADVANCED WITH UTSH",
+    "price": "₹1899",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM WINTER BASIC WITH UTSH",
+    "price": "₹1399",
+    "mode": "package"
+  },
+  {
+    "name": "ADVANCED FULL BODY CHECKUP WITH VITAMINS",
+    "price": "₹1699",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY ANIMAL PANEL (BY PHADIA)",
+    "price": "₹3250",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY ASTHMA / RHINITIS SCREENING (BY PHADIA)",
+    "price": "₹6450",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY CEREAL/VEG FOOD PANEL (BY PHADIA)",
+    "price": "₹6500",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY DRUG PANEL (BY ELISA)",
+    "price": "₹5720",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY DUST PANEL (BY PHADIA)",
+    "price": "₹3250",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY ECZEMA SCREENING PANEL (BY PHADIA)",
+    "price": "₹5000",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY FOOD PANEL 1 (BY PHADIA)",
+    "price": "₹6450",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY FRUIT PANEL 1 (BY PHADIA)",
+    "price": "₹3500",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY FRUIT PANEL 2 (BY PHADIA)",
+    "price": "₹3500",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY INHALANT PANEL (BY ELISA)",
+    "price": "₹4730",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY NON VEG FOOD PANEL (BY ELISA)",
+    "price": "₹3630",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY NON-VEGETARIAN PANEL 1 (BY PHADIA)",
+    "price": "₹4700",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY NON-VEGETARIAN PANEL 2 (BY PHADIA)",
+    "price": "₹4700",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY NUT PANEL (BY PHADIA)",
+    "price": "₹4600",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY POLLEN PANEL (BY PHADIA)",
+    "price": "₹6000",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY VEG FOOD PANEL (BY ELISA)",
+    "price": "₹6160",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY VEGETABLE PANEL 1 (BY PHADIA)",
+    "price": "₹3300",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY VEGETABLE PANEL 2 (BY PHADIA)",
+    "price": "₹3200",
+    "mode": "package"
+  },
+  {
+    "name": "ALLERGY VEGETABLE PANEL 3 (BY PHADIA)",
+    "price": "₹3200",
+    "mode": "package"
+  },
+  {
+    "name": "AMH ADVANCED PROFILE",
+    "price": "₹3366",
+    "mode": "package"
+  },
+  {
+    "name": "AMINO ACID PROFILE (35)",
+    "price": "₹2266",
+    "mode": "package"
+  },
+  {
+    "name": "ANEMIA PROFILE ADVANCED",
+    "price": "₹4532",
+    "mode": "package"
+  },
+  {
+    "name": "ANEMIA PROFILE BASIC",
+    "price": "₹2948",
+    "mode": "package"
+  },
+  {
+    "name": "ANTENATAL PROFILE - ADVANCED",
+    "price": "₹2838",
+    "mode": "package"
+  },
+  {
+    "name": "ANTENATAL PROFILE - BASIC",
+    "price": "₹1705",
+    "mode": "package"
+  },
+  {
+    "name": "ARTHRITIS PROFILE A WITH UTSH",
+    "price": "₹3409",
+    "mode": "package"
+  },
+  {
+    "name": "ARTHRITIS PROFILE B WITH UTSH",
+    "price": "₹5114",
+    "mode": "package"
+  },
+  {
+    "name": "ARTHRITIS PROFILE M WITH UTSH",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "ARTHRITIS PROFILE WITH UTSH",
+    "price": "₹5499",
+    "mode": "package"
+  },
+  {
+    "name": "BAD OBSTETRIC HISTORY MAX (BOH MAX)",
+    "price": "₹5000",
+    "mode": "package"
+  },
+  {
+    "name": "BAD OBSTETRIC HISTORY MINI (BOH MINI)",
+    "price": "₹5665",
+    "mode": "package"
+  },
+  {
+    "name": "BAD OBSTETRIC HISTORY-BOH MAX",
+    "price": "₹5000",
+    "mode": "package"
+  },
+  {
+    "name": "BAD OBSTETRIC HISTORY-BOH MINI",
+    "price": "₹3500",
+    "mode": "package"
+  },
+  {
+    "name": "BETA-THALASSEMIA SCREENING",
+    "price": "₹572",
+    "mode": "package"
+  },
+  {
+    "name": "BONE PROFILE - ADVANCED",
+    "price": "₹3630",
+    "mode": "package"
+  },
+  {
+    "name": "BONE PROFILE - BASIC",
+    "price": "₹2497",
+    "mode": "package"
+  },
+  {
+    "name": "CARDIAC RISK MARKERS",
+    "price": "₹1399",
+    "mode": "package"
+  },
+  {
+    "name": "CHIKUNGUNYA RAPID TEST (IGG/IGM)",
+    "price": "₹572",
+    "mode": "package"
+  },
+  {
+    "name": "COAGULATION PROFILE",
+    "price": "₹2000",
+    "mode": "package"
+  },
+  {
+    "name": "COMPLETE THYROID CHECKUP",
+    "price": "₹775",
+    "mode": "package"
+  },
+  {
+    "name": "COMPLETE URINE ANALYSIS",
+    "price": "₹500",
+    "mode": "package"
+  },
+  {
+    "name": "COMPLETE VITAMINS PROFILE",
+    "price": "₹5499",
+    "mode": "package"
+  },
+  {
+    "name": "COMPREHENSIVE HEART HEALTH CHECKUP",
+    "price": "₹2364",
+    "mode": "package"
+  },
+  {
+    "name": "COVID ANTIBODY - 1",
+    "price": "₹410",
+    "mode": "package"
+  },
+  {
+    "name": "COVID INFECTION MONITORING",
+    "price": "₹2060",
+    "mode": "package"
+  },
+  {
+    "name": "COVID INFECTION MONITORING - ADVANCED",
+    "price": "₹2370",
+    "mode": "package"
+  },
+  {
+    "name": "COVID PROFILE",
+    "price": "₹3090",
+    "mode": "package"
+  },
+  {
+    "name": "COVID-19",
+    "price": "₹495",
+    "mode": "package"
+  },
+  {
+    "name": "DENGUE RAPID TEST (IGG/IGM)",
+    "price": "₹363",
+    "mode": "package"
+  },
+  {
+    "name": "DOA PANEL-6",
+    "price": "₹902",
+    "mode": "package"
+  },
+  {
+    "name": "DOCTOR RECOMMENDED FULL BODY CHECKUP ADVANCED",
+    "price": "₹2750",
+    "mode": "package"
+  },
+  {
+    "name": "DOCTOR RECOMMENDED FULL BODY CHECKUP BASIC",
+    "price": "₹2200",
+    "mode": "package"
+  },
+  {
+    "name": "DOUBLE MARKER FIRST TRIMESTER 8-13 WEEK (FMF CERTIFIED)",
+    "price": "₹2300",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 10",
+    "price": "₹2156",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 2",
+    "price": "₹506",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 3",
+    "price": "₹682",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 4",
+    "price": "₹847",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 5",
+    "price": "₹1078",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 6",
+    "price": "₹1298",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 7",
+    "price": "₹1529",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 8",
+    "price": "₹1705",
+    "mode": "package"
+  },
+  {
+    "name": "DRUG PANEL 9",
+    "price": "₹1925",
+    "mode": "package"
+  },
+  {
+    "name": "ELEMENTS 22 (TOXIC AND NUTRIENTS)",
+    "price": "₹2200",
+    "mode": "package"
+  },
+  {
+    "name": "FAT - SOLUBLE VITAMINS PROFILE",
+    "price": "₹2035",
+    "mode": "package"
+  },
+  {
+    "name": "Festive Healthy Package With Vitamins",
+    "price": "₹1899",
+    "mode": "package"
+  },
+  {
+    "name": "FIBROSIS INDEX (FIB-4)",
+    "price": "₹400",
+    "mode": "package"
+  },
+  {
+    "name": "FREE ANDROGEN INDEX (FAIN)",
+    "price": "₹1650",
+    "mode": "package"
+  },
+  {
+    "name": "FREEDOM HEALTHY PACKAGE 2025",
+    "price": "₹1899",
+    "mode": "package"
+  },
+  {
+    "name": "FT3-FT4-USTSH",
+    "price": "₹671",
+    "mode": "package"
+  },
+  {
+    "name": "GASTRO / GUT HEALTH PANEL",
+    "price": "₹902",
+    "mode": "package"
+  },
+  {
+    "name": "GLP 1 MONITORING PACKAGE",
+    "price": "₹2799",
+    "mode": "package"
+  },
+  {
+    "name": "GLP 1 MONITORING WITH VITALS PACKAGE",
+    "price": "₹2999",
+    "mode": "package"
+  },
+  {
+    "name": "GLP 1 PACKAGE",
+    "price": "₹2799",
+    "mode": "package"
+  },
+  {
+    "name": "GLP 1 PACKAGE WITH VITALS",
+    "price": "₹2999",
+    "mode": "package"
+  },
+  {
+    "name": "H3N2 PLUS INFLUENZA PROFILE",
+    "price": "₹4818",
+    "mode": "package"
+  },
+  {
+    "name": "H3T - PROFILE NEW",
+    "price": "₹1012",
+    "mode": "package"
+  },
+  {
+    "name": "HbA1c with Graph",
+    "price": "₹500",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY PROFILE 1",
+    "price": "₹1374",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY PROFILE 2",
+    "price": "₹1594",
+    "mode": "package"
+  },
+  {
+    "name": "HEMOGRAM - 6 PART (DIFF)",
+    "price": "₹314",
+    "mode": "package"
+  },
+  {
+    "name": "HEPATITIS PANEL",
+    "price": "₹5665",
+    "mode": "package"
+  },
+  {
+    "name": "HEPATITIS PANEL I",
+    "price": "₹4600",
+    "mode": "package"
+  },
+  {
+    "name": "HIV 1 AND 2 ANTIBODY RAPID SCREENING TEST",
+    "price": "₹528",
+    "mode": "package"
+  },
+  {
+    "name": "INFECTION CHECKUP PROFILE",
+    "price": "₹3090",
+    "mode": "package"
+  },
+  {
+    "name": "INFERTILITY - EXTENDED",
+    "price": "₹5104",
+    "mode": "package"
+  },
+  {
+    "name": "INFERTILITY ADVANCED",
+    "price": "₹4532",
+    "mode": "package"
+  },
+  {
+    "name": "INFERTILITY BASIC",
+    "price": "₹2497",
+    "mode": "package"
+  },
+  {
+    "name": "INFLUENZA PANEL (INFLUENZA A AND B AND H1N1)",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "IRON DEFICIENCY PROFILE",
+    "price": "₹670",
+    "mode": "package"
+  },
+  {
+    "name": "IRON DEFICIENCY PROFILE ADVANCED",
+    "price": "₹970",
+    "mode": "package"
+  },
+  {
+    "name": "IRON PROFILE",
+    "price": "₹900",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - DIABETIC SCREEN",
+    "price": "₹1319",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - INFERTILITY PROFILE ADVANCED",
+    "price": "₹4949",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - INFERTILITY PROFILE BASIC",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - MENS HAIRFALL SCREENING ADVANCED",
+    "price": "₹3299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - MENS SKIN CARE CHECKUP",
+    "price": "₹3299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - MONSOON FEVER PANEL ADVANCED (RAPID)",
+    "price": "₹1869",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - PCOD (MINI)",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - PCOD ADVANCED",
+    "price": "₹6299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - PCOD BASIC",
+    "price": "₹5499",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - WINTER FEVER PANEL ADVANCED",
+    "price": "₹2750",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - WINTER FEVER PANEL ADVANCED (INCLUDING INFLUENZA)",
+    "price": "₹5499",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - WINTER FEVER PANEL ADVANCED (RAPID)",
+    "price": "₹1869",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - WINTER FEVER PANEL BASIC (RAPID)",
+    "price": "₹1649",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - WOMENS HAIRFALL SCREENING ADVANCED",
+    "price": "₹3299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH - WOMENS SKIN CARE CHECKUP",
+    "price": "₹3299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH ANEMIA PROFILE ADVANCED",
+    "price": "₹4304",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH ANEMIA PROFILE BASIC",
+    "price": "₹2356",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH ANTENATAL PROFILE - ADVANCED",
+    "price": "₹3079",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH ANTENATAL PROFILE - BASIC",
+    "price": "₹1650",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH AUTOIMMUNUE THYROID SCREENING PANEL",
+    "price": "₹2645",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH BONE AND MUSCLE HEALTH",
+    "price": "₹1999",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH CANCER SCREENING BREAST AND OVARIAN",
+    "price": "₹1299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH CANCER SCREENING FEMALE ADVANCED",
+    "price": "₹3999",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH CANCER SCREENING FEMALE BASIC",
+    "price": "₹1999",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH CANCER SCREENING MALE ADVANCED",
+    "price": "₹1999",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH CANCER SCREENING MALE BASIC",
+    "price": "₹1299",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH CELIAC DISEASE SCREENING PANEL",
+    "price": "₹3925",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH DIABETIC PROFILE-ADVANCED",
+    "price": "₹4949",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH DIABETIC PROFILE-BASIC",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH HEART SCREEN ADVANCED",
+    "price": "₹1499",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH HEART SCREEN BASIC",
+    "price": "₹1099",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH HEART SCREEN EXTENDED",
+    "price": "₹2999",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH IMMUNITY HEALTH",
+    "price": "₹2499",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH INFERTILITY PROFILE EXTENDED",
+    "price": "₹4950",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MALE INFERTILITY PACKAGE",
+    "price": "₹1230",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MENOPAUSE ASSESSMENT PANEL",
+    "price": "₹3565",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MONSOON FEVER MINI",
+    "price": "₹704",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MONSOON FEVER PANEL - ADVANCED",
+    "price": "₹2499",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MONSOON FEVER PANEL - ADVANCED (INCLUDING INFLUENZA)",
+    "price": "₹5499",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MONSOON FEVER PANEL - BASIC",
+    "price": "₹2089",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MONSOON FEVER PANEL - BASIC (RAPID)",
+    "price": "₹1649",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH MONSOON FEVER SCREEN WITH URINE ANALYSIS",
+    "price": "₹1056",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH NUTRA360 CHECK",
+    "price": "₹2399",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH POSTPARTUM HEALTH CHECKUP - ADVANCED",
+    "price": "₹2500",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH POSTPARTUM HEALTH CHECKUP - BASIC",
+    "price": "₹1500",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH PRE-MARITAL HEALTH CHECK UP",
+    "price": "₹2099",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH PRE-OPERATIVE EYE SURGERY PACKAGE",
+    "price": "₹1209",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH PRE-OPERATIVE PACKAGE ADVANCED",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH PRE-OPERATIVE PACKAGE BASIC",
+    "price": "₹1979",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH PRE-OPERATIVE PACKAGE MINI",
+    "price": "₹1209",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH STD PROFILE ADVANCED",
+    "price": "₹7149",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH STD PROFILE BASIC",
+    "price": "₹2749",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH THYROID PROFILE - ADVANCED",
+    "price": "₹2799",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH THYROID PROFILE - BASIC",
+    "price": "₹549",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH WINTER FEVER MINI",
+    "price": "₹704",
+    "mode": "package"
+  },
+  {
+    "name": "JAANCH WINTER FEVER SCREEN WITH URINE ANALYSIS",
+    "price": "₹1056",
+    "mode": "package"
+  },
+  {
+    "name": "KIDNEY PROFILE WITH ELECTROLYTES",
+    "price": "₹1474",
+    "mode": "package"
+  },
+  {
+    "name": "KIDPRO",
+    "price": "₹880",
+    "mode": "package"
+  },
+  {
+    "name": "LEPTOSPIRA RAPID TEST (IGG/IGM)",
+    "price": "₹627",
+    "mode": "package"
+  },
+  {
+    "name": "LIPID PROFILE",
+    "price": "₹590",
+    "mode": "package"
+  },
+  {
+    "name": "LIVER FUNCTION TESTS",
+    "price": "₹880",
+    "mode": "package"
+  },
+  {
+    "name": "MALARIAL ANTIGEN",
+    "price": "₹638",
+    "mode": "package"
+  },
+  {
+    "name": "MALE HORMONE SCREENING PANEL",
+    "price": "₹3971",
+    "mode": "package"
+  },
+  {
+    "name": "MALE HORMONES SCREENING PROFILE",
+    "price": "₹3971",
+    "mode": "package"
+  },
+  {
+    "name": "MASTER HEALTH CHECK PACKAGE",
+    "price": "₹2500",
+    "mode": "package"
+  },
+  {
+    "name": "MMR IMMUNITY PROFILE IGG ANTIBODY",
+    "price": "₹1550",
+    "mode": "package"
+  },
+  {
+    "name": "MMR IMMUNITY PROFILE IGG IGM ANTIBODIES",
+    "price": "₹3090",
+    "mode": "package"
+  },
+  {
+    "name": "NK CELL (CD16+CD56) ANALYSIS",
+    "price": "₹2266",
+    "mode": "package"
+  },
+  {
+    "name": "PALEO PROFILE - ADVANCED NEW",
+    "price": "₹4509",
+    "mode": "package"
+  },
+  {
+    "name": "PALEO PROFILE - BASIC NEW",
+    "price": "₹2969",
+    "mode": "package"
+  },
+  {
+    "name": "PCOS MINI",
+    "price": "₹2859",
+    "mode": "package"
+  },
+  {
+    "name": "POLLUTION IMPACT - ADVANCED",
+    "price": "₹3058",
+    "mode": "package"
+  },
+  {
+    "name": "POLLUTION IMPACT - BASIC",
+    "price": "₹2035",
+    "mode": "package"
+  },
+  {
+    "name": "POLLUTION INFLAMMATION PROFILE",
+    "price": "₹799",
+    "mode": "package"
+  },
+  {
+    "name": "POSTPARTUM HEALTH CHECKUP - ADVANCED",
+    "price": "₹2838",
+    "mode": "package"
+  },
+  {
+    "name": "POSTPARTUM HEALTH CHECKUP - BASIC",
+    "price": "₹1705",
+    "mode": "package"
+  },
+  {
+    "name": "PRE-PREGNANCY PROFILE",
+    "price": "₹3168",
+    "mode": "package"
+  },
+  {
+    "name": "PREECLAMPSIA MARKERS",
+    "price": "₹4500",
+    "mode": "package"
+  },
+  {
+    "name": "PREECLAMPSIA PROFILE ADVANCED",
+    "price": "₹3740",
+    "mode": "package"
+  },
+  {
+    "name": "PREECLAMPSIA PROFILE BASIC",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "PROSTATE PROFILE",
+    "price": "₹900",
+    "mode": "package"
+  },
+  {
+    "name": "QUADRUPLE MARKER SECOND TRIMESTER 14-22 WEEK",
+    "price": "₹3200",
+    "mode": "package"
+  },
+  {
+    "name": "QUANTIFERON -TB GOLD PLUS",
+    "price": "₹3199",
+    "mode": "package"
+  },
+  {
+    "name": "ROUTINE URINE ANALYSIS",
+    "price": "₹180",
+    "mode": "package"
+  },
+  {
+    "name": "SENIOR CITIZEN HEALTH CHECKUP PROFILE",
+    "price": "₹7999",
+    "mode": "package"
+  },
+  {
+    "name": "SENIOR CITIZEN PROFILE FEMALE",
+    "price": "₹2399",
+    "mode": "package"
+  },
+  {
+    "name": "SENIOR CITIZEN PROFILE MALE",
+    "price": "₹2399",
+    "mode": "package"
+  },
+  {
+    "name": "SERUM ELECTROLYTES",
+    "price": "₹520",
+    "mode": "package"
+  },
+  {
+    "name": "SMOKERS PANEL - ADVANCED",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "SMOKERS PANEL - BASIC",
+    "price": "₹2266",
+    "mode": "package"
+  },
+  {
+    "name": "SPORTS FITNESS - ADVANCED",
+    "price": "₹3850",
+    "mode": "package"
+  },
+  {
+    "name": "SPORTS FITNESS - BASIC",
+    "price": "₹1815",
+    "mode": "package"
+  },
+  {
+    "name": "SPORTS FITNESS - COMPREHENSIVE",
+    "price": "₹7359",
+    "mode": "package"
+  },
+  {
+    "name": "STD PROFILE - BASIC",
+    "price": "₹2838",
+    "mode": "package"
+  },
+  {
+    "name": "STD PROFILE ADVANCED",
+    "price": "₹6567",
+    "mode": "package"
+  },
+  {
+    "name": "STEROID PROFILE",
+    "price": "₹3399",
+    "mode": "package"
+  },
+  {
+    "name": "SUMMER WELLNESS WITH VITAMINS AND ELECTROLYTES",
+    "price": "₹1949",
+    "mode": "package"
+  },
+  {
+    "name": "T-CELL (CD3) ANALYSIS",
+    "price": "₹2266",
+    "mode": "package"
+  },
+  {
+    "name": "T3-T4-USTSH",
+    "price": "₹399",
+    "mode": "package"
+  },
+  {
+    "name": "TB - WHOLE GENOME SEQUENCING",
+    "price": "₹9064",
+    "mode": "package"
+  },
+  {
+    "name": "TORCH ALL 8",
+    "price": "₹2600",
+    "mode": "package"
+  },
+  {
+    "name": "TORCH ALL TEN PROFILE",
+    "price": "₹2904",
+    "mode": "package"
+  },
+  {
+    "name": "TORCH PANEL IGG",
+    "price": "₹1440",
+    "mode": "package"
+  },
+  {
+    "name": "TORCH PANEL IGM",
+    "price": "₹1440",
+    "mode": "package"
+  },
+  {
+    "name": "TRIPLE H",
+    "price": "₹999",
+    "mode": "package"
+  },
+  {
+    "name": "TRIPLE MARKER SECOND TRIMESTER 14-22 WEEK",
+    "price": "₹2700",
+    "mode": "package"
+  },
+  {
+    "name": "TYPHOID TEST",
+    "price": "₹946",
+    "mode": "package"
+  },
+  {
+    "name": "URINE ANALYSIS AND CULTURE",
+    "price": "₹1133",
+    "mode": "package"
+  },
+  {
+    "name": "USTSH-LH-FSH-PRL",
+    "price": "₹1562",
+    "mode": "package"
+  },
+  {
+    "name": "VIRAL MARKERS (RAPID)",
+    "price": "₹1300",
+    "mode": "package"
+  },
+  {
+    "name": "VITAMIN B COMPLEX PROFILE",
+    "price": "₹1999",
+    "mode": "package"
+  },
+  {
+    "name": "VITAMIN D PROFILE",
+    "price": "₹2299",
+    "mode": "package"
+  },
+  {
+    "name": "VITAMIN D TOTAL AND B12 COMBO",
+    "price": "₹1499",
+    "mode": "package"
+  },
+  {
+    "name": "WIDAL",
+    "price": "₹264",
+    "mode": "package"
+  },
+  {
+    "name": "WIDAL TUBE AGGLUTINATION",
+    "price": "₹451",
+    "mode": "package"
+  },
+  {
+    "name": "WINTER WELLNESS PACKAGE WITH VITAMINS",
+    "price": "₹1999",
+    "mode": "package"
+  },
+  {
+    "name": "WOMEN ADVANCED PROFILE WITH UTSH",
+    "price": "₹2431",
+    "mode": "package"
+  },
+  {
+    "name": "WOMEN BASIC PROFILE WITH UTSH",
+    "price": "₹1870",
+    "mode": "package"
+  },
+  {
+    "name": "WOMEN CANCER SCREENING ADVANCED",
+    "price": "₹2749",
+    "mode": "package"
+  },
+  {
+    "name": "WOMEN CANCER SCREENING PACKAGE ADVANCED",
+    "price": "₹6798",
+    "mode": "package"
+  },
+  {
+    "name": "WOMEN CANCER SCREENING PACKAGE BASIC",
+    "price": "₹2749",
+    "mode": "package"
+  },
+  {
+    "name": "SUPER HEALTHY COMBO OFFER",
+    "price": "₹3700",
+    "mode": "package"
+  },
+  {
+    "name": "FESTIVE HEALTHY COUPLE PACKAGE WITH VITAMINS",
+    "price": "₹3000",
+    "mode": "package"
+  },
+  {
+    "name": "BETA THALASSEMIA",
+    "price": "₹1199",
+    "mode": "package"
+  },
+  {
+    "name": "WINTER WELLNESS COUPLE PACKAGE WITH VITAMINS",
+    "price": "₹3000",
+    "mode": "package"
+  },
+  {
+    "name": "SUMMER WELLNESS COUPLE PACKAGE WITH VITAMINS AND ELECTROLYTES",
+    "price": "₹3450",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.1 WITH ECG",
+    "price": "₹2099",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.2 WITH ECG",
+    "price": "₹2499",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM 1.3 WITH ECG",
+    "price": "₹3699",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM X WITH ECG",
+    "price": "₹7899",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM XL WITH ECG",
+    "price": "₹9299",
+    "mode": "package"
+  },
+  {
+    "name": "ADVANCED FULL BODY COUPLE CHECKUP WITH ECG",
+    "price": "₹3300",
+    "mode": "package"
+  },
+  {
+    "name": "COMPLETE HEALTH CHECK WITH VITAMINS WITH ECG",
+    "price": "₹2299",
+    "mode": "package"
+  },
+  {
+    "name": "COMPLETE HEALTH CHECK FOR COUPLE WITH ECG",
+    "price": "₹4150",
+    "mode": "package"
+  },
+  {
+    "name": "FREEDOM HEALTHY PACKAGE 2024 WITH ECG",
+    "price": "₹2299",
+    "mode": "package"
+  },
+  {
+    "name": "FREEDOM HEALTHY COUPLE PACKAGE 2024 WITH ECG",
+    "price": "₹3600",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY 2025 PACKAGE WITH ECG",
+    "price": "₹2325",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY 2025 COUPLE PACKAGE WITH ECG",
+    "price": "₹4126",
+    "mode": "package"
+  },
+  {
+    "name": "SUPER HEALTHY COMBO OFFER WITH ECG",
+    "price": "₹4300",
+    "mode": "package"
+  },
+  {
+    "name": "SUMMER WELLNESS WITH VITAMINS AND ELECTROLYTES ECG",
+    "price": "₹2249",
+    "mode": "package"
+  },
+  {
+    "name": "SUMMER WELLNESS COUPLE PACKAGE WITH VITAMINS AND ELECTROLYTES ECG",
+    "price": "₹4050",
+    "mode": "package"
+  },
+  {
+    "name": "EXTENSIVE FULL BODY HEALTH CHECKUP FOR COUPLE",
+    "price": "₹6300",
+    "mode": "package"
+  },
+  {
+    "name": "NEW AAROGYAM BASIC WITH USTSH",
+    "price": "₹1199",
+    "mode": "package"
+  },
+  {
+    "name": "NEW AAROGYAM ADVANCED WITH USTSH",
+    "price": "₹1699",
+    "mode": "package"
+  },
+  {
+    "name": "FREEDOM HEALTHY COUPLE PACKAGE 2025",
+    "price": "₹3500",
+    "mode": "package"
+  },
+  {
+    "name": "FREEDOM HEALTHY PACKAGE 2025 ECG",
+    "price": "₹2199",
+    "mode": "package"
+  },
+  {
+    "name": "FREEDOM HEALTHY COUPLE PACKAGE 2025 ECG",
+    "price": "₹4100",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY 2026 COUPLE PACKAGE",
+    "price": "₹3526",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY 2026 PACKAGE WITH ECG",
+    "price": "₹2326",
+    "mode": "package"
+  },
+  {
+    "name": "HEALTHY 2026 COUPLE PACKAGE WITH ECG",
+    "price": "₹4126",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM X WITH UTSH WITH ECG",
+    "price": "₹8799",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM X WITH UTSH BUY1GET1FREE WITH ECG",
+    "price": "₹9100",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM PURUSH PROFILE WITH UTSH",
+    "price": "₹2750",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM STREE PROFILE WITH UTSH",
+    "price": "₹2750",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM X WITH ALLERGY SCREENING",
+    "price": "₹8499",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM XL WITH ALLERGY SCREENING",
+    "price": "₹9999",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM X WITH UTSH BUY1GET1FREE",
+    "price": "₹8498",
+    "mode": "package"
+  },
+  {
+    "name": "AAROGYAM XL WITH UTSH BUY1GET1FREE",
+    "price": "₹9998",
+    "mode": "package"
+  },
+  {
+    "name": "FASTING BLOOD SUGAR",
+    "price": "₹97",
+    "mode": "single-test"
+  },
+  {
+    "name": "HbA1c",
+    "price": "₹368",
+    "mode": "single-test"
+  },
+  {
+    "name": "POSTPRANDIAL BLOOD SUGAR",
+    "price": "₹97",
+    "mode": "single-test"
+  },
+  {
+    "name": "ERYTHROCYTE SEDIMENTATION RATE (ESR)",
+    "price": "₹127",
+    "mode": "single-test"
+  },
+  {
+    "name": "FREE THYROXINE (FT4)",
+    "price": "₹290",
+    "mode": "single-test"
+  },
+  {
+    "name": "BETA HCG",
+    "price": "₹850",
+    "mode": "single-test"
+  },
+  {
+    "name": "C-REACTIVE PROTEIN (CRP)",
+    "price": "₹470",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROLACTIN (PRL)",
+    "price": "₹599",
+    "mode": "single-test"
+  },
+  {
+    "name": "FREE TRIIODOTHYRONINE (FT3)",
+    "price": "₹290",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROSTATE SPECIFIC ANTIGEN (PSA)",
+    "price": "₹600",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN B-12",
+    "price": "₹999",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS C VIRUS (ANTI HCV) - TOTAL",
+    "price": "₹1299",
+    "mode": "single-test"
+  },
+  {
+    "name": "HIV I AND II",
+    "price": "₹599",
+    "mode": "single-test"
+  },
+  {
+    "name": "RHEUMATOID FACTOR (RF)",
+    "price": "₹666",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS B SURFACE ANTIGEN (HBSAG)",
+    "price": "₹540",
+    "mode": "single-test"
+  },
+  {
+    "name": "RANDOM BLOOD SUGAR",
+    "price": "₹86",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOTAL IgE",
+    "price": "₹899",
+    "mode": "single-test"
+  },
+  {
+    "name": "25-OH VITAMIN D (TOTAL)",
+    "price": "₹1199",
+    "mode": "single-test"
+  },
+  {
+    "name": "INSULIN - FASTING",
+    "price": "₹830",
+    "mode": "single-test"
+  },
+  {
+    "name": "FOLLICLE STIMULATING HORMONE (FSH)",
+    "price": "₹540",
+    "mode": "single-test"
+  },
+  {
+    "name": "FERRITIN",
+    "price": "₹825",
+    "mode": "single-test"
+  },
+  {
+    "name": "LUTEINISING HORMONE (LH)",
+    "price": "₹528",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI MULLERIAN HORMONE (AMH)",
+    "price": "₹2199",
+    "mode": "single-test"
+  },
+  {
+    "name": "URINARY MICROALBUMIN",
+    "price": "₹685",
+    "mode": "single-test"
+  },
+  {
+    "name": "CALCIUM",
+    "price": "₹237",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI THYROGLOBULIN ANTIBODY (ATG)",
+    "price": "₹1199",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI CCP (ACCP)",
+    "price": "₹1870",
+    "mode": "single-test"
+  },
+  {
+    "name": "TESTOSTERONE",
+    "price": "₹670",
+    "mode": "single-test"
+  },
+  {
+    "name": "FREE TESTOSTERONE",
+    "price": "₹1599",
+    "mode": "single-test"
+  },
+  {
+    "name": "CORTISOL",
+    "price": "₹600",
+    "mode": "single-test"
+  },
+  {
+    "name": "CARCINO EMBRYONIC ANTIGEN (CEA)",
+    "price": "₹820",
+    "mode": "single-test"
+  },
+  {
+    "name": "ESTRADIOL/OESTROGEN (E2)",
+    "price": "₹620",
+    "mode": "single-test"
+  },
+  {
+    "name": "RUBELLA - IgG",
+    "price": "₹410",
+    "mode": "single-test"
+  },
+  {
+    "name": "Anti-TPO antibody (Anti-Thyroid Peroxidase)",
+    "price": "₹1299",
+    "mode": "single-test"
+  },
+  {
+    "name": "LACTATE DEHYDROGENASE (LDH)",
+    "price": "₹367",
+    "mode": "single-test"
+  },
+  {
+    "name": "VDRL (RPR) FOR SYPHILIS",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "MAGNESIUM",
+    "price": "₹539",
+    "mode": "single-test"
+  },
+  {
+    "name": "HLA B27 FLOW CYTOMETRY",
+    "price": "₹2253",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI NUCLEAR ANTIBODIES (ANA)",
+    "price": "₹825",
+    "mode": "single-test"
+  },
+  {
+    "name": "CA-125",
+    "price": "₹1399",
+    "mode": "single-test"
+  },
+  {
+    "name": "PHOSPHOROUS",
+    "price": "₹245",
+    "mode": "single-test"
+  },
+  {
+    "name": "NT-PROBNP",
+    "price": "₹3199",
+    "mode": "single-test"
+  },
+  {
+    "name": "URINE CULTURE AND SUSCEPTIBILITY",
+    "price": "₹907",
+    "mode": "single-test"
+  },
+  {
+    "name": "RUBELLA - IgM",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "HIGH SENSITIVITY C-REACTIVE PROTEIN (HS-CRP)",
+    "price": "₹783",
+    "mode": "single-test"
+  },
+  {
+    "name": "AMYLASE",
+    "price": "₹559",
+    "mode": "single-test"
+  },
+  {
+    "name": "LIPASE",
+    "price": "₹658",
+    "mode": "single-test"
+  },
+  {
+    "name": "CA 19.9",
+    "price": "₹1342",
+    "mode": "single-test"
+  },
+  {
+    "name": "SERUM ZINC",
+    "price": "₹441",
+    "mode": "single-test"
+  },
+  {
+    "name": "C-PEPTIDE",
+    "price": "₹1199",
+    "mode": "single-test"
+  },
+  {
+    "name": "SODIUM",
+    "price": "₹245",
+    "mode": "single-test"
+  },
+  {
+    "name": "ADULT HEMOGLOBIN ELECTROPHORESIS",
+    "price": "₹1175",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALKALINE PHOSPHATASE",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALDOSTERONE",
+    "price": "₹1650",
+    "mode": "single-test"
+  },
+  {
+    "name": "INTACT PARATHYROID HORMONE (PTH)",
+    "price": "₹1580",
+    "mode": "single-test"
+  },
+  {
+    "name": "POTASSIUM",
+    "price": "₹245",
+    "mode": "single-test"
+  },
+  {
+    "name": "CREATININE - SERUM",
+    "price": "₹216",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROCALCITONIN",
+    "price": "₹1430",
+    "mode": "single-test"
+  },
+  {
+    "name": "GLUCOSE-6-PHOSPHATE DEHYDROGENASE",
+    "price": "₹755",
+    "mode": "single-test"
+  },
+  {
+    "name": "TISSUE TRANSGLUTAMINASE - IGA (TTG)",
+    "price": "₹1342",
+    "mode": "single-test"
+  },
+  {
+    "name": "CA 15.3",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROGESTERONE",
+    "price": "₹638",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI STREPTOLYSIN - O (ASO)",
+    "price": "₹668",
+    "mode": "single-test"
+  },
+  {
+    "name": "DHEA - SULPHATE (DHEAS)",
+    "price": "₹1089",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS E VIRUS (Anti HEV) - IgM",
+    "price": "₹1452",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOXO GONDII - IgM",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "FOLATE",
+    "price": "₹1299",
+    "mode": "single-test"
+  },
+  {
+    "name": "CYSTATIN C",
+    "price": "₹561",
+    "mode": "single-test"
+  },
+  {
+    "name": "HERPES SIMPLEX VIRUS I (HSV)-IGM",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "FRUCTOSAMINE",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "HERPES SIMPLEX VIRUS (HSV)-IgG",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "FREE PSA",
+    "price": "₹1342",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI - DSDNA",
+    "price": "₹836",
+    "mode": "single-test"
+  },
+  {
+    "name": "HERPES SIMPLEX VIRUS I (HSV)-IGG",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "INSULIN - PP",
+    "price": "₹583",
+    "mode": "single-test"
+  },
+  {
+    "name": "BLOOD KETONE (D3HB)",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "LP-PLA2",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "SERUM COPPER",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "VALPROIC ACID",
+    "price": "₹561",
+    "mode": "single-test"
+  },
+  {
+    "name": "HOMOCYSTEINE",
+    "price": "₹1225",
+    "mode": "single-test"
+  },
+  {
+    "name": "IRON",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOTAL TRIIODOTHYRONINE (T3)",
+    "price": "₹220",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOTAL THYROXINE (T4)",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "COVID ANTIBODY IGG (QUANTITATIVE)",
+    "price": "₹500",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALPHA-1-ANTITRYPSIN (AAT)",
+    "price": "₹1337",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS A VIRUS (ANTI HAV) - IGM",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "Creatine Phosphokinase Muscle/Brain (CPK MB), Serum",
+    "price": "₹345",
+    "mode": "single-test"
+  },
+  {
+    "name": "Creatine Phosphokinase (CPK), Serum",
+    "price": "₹356",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOTAL IRON BINDING CAPACITY (TIBC)",
+    "price": "₹367",
+    "mode": "single-test"
+  },
+  {
+    "name": "DENGUE NS1 ANTIGEN",
+    "price": "₹720",
+    "mode": "single-test"
+  },
+  {
+    "name": "DENGUE-IGM",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "DENGUE-IGG",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANA SCREENING (IMMUNOFLUORESCENCE)",
+    "price": "₹750",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI DEAMIDATED GLIADIN PEPTIDE - IGA",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI DEAMIDATED GLIADIN PEPTIDE - IGG",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "BENZODIAZEPINES",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "CHROMIUM",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "COPPER",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "DIGOXIN",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "EPSTEIN BARR VIRAL CAPSID ANTIGEN - IgG",
+    "price": "₹1364",
+    "mode": "single-test"
+  },
+  {
+    "name": "FILARIA ANTIGEN RAPID TEST",
+    "price": "₹1364",
+    "mode": "single-test"
+  },
+  {
+    "name": "GASTRIN",
+    "price": "₹792",
+    "mode": "single-test"
+  },
+  {
+    "name": "GLUCOSE TOLERANCE TEST (2 HOUR)",
+    "price": "₹100",
+    "mode": "single-test"
+  },
+  {
+    "name": "INSULIN ANTIBODIES",
+    "price": "₹1364",
+    "mode": "single-test"
+  },
+  {
+    "name": "MANGANESE",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "METHAQUALONE",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "MUMPS ANTIBODY - IGM",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "NICOTINE METABOLITES",
+    "price": "₹2035",
+    "mode": "single-test"
+  },
+  {
+    "name": "PYRUVATE",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "SELENIUM",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "VARICELLA ZOSTER VIRUS ANTIBODY - IGM",
+    "price": "₹792",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN B1/THIAMIN",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN B7/BIOTIN",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN K",
+    "price": "₹2266",
+    "mode": "single-test"
+  },
+  {
+    "name": "1,5 ANHYDROGLUCITOL",
+    "price": "₹884",
+    "mode": "single-test"
+  },
+  {
+    "name": "AFB DRUG SUSCEPTIBILITY - MOTT",
+    "price": "₹5200",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALCOHOL",
+    "price": "₹668",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALDOLASE",
+    "price": "₹1110",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALPHA HYDROXYBUTYRATE DEHYDROGENASE",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALPHA1 ACID GLYCOPROTEIN",
+    "price": "₹668",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALPHA2 MACROGLOBULIN",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "BARIUM",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "BERYLLIUM",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "BISMUTH",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "KETAMINE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "METHAMPHETAMINE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "MORPHINE",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "HLA B27 QUALITATIVE PCR",
+    "price": "₹2221",
+    "mode": "single-test"
+  },
+  {
+    "name": "Sickle cells in Blood by Light microscopy - INLAB",
+    "price": "₹2321",
+    "mode": "single-test"
+  },
+  {
+    "name": "PREGNANCY ASSOCIATED PLASMA PROTEIN A",
+    "price": "₹1430",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALPHA FETO PROTEIN",
+    "price": "₹814",
+    "mode": "single-test"
+  },
+  {
+    "name": "UNCONJUGATED ESTRIOL - uE3",
+    "price": "₹330",
+    "mode": "single-test"
+  },
+  {
+    "name": "HMPV REAL TIME QUALITATIVE PCR",
+    "price": "₹3233",
+    "mode": "single-test"
+  },
+  {
+    "name": "ELECTROCARDIOGRAM - ECG",
+    "price": "₹449",
+    "mode": "single-test"
+  },
+  {
+    "name": "DENGUE NS1 ANTIGEN RAPID TEST",
+    "price": "₹594",
+    "mode": "single-test"
+  },
+  {
+    "name": "CORTISOL  SERUM (MORNING SAMPLE 6AM -10AM)",
+    "price": "₹600",
+    "mode": "single-test"
+  },
+  {
+    "name": "TISSUE TRANSGLUTAMINASE (TTG) ANTIBODY, IGA (CLIA)",
+    "price": "₹1400",
+    "mode": "single-test"
+  },
+  {
+    "name": "METHOTREXATE TEST",
+    "price": "₹2750",
+    "mode": "single-test"
+  },
+  {
+    "name": "PLACENTAL GROWTH FACTOR",
+    "price": "₹2000",
+    "mode": "single-test"
+  },
+  {
+    "name": "SOLUBLE FMS-LIKE TYROSINE KINASE 1",
+    "price": "₹2000",
+    "mode": "single-test"
+  },
+  {
+    "name": "TIN",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "MOLYBDENUM",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTIMONY",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "CA 72.4-GASTRIC CANCER MARKER",
+    "price": "₹1500",
+    "mode": "single-test"
+  },
+  {
+    "name": "SM (SMITH) ANTIBODY, IGG",
+    "price": "₹265",
+    "mode": "single-test"
+  },
+  {
+    "name": "CHLAMYDIA TRACHOMATIS PCR",
+    "price": "₹4000",
+    "mode": "single-test"
+  },
+  {
+    "name": "NEISSERIA GONORRHOEAE PCR",
+    "price": "₹4000",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PHADIATOP ADULT",
+    "price": "₹1000",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TOMATO ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MILK ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY WHEAT ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEANUT ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SOYBEAN ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEACH ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PINEAPPLE ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ORANGE ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY APPLE ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY EGG WHITE ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY FISH COD ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HAZEL NUT ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BRAZIL NUT ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ALMOND ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HOUSE DUST ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "Allergy House Dust Mite - D.Pteronyssinus ( By Phadia)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "Allergy House Dust Mite- D.Farinae ( By Phadia)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COCKROACH GERMAN ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BERMUDA GRASS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TIMOTHY GRASS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BAHIA GRASS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CAT DANDER ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DOG DANDER ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ASPERGILLUS FUMIGATUS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ASPERGILLUS NIGER ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COW DANDER ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY RICE ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GLUTEN ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHICK PEA ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY LENTIL ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY LEMON ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SHRIMP ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHICKEN ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CLADOSPORIUM HERBARUM ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ELM ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MESQUITE ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MUCOR RACEMOSUS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CANDIDA ALBICANS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PIGEON FEATHERS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PARROT FEATHERS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SESAME SEED (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEA (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CABBAGE (PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PAPRIKA- SWEET PEPPER (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PORK (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BEEF (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CARROT (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY POTATO (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BLUE MUSSEL (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TUNA (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY OAT (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MAIZE (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY LOBSTER (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ALTERNARIA ALTERNATA ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BANANA ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CASHEW NUT (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COMMON SILVER BIRCH ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COCONUT ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COMMON PIGWEED (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CUCUMBER (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CULTIVATED RYE (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY EGG ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PENICILLIUM CHRYSOGENUM ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HORSE DANDER ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY INSULIN HUMAN ( BY PHADIA)",
+    "price": "₹1400",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY JOHNSON GRASS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MUGWORT ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PAPAYA ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEAR (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY RYE GRASS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SALMON (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SPINACH (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY STRAWBERRY (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TURKEY MEAT (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY WALNUT (BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ASPERGILLUS FLAVUS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ASPERGILLUS TERREUS ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CELERY ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GARLIC ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PENICILLOYL G ( BY PHADIA)",
+    "price": "₹1400",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PENICILLOYL V ( BY PHADIA)",
+    "price": "₹1400",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY YEAST ( BY PHADIA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "IMMATURE PLATELET FRACTION ( IPF )",
+    "price": "₹550",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG AMOXYCILLIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG AMPICILLIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG ASPIRIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG BRUFEN (IBUPROFEN) (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG CIPROFLOXACIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG CLOXACILLIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG DICLOFENAC (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG DOXYCYCLINE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG ERYTHROMYCIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG NORFLOXACIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG OFLOXACIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG OXACILLIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG PARACETAMOL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG BROMHEXINE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG CEFIXIME (CEFACLOR) (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG METAMIZOL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG PENICILLIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG SULPHA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG TETRACYCLINE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG TINIDAZOLE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG INSULIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DRUG XYLOCAINE (LIDOCAINE) (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PAPER DUST (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PERFUME (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DOG DANDER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PAINTS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DETERGENT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PARTHENIUM (COMMON RAGWEED) (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY STORAGE MITE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CAT DANDER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HAY DUST (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ASPERGILLUS NIGER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY WOOD DUST (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HAIR DYE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HOUSE FLY (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SUNFLOWER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ASPERGILLUS FUMIGATUS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HOUSE DUST MITE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COCKROACH DUST (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PIGEON DROPPING (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHICKEN FEATHERS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PIGEON FEATHERS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COW DANDER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GOAT DANDER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HORSE DANDER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHICKEN DROPPING (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HOUSE DUST (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BERMUDA GRASS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY JOHNSON GRASS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TOBBACO (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BUFFALO DANDER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MUGWORT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MOSQUITO (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COTTON LINTERS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BEEF (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHICKEN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CRAB (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY EGG (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY FISH (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MUTTON (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PORK (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PRAWN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SHRIMP (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY DAL CHANA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MILK (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CURD (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHEESE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TOMATOES (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ALMOND (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CAPSICUM (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY LEMON (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY YEAST (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CUCUMBER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TURMERIC (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PAPAYA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CAULIFLOWER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MAIZE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SESAME (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BANANA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MUSTARD (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COCONUT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY RICE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY HONEY (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BRINJAL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CABBAGE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CURRY (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CARDAMOM (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEAS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY POTATO (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ORANGE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MUSHROOM (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY WHEAT FLOUR (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BARLEY (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY OATS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEANUT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SOYA BEAN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CASHEW NUT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PISTACHIO NUT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY LENTIL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PUMPKIN SEED (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CLOVES (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GINGER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHILI PEPPER (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY STRAWBERRY (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY APPLE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY KIWI (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MELON (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MANGO (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PEAR (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PINEAPPLE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GRAPE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GUAVA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY POMEGRANATE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY WATERMELON (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GARLIC (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ONION (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SWEET POTATO (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SPINACH (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY EGG PLANT/AUBERGINE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY FIG (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY YOGURT (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY RAISIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SAFFRON (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY COCOA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MILLET (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY GLUTEN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY JOWAR (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY RAGI (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CASEIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY ALPHA LACTOGLOBULIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BETA LACTOGLOBULIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHOCOLATE (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY UDAD DAL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MASOOR DAL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TOOR DAL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY MOONG DAL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY RAJMA DAL (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHICK PEA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY BAJRA (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY TIMOTHY GRASS (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CHERRY (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY PLUM (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY CUMIN (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY SEMOLINA(RAWA) (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALLERGY FENNEL SEED (BY ELISA)",
+    "price": "₹1100",
+    "mode": "single-test"
+  },
+  {
+    "name": "DIHYDROTESTOSTERONE (DHT)",
+    "price": "₹1150",
+    "mode": "single-test"
+  },
+  {
+    "name": "HELICOBACTER PYLORI - IGG",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "HERPES SIMPLEX VIRUS II (HSV)-IGG",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "HERPES SIMPLEX VIRUS II (HSV)-IGM",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "INSULIN LIKE GROWTH FACTOR 1",
+    "price": "₹902",
+    "mode": "single-test"
+  },
+  {
+    "name": "RETICULOCYTE COUNT (%)",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "TRANSFERRIN SERUM",
+    "price": "₹442",
+    "mode": "single-test"
+  },
+  {
+    "name": "ADRENOCORTICOTROPIC HORMONE (ACTH)",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI CHLAMYDIA ANTIBODY IGG",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI CHLAMYDIA ANTIBODY IGM",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "DIRECT COOMBS TEST",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "HELICOBACTER PYLORI - IGM",
+    "price": "₹902",
+    "mode": "single-test"
+  },
+  {
+    "name": "NEONATAL HEMOGLOBIN ELECTROPHORESIS",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "SERUM GLOBULIN",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "ACETYLCHOLINE RECEPTOR AUTOANTIBODY",
+    "price": "₹2266",
+    "mode": "single-test"
+  },
+  {
+    "name": "GAMMA GLUTAMYL TRANSFERASE (GGT)",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "IONIC CALCIUM",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN B9/FOLIC ACID",
+    "price": "₹1130",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS A VIRUS (HAV) - TOTAL",
+    "price": "₹737",
+    "mode": "single-test"
+  },
+  {
+    "name": "LDL CHOLESTEROL - DIRECT",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "BETA 2 GLYCOPROTEIN 1 - IGG",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "BETA 2 GLYCOPROTEIN 1 - IGM",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "IMMUNOGLOBULIN E (IGE)",
+    "price": "₹1337",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALBUMIN - SERUM",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "MALARIAL PARASITE",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "TRIGLYCERIDES",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "BICARBONATE",
+    "price": "₹561",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS C VIRUS (HCV) QUANTITATIVE PCR",
+    "price": "₹6930",
+    "mode": "single-test"
+  },
+  {
+    "name": "MPO - ANCA ( P - ANCA )",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "PR3 - ANCA ( C-ANCA )",
+    "price": "₹1342",
+    "mode": "single-test"
+  },
+  {
+    "name": "HIGH SENSITIVITY TROPONIN I",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "TSH RECEPTOR ANTIBODIES",
+    "price": "₹1364",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANGIOTENSIN CONVERTING ENZYME",
+    "price": "₹668",
+    "mode": "single-test"
+  },
+  {
+    "name": "AMPHETAMINE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "COCAINE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "HIV - WESTERN BLOT",
+    "price": "₹3399",
+    "mode": "single-test"
+  },
+  {
+    "name": "LEPTOSPIRA-IgM",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "OPIATES",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "PHENCYCLIDINE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "PLATELET COUNT",
+    "price": "₹291",
+    "mode": "single-test"
+  },
+  {
+    "name": "TB XDR SCREEN (LPA)",
+    "price": "₹3385",
+    "mode": "single-test"
+  },
+  {
+    "name": "TETRAHYDROCANNABINOL",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "CALCITONIN",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "CHOLINESTERASE",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "COTININE",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "ETHANOL",
+    "price": "₹561",
+    "mode": "single-test"
+  },
+  {
+    "name": "GENEXPERT",
+    "price": "₹3126",
+    "mode": "single-test"
+  },
+  {
+    "name": "HDL CHOLESTEROL - DIRECT",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS C VIRUS - IGG",
+    "price": "₹451",
+    "mode": "single-test"
+  },
+  {
+    "name": "HIV-1, RNA QUALITATIVE PCR",
+    "price": "₹2781",
+    "mode": "single-test"
+  },
+  {
+    "name": "LACTATE",
+    "price": "₹442",
+    "mode": "single-test"
+  },
+  {
+    "name": "LIVER KIDNEY MICROSOMES",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "URINE PREGNANCY RAPID TEST",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "VARICELLA ZOSTER VIRUS ANTIBODY - IGG",
+    "price": "₹792",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN A",
+    "price": "₹2299",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN B6/PYRIDOXAL - 5 - PHOSPHATE",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "ACID PHOSPHATASE",
+    "price": "₹442",
+    "mode": "single-test"
+  },
+  {
+    "name": "BARBITURATES",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "BETA2 MICROGLOBULIN",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "ECHINOCOCCUS - IGG",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "GLUCOSE TOLERANCE TEST (1 HOUR)",
+    "price": "₹120",
+    "mode": "single-test"
+  },
+  {
+    "name": "HAPTOGLOBIN",
+    "price": "₹442",
+    "mode": "single-test"
+  },
+  {
+    "name": "HELICOBACTER PYLORI - IgA",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS A VIRUS ANTIBODY IGM(HAVM) RAPID TEST",
+    "price": "₹506",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS C VIRUS - IGM",
+    "price": "₹1078",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS E VIRUS IGG",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "KAPPA LIGHT CHAIN",
+    "price": "₹668",
+    "mode": "single-test"
+  },
+  {
+    "name": "LAMBDA LIGHT CHAIN",
+    "price": "₹668",
+    "mode": "single-test"
+  },
+  {
+    "name": "LEAD",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "MEASLES ANTIBODY - IGG",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "MEASLES ANTIBODY - IGM",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "METHADONE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "MISCELLANEOUS CULTURE AND SUSCEPTIBILITY",
+    "price": "₹895",
+    "mode": "single-test"
+  },
+  {
+    "name": "MUMPS ANTIBODY - IGG",
+    "price": "₹682",
+    "mode": "single-test"
+  },
+  {
+    "name": "NEONATAL THYROID STIMULATING HORMONE #  (TSH)",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROPOXYPHENE",
+    "price": "₹231",
+    "mode": "single-test"
+  },
+  {
+    "name": "TB PCR",
+    "price": "₹1925",
+    "mode": "single-test"
+  },
+  {
+    "name": "ZINC",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROTEIN ELECTROPHORESIS",
+    "price": "₹884",
+    "mode": "single-test"
+  },
+  {
+    "name": "BILIRUBIN -DIRECT",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTIDNASE-B (DNB)",
+    "price": "₹4441",
+    "mode": "single-test"
+  },
+  {
+    "name": "HIV-1, RNA QUANTITATIVE PCR",
+    "price": "₹4215",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS B VIRUS (HBV) QUALITATIVE PCR",
+    "price": "₹3564",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS C VIRUS (HCV) QUALITATIVE PCR",
+    "price": "₹3564",
+    "mode": "single-test"
+  },
+  {
+    "name": "INTERLEUKIN-6",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN D3",
+    "price": "₹2299",
+    "mode": "single-test"
+  },
+  {
+    "name": "ASPARTATE AMINOTRANSFERASE (SGOT )",
+    "price": "₹216",
+    "mode": "single-test"
+  },
+  {
+    "name": "BLOOD UREA",
+    "price": "₹137",
+    "mode": "single-test"
+  },
+  {
+    "name": "ALANINE TRANSAMINASE (SGPT)",
+    "price": "₹225",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOTAL CHOLESTEROL",
+    "price": "₹235",
+    "mode": "single-test"
+  },
+  {
+    "name": "CHLORIDE",
+    "price": "₹245",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS B SURFACE ANTIGEN(HBSAG) RAPID TEST",
+    "price": "₹506",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEMOGLOBIN",
+    "price": "₹216",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS B VIRUS (HBV) QUANTITATIVE PCR",
+    "price": "₹6859",
+    "mode": "single-test"
+  },
+  {
+    "name": "BILIRUBIN - TOTAL",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "PROTEIN - TOTAL",
+    "price": "₹226",
+    "mode": "single-test"
+  },
+  {
+    "name": "INDIRECT COOMBS TEST",
+    "price": "₹649",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANA TITRE (IMMUNOFLUORESCENCE)",
+    "price": "₹830",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTINUCLEAR ANTIBODIES-17 BLOT",
+    "price": "₹3630",
+    "mode": "single-test"
+  },
+  {
+    "name": "BLOOD UREA NITROGEN (BUN)",
+    "price": "₹119",
+    "mode": "single-test"
+  },
+  {
+    "name": "URIC ACID",
+    "price": "₹216",
+    "mode": "single-test"
+  },
+  {
+    "name": "COVID ANTIBODY IGM - ELISA",
+    "price": "₹300",
+    "mode": "single-test"
+  },
+  {
+    "name": "COVID ANTIBODIES-TOTAL (CLIA)",
+    "price": "₹500",
+    "mode": "single-test"
+  },
+  {
+    "name": "MYOGLOBIN",
+    "price": "₹1133",
+    "mode": "single-test"
+  },
+  {
+    "name": "TSH - ULTRASENSITIVE",
+    "price": "₹250",
+    "mode": "single-test"
+  },
+  {
+    "name": "TROPONIN I HEART ATTACK RISK",
+    "price": "₹1799",
+    "mode": "single-test"
+  },
+  {
+    "name": "CHROMOGRANIN A",
+    "price": "₹5665",
+    "mode": "single-test"
+  },
+  {
+    "name": "DIRECT RENIN",
+    "price": "₹4950",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS B CORE ANTIGEN (AHBC) - IGM",
+    "price": "₹737",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS B ENVELOPE ANTIGEN (AHBE) -TOTAL",
+    "price": "₹902",
+    "mode": "single-test"
+  },
+  {
+    "name": "17 OH PROGESTERONE",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "HUMAN GROWTH HORMONE (HGH)",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "CYTOMEGALO VIRUS (CMV) - IgG",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "COMPLEMENT 3 (C3)",
+    "price": "₹755",
+    "mode": "single-test"
+  },
+  {
+    "name": "VITAMIN D 1,25 - DIHYDROXY",
+    "price": "₹2838",
+    "mode": "single-test"
+  },
+  {
+    "name": "ERYTHROPOIETIN",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "CARBAMAZEPINE / TEGRETOL",
+    "price": "₹334",
+    "mode": "single-test"
+  },
+  {
+    "name": "APOLIPOPROTEIN - B (APO-B)",
+    "price": "₹614",
+    "mode": "single-test"
+  },
+  {
+    "name": "APOLIPOPROTEIN - A1 (APO-A1)",
+    "price": "₹614",
+    "mode": "single-test"
+  },
+  {
+    "name": "LIPOPROTEIN (A) [LP(A)]",
+    "price": "₹517",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANDROSTENEDIONE (A4)",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "IMMUNOGLOBULIN A (IGA)",
+    "price": "₹830",
+    "mode": "single-test"
+  },
+  {
+    "name": "IMMUNOGLOBULIN M (IGM)",
+    "price": "₹830",
+    "mode": "single-test"
+  },
+  {
+    "name": "PHENYTOIN / DILANTIN / EPTOIN",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "CARDIOLIPIN ANTIBODY (ACL) - IgA",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "CHIKUNGUNYA-IGM",
+    "price": "₹572",
+    "mode": "single-test"
+  },
+  {
+    "name": "CERULOPLASMIN",
+    "price": "₹847",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI HEPATITIS B CORE ANTIGEN (AHBC) - TOTAL",
+    "price": "₹737",
+    "mode": "single-test"
+  },
+  {
+    "name": "CARDIOLIPIN ANTIBODY (ACL) -IgG",
+    "price": "₹836",
+    "mode": "single-test"
+  },
+  {
+    "name": "TREPONEMA PALLIDUM HAEMAGGLUTINATION",
+    "price": "₹561",
+    "mode": "single-test"
+  },
+  {
+    "name": "CARDIOLIPIN ANTIBODY (ACL) - IgM",
+    "price": "₹836",
+    "mode": "single-test"
+  },
+  {
+    "name": "CYTOMEGALO VIRUS (CMV) - IgM",
+    "price": "₹310",
+    "mode": "single-test"
+  },
+  {
+    "name": "HERPES SIMPLEX VIRUS (HSV)-IgM",
+    "price": "₹341",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS B SURFACE ANTIBODY (ANTI-HBs)",
+    "price": "₹957",
+    "mode": "single-test"
+  },
+  {
+    "name": "COMPLEMENT 4 (C4)",
+    "price": "₹561",
+    "mode": "single-test"
+  },
+  {
+    "name": "THYROGLOBULIN (TG)",
+    "price": "₹1309",
+    "mode": "single-test"
+  },
+  {
+    "name": "LITHIUM",
+    "price": "₹582",
+    "mode": "single-test"
+  },
+  {
+    "name": "ADENOSINE DEAMINASE",
+    "price": "₹819",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI PHOSPHOLIPID ANTIBODY (APL) - IGM",
+    "price": "₹957",
+    "mode": "single-test"
+  },
+  {
+    "name": "IMMUNOGLOBULIN G (IGG)",
+    "price": "₹830",
+    "mode": "single-test"
+  },
+  {
+    "name": "ANTI PHOSPHOLIPID ANTIBODY (APL) - IGG",
+    "price": "₹957",
+    "mode": "single-test"
+  },
+  {
+    "name": "HEPATITIS B ENVELOPE ANTIGEN (HBEAG)",
+    "price": "₹957",
+    "mode": "single-test"
+  },
+  {
+    "name": "TOXO GONDII - IgG",
+    "price": "₹310",
+    "mode": "single-test"
+  }
+]
