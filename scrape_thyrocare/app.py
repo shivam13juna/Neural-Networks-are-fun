@@ -94,92 +94,159 @@ def find_best_packages(wanted_tests: list[str], max_results: int = 20):
 
 
 def find_combo(wanted_tests: list[str], budget: int = 0):
-    """Find cheapest combination of packages to cover all wanted tests."""
+    """Find cheapest combination of packages + single tests to cover all wanted tests.
+
+    Evaluates multiple strategies and returns the cheapest fully-covering solution:
+      A) All single tests
+      B) Each relevant package + singles for remainder
+      C) Each pair of relevant packages + singles for remainder
+      D) Greedy by cost-effectiveness (price / covered count) + singles
+    """
     wanted = {t.lower().strip() for t in wanted_tests if t.strip()}
     if not wanted:
-        return []
+        return {}
 
-    # Greedy set cover
+    # --- Build candidates ---
+    # Relevant packages: those covering at least 1 wanted test
+    pkg_candidates = []
+    for pkg_name, info in DATA.items():
+        if info.get("mode") != "package" or not info.get("groups"):
+            continue
+        pkg_tests = set()
+        for tests in info["groups"].values():
+            for t in tests:
+                pkg_tests.add(t.lower().strip())
+        covered = wanted & pkg_tests
+        if covered:
+            price = parse_price(info["price"])
+            pkg_candidates.append((pkg_name, info, price, covered))
+
+    # Single test lookup: wanted test key -> (name, info, price)
+    single_test_map = {}
+    for pkg_name, info in DATA.items():
+        if info.get("mode") != "single-test":
+            continue
+        test_key = pkg_name.lower().strip()
+        if test_key in wanted:
+            single_test_map[test_key] = (pkg_name, info, parse_price(info["price"]))
+
+    def _fill_singles(remaining):
+        """Fill remaining tests with singles. Returns (items, cost, missing)."""
+        items, cost, missing = [], 0, set()
+        for t in sorted(remaining):
+            if t in single_test_map:
+                sname, sinfo, sprice = single_test_map[t]
+                items.append({
+                    "name": sname, "price": sinfo["price"], "price_num": sprice,
+                    "url": sinfo.get("url", ""),
+                    "covers": [TEST_DISPLAY.get(t, sname)], "mode": "single-test",
+                })
+                cost += sprice
+            else:
+                missing.add(t)
+        return items, cost, missing
+
+    def _make_result(pkg_items, singles, total, missing):
+        return {
+            "packages": pkg_items,
+            "single_tests": singles,
+            "total_price": total,
+            "total_price_display": f"₹{total}",
+            "fully_covered": len(missing) == 0,
+            "missing": sorted(TEST_DISPLAY.get(t, t) for t in missing),
+        }
+
+    def _pkg_item(name, info, price, covers):
+        return {
+            "name": name, "price": info["price"], "price_num": price,
+            "url": info.get("url", ""),
+            "covers": sorted(TEST_DISPLAY.get(t, t) for t in covers),
+            "mode": "package",
+        }
+
+    best_price = float("inf")
+    best_missing = float("inf")
+    best_result = None
+
+    def _consider(total, missing_count, result):
+        nonlocal best_price, best_missing, best_result
+        # Prefer fewer missing tests, then cheaper total
+        if (missing_count, total) < (best_missing, best_price):
+            best_price = total
+            best_missing = missing_count
+            best_result = result
+
+    # Strategy A: All singles
+    singles, cost, missing = _fill_singles(wanted)
+    _consider(cost, len(missing), _make_result([], singles, cost, missing))
+
+    # Strategy B: Each single package + singles for remainder
+    for pkg_name, info, price, covered in pkg_candidates:
+        if price >= best_price and best_missing == 0:
+            continue  # Package alone already exceeds best known price
+        remaining = wanted - covered
+        singles, scost, missing = _fill_singles(remaining)
+        total = price + scost
+        _consider(total, len(missing),
+                  _make_result([_pkg_item(pkg_name, info, price, covered)],
+                               singles, total, missing))
+
+    # Strategy C: Pairs of packages + singles for remainder
+    # Only consider pairs that cover more wanted tests together than either alone
+    pkg_candidates.sort(key=lambda x: x[2])  # sort by price for pruning
+    for i in range(len(pkg_candidates)):
+        name1, info1, price1, cov1 = pkg_candidates[i]
+        if price1 >= best_price and best_missing == 0:
+            break  # All remaining pairs will be even more expensive
+        for j in range(i + 1, len(pkg_candidates)):
+            name2, info2, price2, cov2 = pkg_candidates[j]
+            if price1 + price2 >= best_price and best_missing == 0:
+                break  # Rest of inner loop will be more expensive
+            combined = cov1 | cov2
+            if len(combined) <= max(len(cov1), len(cov2)):
+                continue  # Pair doesn't cover more than better individual
+            remaining = wanted - combined
+            singles, scost, missing = _fill_singles(remaining)
+            total = price1 + price2 + scost
+            # Display: assign covers without overlap
+            pkg1_covers = cov1
+            pkg2_covers = cov2 - cov1
+            _consider(total, len(missing),
+                      _make_result([_pkg_item(name1, info1, price1, pkg1_covers),
+                                    _pkg_item(name2, info2, price2, pkg2_covers)],
+                                   singles, total, missing))
+
+    # Strategy D: Greedy by cost-effectiveness (price / covered count) + singles
     remaining = set(wanted)
-    combo = []
-
+    greedy_pkgs = []
+    used = set()
     while remaining:
-        best_pkg = None
+        best = None
+        best_score = float("inf")
         best_covered = set()
-        best_price = float("inf")
-
-        for pkg_name, info in DATA.items():
-            if info.get("mode") != "package" or not info.get("groups"):
+        for pkg_name, info, price, covered_wanted in pkg_candidates:
+            if pkg_name in used:
                 continue
-            if pkg_name in [c["name"] for c in combo]:
-                continue
-
-            pkg_tests = set()
-            for tests in info["groups"].values():
-                for t in tests:
-                    pkg_tests.add(t.lower().strip())
-
-            covered = remaining & pkg_tests
+            covered = remaining & covered_wanted
             if not covered:
                 continue
-
-            price = parse_price(info["price"])
-
-            # Better if covers more, then cheaper
-            if (len(covered) > len(best_covered)) or (
-                len(covered) == len(best_covered) and price < best_price
-            ):
-                best_pkg = pkg_name
+            score = price / len(covered)
+            if score < best_score or (score == best_score and price < (best[2] if best else float("inf"))):
+                best = (pkg_name, info, price)
+                best_score = score
                 best_covered = covered
-                best_price = price
-
-        if not best_pkg:
+        if not best:
             break
-
-        info = DATA[best_pkg]
+        pkg_name, info, price = best
         remaining -= best_covered
-        combo.append({
-            "name": best_pkg,
-            "price": info["price"],
-            "price_num": best_price,
-            "url": info.get("url", ""),
-            "covers": sorted(TEST_DISPLAY.get(t, t) for t in best_covered),
-            "mode": "package",
-        })
+        used.add(pkg_name)
+        greedy_pkgs.append(_pkg_item(pkg_name, info, price, best_covered))
 
-    # Phase 2: Fill remaining with single tests
-    single_tests_added = []
-    if remaining:
-        for pkg_name, info in DATA.items():
-            if info.get("mode") != "single-test":
-                continue
-            test_key = pkg_name.lower().strip()
-            if test_key not in remaining:
-                continue
-            price = parse_price(info["price"])
-            single_tests_added.append({
-                "name": pkg_name,
-                "price": info["price"],
-                "price_num": price,
-                "url": info.get("url", ""),
-                "covers": [TEST_DISPLAY.get(test_key, pkg_name)],
-                "mode": "single-test",
-            })
-            remaining.discard(test_key)
-        single_tests_added.sort(key=lambda x: x["price_num"])
+    singles, scost, missing = _fill_singles(remaining)
+    total = sum(p["price_num"] for p in greedy_pkgs) + scost
+    _consider(total, len(missing), _make_result(greedy_pkgs, singles, total, missing))
 
-    all_items = combo + single_tests_added
-    total_price = sum(c["price_num"] for c in all_items)
-    still_missing = sorted(TEST_DISPLAY.get(t, t) for t in remaining)
-
-    return {
-        "packages": combo,
-        "single_tests": single_tests_added,
-        "total_price": total_price,
-        "total_price_display": f"₹{total_price}",
-        "fully_covered": len(remaining) == 0,
-        "missing": still_missing,
-    }
+    return best_result or _make_result([], [], 0, wanted)
 
 
 def _get_pkg_tests(name: str) -> set:
