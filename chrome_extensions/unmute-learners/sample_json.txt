@@ -1,0 +1,180 @@
+{
+    "title": "unmute someone",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 930,
+            "height": 1725,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "https://www.scaler.com/instructor/meetings/i/clustering-with-dbscan-27/",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "https://www.scaler.com/instructor/meetings/i/clustering-with-dbscan-27/",
+                    "title": "Scaler"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "html > body > #react-root > div > div > div > div.layout > div > div.live > div.meeting > #meeting-sidebar > div.m-sidebar > div.layout > [data-cy='meetings-chat-window'] > div > div > [data-cy='meetings-chat-message'] i"
+                ],
+                [
+                    "xpath///*[@data-cy=\"meetings-chat-message\"]/div/div[3]/a/i"
+                ],
+                [
+                    "pierce/html > body > #react-root > div > div > div > div.layout > div > div.live > div.meeting > #meeting-sidebar > div.m-sidebar > div.layout > [data-cy='meetings-chat-window'] > div > div > [data-cy='meetings-chat-message'] i"
+                ]
+            ],
+            "offsetY": 12.96044921875,
+            "offsetX": 8.77081298828125
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Unmute User"
+                ],
+                [
+                    "div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "xpath//html/body/div[5]/div/a[1]"
+                ],
+                [
+                    "pierce/div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "text/Unmute user"
+                ]
+            ],
+            "offsetY": 4.5,
+            "offsetX": 109.2916259765625
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "html > body > #react-root > div > div > div > div.layout > div > div.live > div.meeting > #meeting-sidebar > div.m-sidebar > div.layout > [data-cy='meetings-chat-window'] > div > div > [data-cy='meetings-chat-message'] i"
+                ],
+                [
+                    "xpath///*[@data-cy=\"meetings-chat-message\"]/div/div[3]/a/i"
+                ],
+                [
+                    "pierce/html > body > #react-root > div > div > div > div.layout > div > div.live > div.meeting > #meeting-sidebar > div.m-sidebar > div.layout > [data-cy='meetings-chat-window'] > div > div > [data-cy='meetings-chat-message'] i"
+                ]
+            ],
+            "offsetY": 3.96044921875,
+            "offsetX": 7.77081298828125
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Mute User"
+                ],
+                [
+                    "div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "xpath//html/body/div[5]/div/a[1]"
+                ],
+                [
+                    "pierce/div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "text/Mute user"
+                ]
+            ],
+            "offsetY": 7.5,
+            "offsetX": 101.2916259765625
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/",
+                    "aria/[role=\"generic\"]"
+                ],
+                [
+                    "html > body > #react-root > div > div > div > div.layout > div > div.live > div.meeting > #meeting-sidebar > div.m-sidebar > div.layout > [data-cy='meetings-chat-window'] > div > div > [data-cy='meetings-chat-message'] i"
+                ],
+                [
+                    "xpath///*[@data-cy=\"meetings-chat-message\"]/div/div[3]/a/i"
+                ],
+                [
+                    "pierce/html > body > #react-root > div > div > div > div.layout > div > div.live > div.meeting > #meeting-sidebar > div.m-sidebar > div.layout > [data-cy='meetings-chat-window'] > div > div > [data-cy='meetings-chat-message'] i"
+                ]
+            ],
+            "offsetY": 5.731201171875,
+            "offsetX": 1.77081298828125
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Unmute User"
+                ],
+                [
+                    "div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "xpath//html/body/div[5]/div/a[1]"
+                ],
+                [
+                    "pierce/div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "text/Unmute user"
+                ]
+            ],
+            "offsetY": 13.270751953125,
+            "offsetX": 95.2916259765625
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Mute User"
+                ],
+                [
+                    "div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "xpath//html/body/div[5]/div/a[1]"
+                ],
+                [
+                    "pierce/div.react-root--auto a:nth-of-type(1)"
+                ],
+                [
+                    "text/Mute user"
+                ]
+            ],
+            "offsetY": 5.270751953125,
+            "offsetX": 107.2916259765625
+        }
+    ]
+}

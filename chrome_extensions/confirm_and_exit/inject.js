@@ -1,15 +1,13 @@
 /*
- * Confirm and Exit – content script
- * Replace SELECTOR_* constants below with real CSS selectors for your site.
+ * Confirm and Exit – end-meeting content script.
+ *
+ * SAFETY: This file is destructive — it ends the meeting. It must ONLY be
+ * injected by an explicit user action (the popup's End button). It must NOT
+ * be injected by any auto-trigger such as chrome.webNavigation.onCompleted.
+ * The post-reload bookmark automation resumption lives in bookmark-resume.js.
  */
 
 (async () => {
-  // Skip meeting-end flow if we're here for bookmark automation after reload
-  if (sessionStorage.getItem('needsBookmarkAutomation') === 'true') {
-    console.log("Confirm and Exit: skipping meeting-end flow — bookmark automation pending");
-    return;
-  }
-
   //                                     ▼▼ REPLACE THESE ▼▼
   const SELECTOR_END_BUTTON   = "#meeting-sidebar > div.right-dock.scroll > div:nth-child(2) > div > div > a";           // top‑level "End" button
   const SELECTOR_LEAVE_ALL_BUTTON = "body > div.react-root.react-root--auto.meeting-app > div > a.tappable.dropdown-item.btn.btn-danger"; // Button for "End meeting for all"
@@ -202,59 +200,3 @@
   location.reload();
 
 })();
-
-// Check if we need to run bookmark automation after page reload
-if (sessionStorage.getItem('needsBookmarkAutomation') === 'true') {
-  sessionStorage.removeItem('needsBookmarkAutomation');
-  
-  // Wait for page to be fully loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initBookmarkAutomation);
-  } else {
-    initBookmarkAutomation();
-  }
-}
-
-async function initBookmarkAutomation() {
-  // Wait a bit more for the page to be fully ready
-  await new Promise(r => setTimeout(r, 3000));
-  
-  console.log("🔖 Initializing bookmark automation...");
-  
-  // CRITICAL FIX: Direct script injection using chrome extension APIs
-  // Send message to background script to inject bookmark automation
-  try {
-    const response = await chrome.runtime.sendMessage({
-      action: 'injectBookmarkScript',
-      tabId: 'current'
-    });
-    
-    if (response && response.success) {
-      console.log("🔖 Bookmark automation script injection requested successfully!");
-    } else {
-      console.log("🔄 Falling back to direct bookmark automation execution...");
-      // If messaging fails, we'll trigger bookmark automation directly
-      setTimeout(() => {
-        if (typeof addBookmarks === 'function') {
-          addBookmarks();
-        } else {
-          console.log("⚠️ Bookmark automation function not available - script may not be loaded");
-        }
-      }, 2000);
-    }
-    
-  } catch (error) {
-    console.log("🔄 Background script messaging failed, using direct approach...", error.message);
-    
-    // Fallback: Try to load the script directly via extension URL
-    const script = document.createElement('script');
-    script.src = chrome.runtime.getURL('bookmark-automation.js');
-    script.onload = function() {
-      console.log("✅ Bookmark automation script loaded via direct injection!");
-    };
-    script.onerror = function() {
-      console.error("❌ Failed to load bookmark automation script");
-    };
-    document.head.appendChild(script);
-  }
-}

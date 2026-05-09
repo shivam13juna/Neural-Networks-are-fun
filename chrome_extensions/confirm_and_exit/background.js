@@ -40,22 +40,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 });
 
-// Listen for page navigation completion
+// Listen for page navigation completion to resume bookmark automation after a
+// reload triggered by the end-meeting flow. IMPORTANT: this MUST inject
+// bookmark-resume.js, NOT inject.js. inject.js contains the destructive
+// end-meeting flow and may only be injected by an explicit user action from
+// the popup. Auto-injecting inject.js here previously ended live meetings
+// without user trigger — see incident note.
 chrome.webNavigation.onCompleted.addListener(async (details) => {
-  // Only handle main frame (not iframes)
   if (details.frameId !== 0) return;
-  
-  // Only handle scaler.com pages
   if (!details.url.includes('scaler.com')) return;
-  
+
   try {
-    // Re-inject script to check for pending bookmark automation
     await chrome.scripting.executeScript({
       target: { tabId: details.tabId },
-      files: ["inject.js"]
+      files: ["bookmark-resume.js"]
     });
   } catch (err) {
-    // Tab may be closed or navigation failed - ignore
-    console.log("Re-injection failed (normal if tab closed):", err.message);
+    console.log("Bookmark-resume injection failed (normal if tab closed):", err.message);
   }
 });

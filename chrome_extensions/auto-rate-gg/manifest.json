@@ -1,7 +1,7 @@
 {
   "name": "Auto-Rate GG",
   "description": "One-click 5★ rating + GG message.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "manifest_version": 3,
   "icons": {
     "128": "feedback.png"
@@ -11,5 +11,14 @@
   },
   "background": { "service_worker": "background.js" },
   "permissions": ["scripting", "activeTab"],
-  "host_permissions": ["https://example.com/*"]
+  "host_permissions": ["https://www.scaler.com/instructor/meetings*"],
+  "commands": {
+    "trigger-auto-rate": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Run Auto-Rate GG on the current meeting page"
+    }
+  }
 }

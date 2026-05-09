@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 350px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+    }
+    .section {
+      margin-bottom: 14px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    textarea {
+      width: 100%;
+      height: 60px;
+      box-sizing: border-box;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      resize: vertical;
+    }
+    input[type="number"] {
+      width: 80px;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      color: #fff;
+    }
+    #addBtn {
+      background: #2563eb;
+    }
+    #startBtn {
+      background: #16a34a;
+    }
+    #stopBtn {
+      background: #dc2626;
+    }
+    #clearBtn {
+      background: #6b7280;
+    }
+    button:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+    button:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    #queue {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    #queue li {
+      padding: 6px 8px;
+      background: #f3f4f6;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      word-break: break-word;
+    }
+    #queue li .remove {
+      cursor: pointer;
+      color: #dc2626;
+      font-weight: bold;
+      margin-left: 8px;
+      flex-shrink: 0;
+    }
+    #status {
+      margin-top: 10px;
+      font-style: italic;
+      color: #6b7280;
+    }
+    .progress-section {
+      margin-top: 12px;
+      display: none;
+    }
+    .progress-section.visible {
+      display: block;
+    }
+    .progress-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+    .progress-bar-bg {
+      width: 100%;
+      height: 14px;
+      background: #e5e7eb;
+      border-radius: 7px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #2563eb;
+      border-radius: 7px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .progress-bar-fill.done {
+      background: #16a34a;
+    }
+    .progress-label {
+      text-align: center;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    #countdown {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #2563eb;
+      margin-top: 6px;
+    }
+    .sent {
+      opacity: 0.5;
+      text-decoration: line-through;
+    }
+    .processing {
+      background: #dbeafe !important;
+      border-left: 3px solid #2563eb;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <h2>ChatGPT Message Queue</h2>
+
+  <div class="section">
+    <label>Add message:</label>
+    <textarea id="msgInput" placeholder="Type a message to queue..."></textarea>
+    <button id="addBtn" style="margin-top:6px">Add to Queue</button>
+  </div>
+
+  <div class="section">
+    <label>End Prompt (appended to every message):</label>
+    <textarea id="endPromptInput" placeholder="Text to append at the end of each message..."></textarea>
+  </div>
+
+  <div class="section">
+    <label>Interval (minutes):</label>
+    <input type="number" id="intervalInput" min="1" value="5">
+  </div>
+
+  <div class="section">
+    <label>Queue:</label>
+    <ul id="queue"></ul>
+  </div>
+
+  <div class="btn-row">
+    <button id="startBtn">Start Sending</button>
+    <button id="stopBtn">Stop</button>
+    <button id="clearBtn">Clear Queue</button>
+  </div>
+
+  <div id="progressSection" class="progress-section">
+    <div class="progress-stats">
+      <span id="sentLabel">0 sent</span>
+      <span id="remainingLabel">0 remaining</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div id="progressFill" class="progress-bar-fill"></div>
+    </div>
+    <div id="progressLabel" class="progress-label"></div>
+    <div id="countdown"></div>
+  </div>
+
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
