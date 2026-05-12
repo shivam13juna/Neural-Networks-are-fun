@@ -211,8 +211,8 @@ function startCountdown() {
     if (!nextSendTime) {
       const remaining = messages.length - sentCount;
       countdownEl.textContent = remaining <= 1
-        ? 'Waiting for last response to finish...'
-        : 'Waiting for response...';
+        ? 'Waiting for ChatGPT to finish answering last query...'
+        : 'Waiting for ChatGPT to finish answering...';
       return;
     }
     const remaining = Math.max(0, Math.ceil((nextSendTime - Date.now()) / 1000));
